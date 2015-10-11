@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5c6026b96e6fa11a641b51a6ba976f5e",
-    "content-hash": "5bd58fd976f1ee3e9611bc37c006ec46",
+    "hash": "9a41debcc65450ebbd1d8e893808a3b2",
+    "content-hash": "ee23e0b79dc34248a4d003957db83401",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -489,6 +489,48 @@
                 "laravel"
             ],
             "time": "2015-10-01 18:32:48"
+        },
+        {
+            "name": "lavary/laravel-menu",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lavary/laravel-menu.git",
+                "reference": "bebce996ef08cf911da0139c30a2da03a2768326"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lavary/laravel-menu/zipball/bebce996ef08cf911da0139c30a2da03a2768326",
+                "reference": "bebce996ef08cf911da0139c30a2da03a2768326",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=5.0",
+                "illuminate/view": ">=5.0",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Lavary\\Menu\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lavary",
+                    "email": "mrl.8081@gmail.com"
+                }
+            ],
+            "description": "A quick way to create menus in Laravel 5",
+            "homepage": "https://github.com/lavary/laravel-menu",
+            "keywords": [
+                "laravel"
+            ],
+            "time": "2015-09-28 22:36:39"
         },
         {
             "name": "league/flysystem",
@@ -2922,7 +2964,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "lavary/laravel-menu": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
