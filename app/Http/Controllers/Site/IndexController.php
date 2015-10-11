@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Site;
 
+
+use App\Models\Menu;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -13,9 +15,11 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($page = '')
     {
-        return view('index', []);
+        $title = Menu::where('key', $page)->value('name');
+        $menuHtml = $this->menuHtml($page);
+        return view('index', ['menuHtml' => $menuHtml, 'title' => $title]);
     }
 
     /**

@@ -13,7 +13,7 @@ $nav = array('index' => 'Главная',
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= $nav[$page] ?></title>
+    <title>{{$title}}</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
@@ -70,20 +70,7 @@ $nav = array('index' => 'Главная',
             <div class="clear"></div>
         </div>
 
-        <div class="row">
-            <div class="nav col-xs-12">
-                <ul>
-                    <?
-                    foreach ($nav as $key => $value) {
-                        echo '<li', $page == $key ? ' class="active"' : '' ,'>
-								<a href="/', $key != 'index' ? $key.'.php' : '','">', $value ,'</a>
-							</li>';
-                    }
-                    ?>
-                </ul>
-            </div>
-            <div class="clear"></div>
-        </div>
+        {!! $menuHtml !!}
     </div>
 </header>
 <section>

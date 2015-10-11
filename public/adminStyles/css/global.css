@@ -1,0 +1,225 @@
+html {
+	font-size:100%;
+}
+body { 
+	font:300 87.5%/1.28571428 "Open Sans", sans-serif;
+	background:#f3f3f3;
+	color:#393939;
+}
+.clear {
+	display:block;
+	clear:both;
+}
+.left {
+	display:block;
+	float:left;
+}
+.right {
+	display:block;
+	float:right;
+}
+.none {
+	display:none;
+}
+.cent {
+	text-align:center;
+}
+.h5 {
+	height:5px;
+}
+.h10 {
+	height:10px;
+}
+.h15 {
+	height:15px;
+}
+.h25 {
+	height:25px;
+}
+.h30 {
+	height:30px;
+}
+b {
+	font-weight:600;
+}
+p {
+	margin-bottom:10px;
+}
+a {
+	color:#007aa3;
+	text-decoration:underline;
+}
+a:hover {
+	text-decoration:none;
+}
+a:focus,
+a:active {
+	color:#c77;
+	text-decoration:none;
+}
+a:focus,
+input[type=text]:focus,
+input[type=password]:focus,
+textarea:focus {
+	outline:0 none;
+}
+h1,
+h2 {
+	margin:0 0 22px;
+	font-size:24px;
+	line-height:1.25;
+	font-weight:400;
+	color:#005b7d;
+}
+h1 {
+	margin-bottom:17px;
+}
+.view h2 {
+	margin-bottom:12px;
+	color:#005b7d;
+	font-weight:400;
+	font-size:18px;
+	line-height:1.25;
+}
+ul.arrow {
+	margin-bottom:10px;
+}
+ul.arrow li {
+	display:block;
+	margin-bottom:2px;
+	padding-left:17px;
+	background:url(/img/button/list-arrow.png) 0 2px no-repeat;
+}
+ul.round {
+	margin-bottom:10px;
+}
+ul.round li {
+	margin-bottom:4px;
+}
+ul.round li a {
+	position:relative;
+	padding-left:20px;
+}
+ul.round li a:before,
+ul.round li.active a:hover:before {
+	position:absolute;
+	top:5px;
+	left:0;
+	width:8px;
+	height:8px;
+	content:'';
+	border:1px solid #09c;
+	border-radius:5px;
+}
+ul.round li a:hover:before {
+	border-color:#44b2f7;
+}
+ul.round li a:active:before {
+	border-color:#c77;
+}
+ul.round li.active a:hover {
+	cursor:default;
+}
+ul.round li.active a:before,
+ul.round li.active a:hover:before {
+	background:#09c;
+}
+ul.round li li {
+	margin-left:20px;
+}
+ul.round li li a:before { 
+	border-color:#8aa6d6;
+}
+.button {
+	padding:11px 25px 12px;
+	display:inline-block;
+	color:#939393;
+	font-size:16px;
+	line-height:1;
+	text-decoration:none;
+	background:#fff;
+	cursor:pointer;
+	border:1px solid #cbcbcb;
+	border-radius:21px;
+}
+.button:hover {
+	border-color:#09c;
+}
+.button:active {
+	color:#c77;
+	border-color:#dbdbdb;
+	background-color:#dbdbdb;
+}
+.delimiter {
+	margin-bottom: 22px;
+	height:2px;
+	background:#e4e4e4;
+	border-bottom:1px solid #fff;
+}
+input[type=text],
+input[type=password],
+textarea {
+	display:block;
+	padding:5px 10px;
+	width:100%;
+	height:30px;
+	line-height:30px;
+	font-size:14px;
+	font-family: "Open Sans", sans-serif;
+	border:1px solid #dbdbdb;
+	border-radius:2px;
+}
+textarea {
+	height:200px;
+	line-height:18px;
+}
+input[type=text]:focus,
+input[type=password]:focus,
+textarea:focus {
+	border-color:#09c;
+}
+button {
+	padding:0;
+	cursor:pointer;
+	background:none;
+	border:0 none;
+}
+.imageRight {
+	float:right;
+	margin:0 0 10px 15px;
+}
+.imageRight img {
+	width:100%;
+}
+
+.error {
+	position:relative;
+	margin-bottom:16px;
+	padding:11px 40px 12px 14px;
+	color:#c77;
+	border:1px solid #e4e4e4;
+	border-radius:4px;
+}
+.error.topper {
+	top:-10px;
+	margin-bottom:6px;
+}
+.error .close {
+	position:absolute;
+	top:50%;
+	right:5px;
+	margin-top:-15px;
+	width:30px;
+	height:30px;
+	background:url(/img/button/close/20.png) 50% 5px no-repeat;
+	cursor:pointer;
+}
+.error .close:hover {
+	background-position:50% -35px;
+}
+.error .close:active {
+	background-position:50% -75px;
+}
+.error p:last-child {
+	margin-bottom:0;
+}
