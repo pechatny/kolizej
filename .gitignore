@@ -1,6 +1,6 @@
 # Vagrant project files
 .vagrant
-/Vagrantfile
+/Vagrantfile*
 
 # IntelliJ project files
 .idea

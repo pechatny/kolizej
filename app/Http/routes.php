@@ -11,4 +11,9 @@
 |
 */
 
-Route::get('/', 'IndexController@index');
+Route::group(['namespace' => 'Site'], function()
+{
+    Route::get('/', 'IndexController@index');
+});
+
+
