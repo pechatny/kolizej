@@ -1,0 +1,16 @@
+# Vagrant project files
+.vagrant
+/Vagrantfile
+
+# IntelliJ project files
+.idea
+*.iml
+
+
+### Laravel template
+/bootstrap/compiled.php
+.env.*.php
+.env.php
+.env
+
+
