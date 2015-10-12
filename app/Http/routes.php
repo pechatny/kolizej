@@ -27,6 +27,17 @@ Route::group(['namespace' => 'Admin'], function()
             Route::get("delete/{id}", "MenuController@destroy");
 
         });
+
+        Route::group(['prefix' => 'pages'], function()
+        {
+            Route::get("/", "PagesController@index");
+            Route::get("edit/{id}", "PagesController@edit");
+            Route::get("create", "PagesController@create");
+            Route::put("store", "PagesController@store");
+            Route::put("update/{id}", "PagesController@update");
+            Route::get("delete/{id}", "PagesController@destroy");
+
+        });
     });
 });
 

@@ -20,6 +20,7 @@ class MenuController extends Controller
     {
         $menuItems = Menu::all();
         $data = [
+            'route' => 'menu',
             'title' => Menu::$tableName,
             'menuItems' => $menuItems,
             'menuNames' => Menu::$fields,
@@ -88,10 +89,7 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-
-
         $menuItem = Menu::find($id);
-//        dd($menuItem);
         $data = [
             'title' => Menu::$tableName,
             'menuItem' => $menuItem,
