@@ -1,14 +1,4 @@
-<?
-$page = 'index';
-$nav = array('index' => 'Главная',
-        'catalog' => 'Каталог',
-        'delivery' => 'Доставка и оплата',
-        'personal-furniture' => 'Мебель на заказ',
-        'opt' => 'Оптовикам',
-        'contacts' => 'Контакты'
-);
-?>
-        <!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -16,21 +6,26 @@ $nav = array('index' => 'Главная',
     <title>{{$title}}</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600, 700&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
     <link href="/css/reset.css" rel="stylesheet" type="text/css">
     <link href="/css/grid.css" rel="stylesheet" type="text/css">
+    <link href="/css/magnific-popup.css" rel="stylesheet" type="text/css">
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
-    <script type="text/javascript" src="/js/map.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    @if($page->key == 'index' || $page->key == 'contacts')
+        <script type="text/javascript" src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+        <script type="text/javascript" src="/js/map.js"></script>
+    @endif
+    <script type="text/javascript" src="/js/magnific-popup.min.js"></script>
     <script type="text/javascript" src="/js/script.js"></script>
 </head>
-<body class="index-page">
+<body class="{{$page->key}}-page">
 <header class="wide">
     <div class="container">
         <div class="row">
@@ -76,26 +71,13 @@ $nav = array('index' => 'Главная',
 </header>
 <section>
 
-{{--@section('title')--}}
-    {{--This is the master sidebar.--}}
-{{--@show--}}
-
-@yield('content')
+    @yield('content')
 
 </section>
 <footer>
     <div class="container">
         <div class="row">
-            <div class="folder col-xs-2">
-                <div class="title">Информация</div>
-                <div class="block">
-                    <a href="">Главная</a>
-                    <a href="">Контакты</a>
-                    <a href="">Доставка и оплата</a>
-                    <a href="">Оптовикам</a>
-                    <a href="">Мебель на заказ</a>
-                </div>
-            </div>
+            {!! $menuBottomHtml !!}
             <div class="folder col-xs-4">
                 <div class="title">Каталог</div>
                 <div class="block w50">
@@ -129,15 +111,14 @@ $nav = array('index' => 'Главная',
                     <div class="clear"></div>
                 </form>
             </div>
-            <div class="cart col-xs-2">
+
+            <div class="cart empty col-xs-2">
                 <div class="layer">
                     <a href="" class="title">Корзина</a>
                     <div class="clear"></div>
-
-                    4 товара
-                    <b>50 000 руб.</b>
-
-                    <a href="" class="button cent wide">Оформить заказ</a>
+                    0 товаров
+                    <b>Выберите товары из каталога</b>
+                    <a href="/catalog/" class="button cent wide">В каталог</a>
                 </div>
             </div>
             <div class="clear"></div>

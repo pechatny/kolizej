@@ -44,7 +44,7 @@ Route::group(['namespace' => 'Admin'], function()
 Route::group(['namespace' => 'Site'], function()
 {
     Route::get("/", "IndexController@index");
-    Route::get("{page}", "IndexController@index");
+    Route::get("{page}", "PagesController@index");
 });
 
 

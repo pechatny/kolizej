@@ -53,7 +53,7 @@ class PagesController extends Controller
             'title'  => 'required|max:255',
             'page_title'  => 'required|max:255',
             'text'  => 'required',
-            'elements'  => 'required',
+            'elements'  => '',
         ]);
 
         if ($validator->fails()) {
@@ -116,13 +116,13 @@ class PagesController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'key'  => 'required|unique:pages|max:255',
+            'key'  => 'required|max:255',
             'description'  => 'required|max:255',
             'keywords'  => 'required|max:255',
             'title'  => 'required|max:255',
             'page_title'  => 'required|max:255',
             'text'  => 'required',
-            'elements'  => 'required',
+            'elements'  => '',
         ]);
 
         if ($validator->fails()) {

@@ -2,6 +2,12 @@
 @section('content')
     {!! Form::open(['action' => ['Admin\PagesController@update', $page->id], 'method' => 'put']) !!}
         <label>
+            <div class="signature">Клюя</div>
+            <div class="field">
+                <input type="text" name="key" value="{{$page->key}}">
+            </div>
+        </label>
+        <label>
             <div class="signature">Описание</div>
             <div class="field">
                 <input type="text" name="description" value="{{$page->description}}">
