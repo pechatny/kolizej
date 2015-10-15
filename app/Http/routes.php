@@ -38,6 +38,17 @@ Route::group(['namespace' => 'Admin'], function()
             Route::get("delete/{id}", "PagesController@destroy");
 
         });
+
+        Route::group(['prefix' => 'categories'], function()
+        {
+            Route::any("/", "CategoriesController@index");
+            Route::any("edit/{id}", "CategoriesController@edit");
+            Route::any("create", "CategoriesController@create");
+            Route::any("store", "CategoriesController@store");
+            Route::any("update/{id}", "CategoriesController@update");
+            Route::any("delete/{id}", "CategoriesController@destroy");
+
+        });
     });
 });
 

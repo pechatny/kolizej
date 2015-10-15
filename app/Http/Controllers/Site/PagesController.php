@@ -24,7 +24,6 @@ class PagesController extends Controller
         $menuItems = Menu::all();
         $bottomMenuHtml = view('bottom', ['menuItems' => $menuItems])->render();
         $page = Page::where('key', $page)->first();
-//        dd($page->toArray());
         return view('page', ['menuHtml' => $menuHtml, 'menuBottomHtml' => $bottomMenuHtml, 'title' => $title, 'page' => $page]);
     }
 
