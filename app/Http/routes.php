@@ -49,6 +49,17 @@ Route::group(['namespace' => 'Admin'], function()
             Route::any("delete/{id}", "CategoriesController@destroy");
 
         });
+
+        Route::group(['prefix' => 'colors'], function()
+        {
+            Route::any("/", "ColorsController@index");
+            Route::any("edit/{id}", "ColorsController@edit");
+            Route::any("create", "ColorsController@create");
+            Route::any("store", "ColorsController@store");
+            Route::any("update/{id}", "ColorsController@update");
+            Route::any("delete/{id}", "ColorsController@destroy");
+
+        });
     });
 });
 
