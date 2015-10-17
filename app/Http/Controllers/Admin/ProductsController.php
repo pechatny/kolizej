@@ -51,7 +51,7 @@ class ProductsController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name'  => 'required|max:255',
-            'image' => "required|mimes:jpeg,bmp,png",
+//            'image' => "required|mimes:jpeg,bmp,png",
         ]);
 
         if ($validator->fails()) {
@@ -60,16 +60,19 @@ class ProductsController extends Controller
                 ->withInput($request->all());
         }
 
-        $item = new Color();
+        $item = new Product();
         $item->name = $request->name;
 
-        $image = $request->image;
-        $filename  = time() . '.' . $image->getClientOriginalExtension();//Имя файла
-        $path = 'img/color/' . $filename;//Путь файла
-        Image::make($image->getRealPath())->save($path);
-        $item->image = $path;
+        $images = $request->images;
+        foreach($images as $image){
+            $filename  = time() . '.' . $image->getClientOriginalExtension();//Имя файла
+            $path = 'img/product/' . $filename;//Путь файла
+            Image::make($image->getRealPath())->save($path);
+            $item->image = $path;
 
-        $item->save();
+            $item->save();
+        }
+
 
         return redirect("admin/$this->key");
     }
@@ -95,7 +98,7 @@ class ProductsController extends Controller
     {
         $item = Product::find($id);
         $data = [
-            'title' => Color::$tableName,
+            'title' => Product::$tableName,
             'item' => $item,
 //            'pagesFields' => Category::$fields,
         ];
@@ -151,7 +154,9 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         $item = Product::find($id);
-        File::delete($item->image);
+        foreach($item->images as $image){
+            File::delete($image);
+        }
         $item->delete();
 
         return redirect("admin/$this->key");

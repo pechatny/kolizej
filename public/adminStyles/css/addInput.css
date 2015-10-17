@@ -1,0 +1,16 @@
+.add_field_button{
+	height: 40px;
+	width: 200px;
+    background-color: #509dff;
+    border-radius: 20px;
+    color: #fdfffd;
+}
+
+.remove_field{
+    margin-top:10px;
+    height: 30px;
+    width: 100px;
+    background-color: #ff778d;
+    border-radius: 20px;
+    color: #fdfffd;
+}

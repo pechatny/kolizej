@@ -82,6 +82,10 @@
             {!! Form::file('image') !!}
         </div>
     </label>
+    <div class="input_fields_wrap">
+        <a class="add_field_button">Ещё картинку</a>
+        <div><input type="text" name="mytext[]"></div>
+    </div>
     {{--<label>--}}
         {{--<div class="field">--}}
             {{--{!! HTML::image($item->image, '', array('height' => '200px')) !!}--}}

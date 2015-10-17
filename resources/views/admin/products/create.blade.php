@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
+
     {!! Form::open(['action' => array('Admin\ProductsController@store'), 'files' => true ]) !!}
 
     <label>
@@ -75,10 +76,12 @@
             {!! Form::text('params', old( 'params' )) !!}
         </div>
     </label>
-    <label>
-        <div class="signature">Изображение</div>
+    <label class="add_fields">
+        <button class="add_field_button">Ещё картинку</button>
+        <div class="signature">Изображения</div>
         <div class="field">
-            {!! Form::file('images[]', array('multiple'=>true)) !!}
+            <div class="input_fields_wrap">{!! Form::file('images[]') !!}<button class="remove_field">Удалить</button></div>
+
         </div>
     </label>
 
