@@ -1,0 +1,94 @@
+@extends('layouts.admin')
+@section('content')
+
+    {!! Form::open(['action' => array('Admin\ProductsController@store'), 'files' => true ]) !!}
+
+    <label>
+        <div class="signature">Артикул</div>
+        <div class="field">
+            {!! Form::text('article', old( 'article' )) !!}
+        </div>
+    </label>
+    <label>
+        <div class="signature">Название</div>
+        <div class="field">
+            {!! Form::text('name', old( 'name' )) !!}
+        </div>
+    </label>
+    <label>
+        <div class="signature">Описание</div>
+        <div class="field">
+            {!! Form::text('description', old( 'description' )) !!}
+        </div>
+    </label>
+    <label>
+        <div class="signature">Ключевые слова</div>
+        <div class="field">
+            {!! Form::text('keywords', old( 'keywords' )) !!}
+        </div>
+    </label>
+    <label>
+        <div class="signature">Текст</div>
+        <div class="field">
+            {!! Form::text('text', old( 'text' )) !!}
+        </div>
+    </label>
+    <label>
+        <div class="signature">Цена</div>
+        <div class="field">
+            {!! Form::text('price', old( 'price' )) !!}
+        </div>
+    </label>
+    <label>
+        <div class="signature">Ширина</div>
+        <div class="field">
+            {!! Form::text('width', old( 'width' )) !!}
+        </div>
+    </label>
+    <label>
+        <div class="signature">Высота</div>
+        <div class="field">
+            {!! Form::text('height', old( 'height' )) !!}
+        </div>
+    </label>
+    <label>
+        <div class="signature">Глубина</div>
+        <div class="field">
+            {!! Form::text('depth', old( 'depth' )) !!}
+        </div>
+    </label>
+    <label>
+        <div class="signature">Вес</div>
+        <div class="field">
+            {!! Form::text('weight', old( 'weight' )) !!}
+        </div>
+    </label>
+    <label>
+        <div class="signature">В наличии</div>
+        <div class="field">
+            {!! Form::text('stock', old( 'stock' )) !!}
+        </div>
+    </label>
+    <label>
+        <div class="signature">Параметры</div>
+        <div class="field">
+            {!! Form::text('params', old( 'params' )) !!}
+        </div>
+    </label>
+    <label>
+        <div class="signature">Изображение</div>
+        <div class="field">
+            {!! Form::file('images[]', array('multiple'=>true)) !!}
+        </div>
+    </label>
+
+
+        <input type="submit" name="submit" value="Создать" class="button">
+    {!! Form::close() !!}
+
+    @if(count($errors) > 0)
+        <div class="error">
+            Запись <strong>не создана</strong>
+        </div>
+    @endif
+@endsection

@@ -4,14 +4,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Admin</title>
-        {!!   HTML::style('adminStyles/css/main.css') !!}
-        {!!   HTML::style('adminStyles/css/global.css') !!}
-        {!!   HTML::style('adminStyles/css/grid.css') !!}
-        {!!   HTML::style('adminStyles/css/style.css') !!}
-        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css">
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-        <script type="text/javascript" src="/adminStyles/func/script.js"></script>
+        {!! HTML::style('adminStyles/css/main.css') !!}
+        {!! HTML::style('adminStyles/css/global.css') !!}
+        {!! HTML::style('adminStyles/css/grid.css') !!}
+        {!! HTML::style('adminStyles/css/style.css') !!}
+        {!! HTML::style('http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css') !!}
+        {!! HTML::script('http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js') !!}}
+        {!! HTML::script('http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js') !!}}
+        {!! HTML::script('adminStyles/func/script.js') !!}}
         <link href="/adminStyles/img/favicon/admin.png" rel="shortcut icon">
     </head>
     <body class="index-page">
