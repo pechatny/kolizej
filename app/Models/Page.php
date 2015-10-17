@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Page extends Model
 {
     protected $guarded = ['id'];
-    
+
     public $table = 'pages';
     public static $tableName = 'Страницы';
     public static $fields = [
