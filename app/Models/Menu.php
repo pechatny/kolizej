@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Menu extends Model
 {
+    protected $guarded = ['id'];
+    
     public $table = 'menu';
     public static $tableName = 'Меню';
     public static $fields = [
