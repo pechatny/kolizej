@@ -16,6 +16,14 @@
             {!! Form::text('name', old( 'name' )) !!}
         </div>
     </label>
+
+    <label>
+        <div class="signature">Категория</div>
+        <div class="field">
+            {!! Form::select('category_id', $categories, old( 'category_id' )) !!}
+        </div>
+    </label>
+
     <label>
         <div class="signature">Описание</div>
         <div class="field">
@@ -65,9 +73,16 @@
         </div>
     </label>
     <label>
+        <div class="signature">Гарантия</div>
+        <div class="field">
+            {!! Form::text('warranty', old( 'warranty' )) !!}
+        </div>
+    </label>
+
+    <label>
         <div class="signature">В наличии</div>
         <div class="field">
-            {!! Form::text('stock', old( 'stock' )) !!}
+            {!! Form::checkbox('stock', old( 'stock' )) !!}
         </div>
     </label>
     <label>
@@ -89,8 +104,11 @@
         <input type="submit" name="submit" value="Создать" class="button">
     {!! Form::close() !!}
 
-    @if(count($errors) > 0)
+    @if($errors->has())
         <div class="error">
+            @foreach ($errors->all() as $error)
+                {{ $error }}<br>
+            @endforeach
             Запись <strong>не создана</strong>
         </div>
     @endif

@@ -15,20 +15,20 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('category_id');
-            $table->string('keywords');
-            $table->string('description');
-            $table->string('name');
-            $table->string('images');
-            $table->text('text');
-            $table->unsignedSmallInteger('article');
-            $table->unsignedSmallInteger('price');
-            $table->unsignedSmallInteger('width');
-            $table->unsignedSmallInteger('height');
-            $table->unsignedSmallInteger('warranty');
-            $table->unsignedSmallInteger('weight');
-            $table->unsignedSmallInteger('depth');
-            $table->unsignedSmallInteger('stock');
-            $table->unsignedSmallInteger('params');
+            $table->string('keywords')->null();
+            $table->string('description')->null();
+            $table->string('name')->null();
+            $table->text('images')->null();
+            $table->text('text')->null();
+            $table->unsignedSmallInteger('article')->null();
+            $table->unsignedSmallInteger('price')->null();
+            $table->unsignedSmallInteger('width')->null();
+            $table->unsignedSmallInteger('height')->null();
+            $table->unsignedSmallInteger('warranty')->null();
+            $table->unsignedSmallInteger('weight')->null();
+            $table->unsignedSmallInteger('depth')->null();
+            $table->boolean('stock')->null();
+            $table->unsignedSmallInteger('params')->null();
             $table->timestamps();
         });
     }
