@@ -80,6 +80,7 @@ class ProductsController extends Controller
         $item->name = $request->name;
         $item->keywords = $request->keywords;
         $item->description = $request->description;
+        $item->category_id = $request->category_id;
         $item->text = $request->text;
         $item->article = $request->article;
         $item->price = $request->price;
@@ -87,6 +88,7 @@ class ProductsController extends Controller
         $item->height = $request->height;
         $item->warranty = $request->warranty;
         $item->weight = $request->weight;
+        $item->depth = $request->depth;
         $item->stock = $request->stock ? $request->stock : 0;
         $item->params = $request->params;
 
@@ -139,7 +141,7 @@ class ProductsController extends Controller
     public function edit($id)
     {
         $item = Product::find($id);
-        $images = unserialize($item->images);
+        $images = $item->images;
 //dd($images);
         $categories = Category::all();
         $formCategories = [];
@@ -193,10 +195,12 @@ class ProductsController extends Controller
         $item->keywords = $request->keywords;
         $item->description = $request->description;
         $item->text = $request->text;
+        $item->category_id = $request->category_id;
         $item->article = $request->article;
         $item->price = $request->price;
         $item->width = $request->width;
         $item->height = $request->height;
+        $item->depth = $request->depth;
         $item->warranty = $request->warranty;
         $item->weight = $request->weight;
         $item->stock = $request->stock ? $request->stock : 0;
@@ -223,7 +227,7 @@ class ProductsController extends Controller
         }
 
         //Удаление удалённых картинок
-        foreach(unserialize($item->images) as $dbImage){
+        foreach($item->images as $dbImage){
 
             if(!in_array($dbImage, $arPath)){
                 $this->deleteImages($dbImage);
@@ -247,7 +251,7 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         $item = Product::find($id);
-        foreach(unserialize($item->images) as $image){
+        foreach($item->images as $image){
             $this->deleteImages($image);
         }
         $item->delete();

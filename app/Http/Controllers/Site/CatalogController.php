@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Site;
 
 
+use App\Models\Category;
 use App\Models\Menu;
 use App\Models\Page;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -25,7 +27,18 @@ class CatalogController extends Controller
         $menuItems = Menu::all();
         $bottomMenuHtml = view('bottom', ['menuItems' => $menuItems])->render();
         $page = Page::where('key', $page)->first();
-        return view('site.catalog', ['menuHtml' => $menuHtml, 'menuBottomHtml' => $bottomMenuHtml, 'title' => $title, 'page' => $page]);
+        $categories = Category::all();
+
+        $products = Product::with('category')->get();
+//dd($products->toArray());
+        return view('site.catalog', [
+            'menuHtml' => $menuHtml,
+            'menuBottomHtml' => $bottomMenuHtml,
+            'title' => $title,
+            'page' => $page,
+            'products' => $products,
+            'categories' => $categories
+        ]);
     }
 
 
