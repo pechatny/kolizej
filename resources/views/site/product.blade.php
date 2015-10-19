@@ -5,25 +5,24 @@
             <div class="col-xs-6">
                 <div class="productView island">
                     <div class="big">
-                        <img src="/img/product/1/1.jpg" alt="">
-                        <a href="/img/product/1/1.jpg"></a>
+                        {!! HTML::image("img/product/big/".$product->images[0]) !!}
+                        <img src="" alt="">
+                        <a href="/img/product/big/{{$product->images[0]}}"></a>
                     </div>
                     <div class="preview">
                         <div class="overlay">
                             <div class="move">
                                 <div class="row">
                                     <div class="block active">
-                                        <img src="/img/product/1/preview/1.jpg" alt="">
+                                        {!! HTML::image("img/product/medium/".$product->images[0]) !!}
                                     </div>
-                                    <div class="block">
-                                        <img src="/img/product/1/preview/2.jpg" alt="">
-                                    </div>
-                                    <div class="block">
-                                        <img src="/img/product/1/preview/3.jpg" alt="">
-                                    </div>
-                                    <div class="block">
-                                        <img src="/img/product/1/preview/4.jpg" alt="">
-                                    </div>
+                                    @foreach($product->images as $key => $image)
+                                        @if($key > 0)
+                                            <div class="block">
+                                                {!! HTML::image("img/product/medium/".$image) !!}
+                                            </div>
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -35,18 +34,17 @@
             <div class="col-xs-6">
                 <div class="productInfo island">
                     <div class="text">
-                        <p>Фабрика мебели Колизей предлагает Вашему вниманию стол компьютерный СК-45 — несмотря на свои небольшие размеры, компьютерный стол очень функционален.</p>
-                        <p>Два вместительных ящика позволяют без проблем хранить любые канцелярские принадлежности. Размеры под монитор: ширина 465 мм, высота 590 мм. Стол выполнен из ЛДСП, обработан кромкой ПВХ, фасады ящиков — МДФ.</p>
+                        {!! $product->text !!}
                     </div>
 
                     <div class="row">
                         <div class="params column">
                             <b class="title">Параметры:</b>
-                            Ширина: <span class="value">100 мм</span><br>
-                            Высота: <span class="value">100 мм</span><br>
-                            Глубина: <span class="value">100 мм</span><br>
-                            Гарантия: <span class="value">24 мес</span><br>
-                            Вес: <span class="value">10 кг</span>
+                            Ширина: <span class="value">{{$product->width}} мм</span><br>
+                            Высота: <span class="value">{{$product->height}} мм</span><br>
+                            Глубина: <span class="value">{{$product->depth}} мм</span><br>
+                            Гарантия: <span class="value">{{$product->warranty}} мес</span><br>
+                            Вес: <span class="value">{{$product->weight}} кг</span>
                         </div>
 
                         <div class="color column">
@@ -86,7 +84,7 @@
                         </div>
 
                         <div class="column forCart">
-                            <div class="price right">35 000</div>
+                            <div class="price right">{{$product->price}}</div>
                             <div class="clear"></div>
 
                             <div class="toCart right">
@@ -103,7 +101,7 @@
 
                             <div class="articul">
                                 Артикул:
-                                <span class="value">123000</span>
+                                <span class="value">{{$product->article}}</span>
                             </div>
                         </div>
                     </div>
@@ -113,122 +111,38 @@
 
 
             <h2>Смотрите так же</h2>
-            <div class="col-xs-3">
-                <div class="product">
-                    <a href="/catalog/1">
-                        <img src="/img/product/1.jpg" alt="">
-                    </a>
-                    <div class="layer">
-                        <a href="" class="category">Компьютерные столы</a>
-                        <div class="title">
-                            <a href="">CK-35</a>
-                            <div class="price">35 000</div>
+            @foreach( $recommended as $product)
+                <div class="col-xs-3">
+                    <div class="product">
+                        <a href="/catalog/{{$product->id}}">
+                            {!! HTML::image("img/product/medium/".$product->images[0]) !!}
+                        </a>
+                        <div class="layer">
+                            <a href="" class="category">{{$product->category->name}}</a>
+                            <div class="title">
+                                <a href="">{{$product->name}}</a>
+                                <div class="price">{{$product->price}}</div>
+                            </div>
+                            <div class="params">
+                                Ширина: <span>{{$product->width}} мм</span><br>
+                                Высота: <span>{{$product->height}} мм</span><br>
+                                Глубина: <span>{{$product->depth}} мм</span>
+                            </div>
                         </div>
-                        <div class="params">
-                            Ширина: <span>100 мм</span><br>
-                            Высота: <span>100 мм</span><br>
-                            Глубина: <span>100 мм</span>
-                        </div>
-                    </div>
-                    <div class="toCart">
-                        Добавить в корзину
-                        <div class="counter">
-                            <input type="text" value="1">
-                            <div class="manage">
-                                <span class="plus"></span>
-                                <span class="minus"></span>
+                        <div class="toCart">
+                            Добавить в корзину
+                            <div class="counter">
+                                <input type="text" value="1">
+                                <div class="manage">
+                                    <span class="plus"></span>
+                                    <span class="minus"></span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xs-3">
-                <div class="product">
-                    <a href="/catalog/1">
-                        <img src="/img/product/1.jpg" alt="">
-                    </a>
-                    <div class="layer">
-                        <a href="" class="category">Компьютерные столы</a>
-                        <div class="title">
-                            <a href="">CK-35</a>
-                            <div class="price">35 000</div>
-                        </div>
-                        <div class="params">
-                            Ширина: <span>100 мм</span><br>
-                            Высота: <span>100 мм</span><br>
-                            Глубина: <span>100 мм</span>
-                        </div>
-                    </div>
-                    <div class="toCart">
-                        Добавить в корзину
-                        <div class="counter">
-                            <input type="text" value="1">
-                            <div class="manage">
-                                <span class="plus"></span>
-                                <span class="minus"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-3">
-                <div class="product">
-                    <a href="/catalog/1">
-                        <img src="/img/product/1.jpg" alt="">
-                    </a>
-                    <div class="layer">
-                        <a href="" class="category">Компьютерные столы</a>
-                        <div class="title">
-                            <a href="">CK-35</a>
-                            <div class="price">35 000</div>
-                        </div>
-                        <div class="params">
-                            Ширина: <span>100 мм</span><br>
-                            Высота: <span>100 мм</span><br>
-                            Глубина: <span>100 мм</span>
-                        </div>
-                    </div>
-                    <div class="toCart">
-                        Добавить в корзину
-                        <div class="counter">
-                            <input type="text" value="1">
-                            <div class="manage">
-                                <span class="plus"></span>
-                                <span class="minus"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-3">
-                <div class="product">
-                    <a href="/catalog/1">
-                        <img src="/img/product/1.jpg" alt="">
-                    </a>
-                    <div class="layer">
-                        <a href="" class="category">Компьютерные столы</a>
-                        <div class="title">
-                            <a href="">CK-35</a>
-                            <div class="price">35 000</div>
-                        </div>
-                        <div class="params">
-                            Ширина: <span>100 мм</span><br>
-                            Высота: <span>100 мм</span><br>
-                            Глубина: <span>100 мм</span>
-                        </div>
-                    </div>
-                    <div class="toCart">
-                        Добавить в корзину
-                        <div class="counter">
-                            <input type="text" value="1">
-                            <div class="manage">
-                                <span class="plus"></span>
-                                <span class="minus"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+
             <div class="clear"></div>
         </div>
     </div>

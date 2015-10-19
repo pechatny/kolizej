@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
+use App\Models\Color;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 use File;
@@ -45,7 +47,13 @@ class ProductsController extends Controller
         foreach($categories as $category){
             $formCategories[$category->id] = $category->name;
         }
-        return view("admin.$this->key.create", ['categories' => $formCategories]);
+
+        $colors = Color::all();
+        $formColors = [];
+        foreach($colors as $color){
+            $formColors[$colors->id] = $color->name;
+        }
+        return view("admin.$this->key.create", ['categories' => $formCategories, 'colors' => $colors]);
     }
 
     /**
@@ -81,6 +89,7 @@ class ProductsController extends Controller
         $item->keywords = $request->keywords;
         $item->description = $request->description;
         $item->category_id = $request->category_id;
+        $item->color_id = $request->color_id;
         $item->text = $request->text;
         $item->article = $request->article;
         $item->price = $request->price;
@@ -149,11 +158,18 @@ class ProductsController extends Controller
             $formCategories[$category->id] = $category->name;
         }
 
+        $colors = Color::all();
+        $formColors = [];
+        foreach($colors as $color){
+            $formColors[$color->id] = $color->name;
+        }
+
         $data = [
             'title' => Product::$tableName,
             'item' => $item,
             'images' => $images,
-            'categories' => $formCategories
+            'categories' => $formCategories,
+            'colors' => $formColors
 //            'pagesFields' => Category::$fields,
         ];
 
@@ -196,6 +212,7 @@ class ProductsController extends Controller
         $item->description = $request->description;
         $item->text = $request->text;
         $item->category_id = $request->category_id;
+        $item->color_id = $request->color_id;
         $item->article = $request->article;
         $item->price = $request->price;
         $item->width = $request->width;

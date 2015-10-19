@@ -111,7 +111,7 @@
                         <div class="col-xs-4">
                         <div class="product">
                             <a href="/catalog/{{$product->id}}">
-                                {!! HTML::image("img/product/big/".$product->images[0]) !!}
+                                {!! HTML::image("img/product/medium/".$product->images[0]) !!}
                             </a>
                             <div class="layer">
                                 <a href="" class="category">{{$product->category->name}}</a>

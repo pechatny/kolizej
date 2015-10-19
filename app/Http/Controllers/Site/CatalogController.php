@@ -41,5 +41,30 @@ class CatalogController extends Controller
         ]);
     }
 
+    public function detail($id)
+    {
+        $page = 'catalog';
+        $title = Menu::where('key', $page)->value('name');
+        $menuHtml = $this->menuHtml($page);
+
+        $menuItems = Menu::all();
+        $bottomMenuHtml = view('bottom', ['menuItems' => $menuItems])->render();
+        $page = Page::where('key', $page)->first();
+        $categories = Category::all();
+
+        $product = Product::with(['category', 'color'])->find($id);
+
+        $recommended = Product::with('category')->take(5)->get();
+        return view('site.product', [
+            'menuHtml' => $menuHtml,
+            'menuBottomHtml' => $bottomMenuHtml,
+            'title' => $title,
+            'page' => $page,
+            'product' => $product,
+            'categories' => $categories,
+            'recommended' => $recommended
+        ]);
+    }
+
 
 }

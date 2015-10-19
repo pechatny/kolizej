@@ -13,6 +13,10 @@ class Product extends Model
         return $this->belongsTo('App\Models\Category');
     }
 
+    public function color(){
+        return $this->belongsTo('App\Models\Color');
+    }
+
     public function getImagesAttribute($value)
     {
         return unserialize($value);

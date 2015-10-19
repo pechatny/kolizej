@@ -25,6 +25,13 @@
     </label>
 
     <label>
+        <div class="signature">Цвет</div>
+        <div class="field">
+            {!! Form::select('color_id', $colors, old( 'color_id' )) !!}
+        </div>
+    </label>
+
+    <label>
         <div class="signature">Описание</div>
         <div class="field">
             {!! Form::text('description', old( 'description' )) !!}
