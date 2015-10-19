@@ -983,9 +983,14 @@ footer .copyright a:hover {
 	font-weight: bold;
 }
 .menu .category a {
+	position: relative;
 	display: block;
 	padding: 7px 20px 9px;
 	text-decoration: none;
+}
+.menu .category .active a {
+	background: #ffeee3;
+	color: #555;
 }
 
 .filter {
@@ -1149,20 +1154,44 @@ footer .copyright a:hover {
 	margin: 0 43px;
 	padding:1px 0;
 }
+.productView .offSlider .overlay {
+	margin: 0;
+}
 .productView .row {
 	margin: 0 -6px;
+}
+.productView .offSlider .row {
+	margin: 0;
+}
+.productView .move {
+	position: relative;
+	left: 0;
+	width: 30000px;
+}
+.productView .offSlider .move {
+	width: 100%;
 }
 .productView .block {
 	float: left;
 	padding: 0 7px;
+	width: 124px;
+	opacity: .7;
+	transition-duration: 0.5s;
+    transition-property: opacity;
+    transition-timing-function: ease;
+}
+.productView .offSlider .block {
 	width: 25%;
 }
 .productView .block.active {
 	position: relative;
 	top: -1px;
 	padding: 0 6px;
+	opacity: 1;
 }
 .productView .block img {
+	display: block;
+	margin: 0 auto;
 	max-width: 110px;
 	cursor: pointer;
 	border: 1px solid #f49c64;
@@ -1173,6 +1202,7 @@ footer .copyright a:hover {
 .productView .block.active img {
 	max-width: 112px;
 	border-width: 2px;
+	border-color: #ff8130;
 }
 .productView .preview span {
 	position: absolute;
@@ -1182,7 +1212,7 @@ footer .copyright a:hover {
 	height: 80px;
 	cursor: pointer;
 	background-repeat: no-repeat;
-	background-position: 50% 50%;
+	background-position: 50% 24px;
 }
 .productView .back {
 	left: 5px;
@@ -1191,6 +1221,12 @@ footer .copyright a:hover {
 .productView .next {
 	right: 5px;
 	background-image: url(/img/ico/slider/next.png);
+}
+.productView .preview span:hover {
+	background-position: 50% -56px;
+}
+.productView .preview.offSlider span {
+	display: none;
 }
 
 .productInfo {
@@ -1441,10 +1477,14 @@ footer .copyright a:hover {
 }
 .cartList .Count {
 	position: relative;
-	width: 11.5%;
+	width: 9.5%;
 }
 .cartList .TotalPrice {
-	width: 10%;
+	width: 12%;
+	text-align: right;
+}
+.cartList .colNames .TotalPrice {
+	padding-right: 30px;
 }
 .cartList .delete {
 	width: 4.9%;
@@ -1550,7 +1590,7 @@ footer .copyright a:hover {
 	background-position: 0 -30px;
 }
 .cartList .total {
-	margin: 0 6% 27px 0;
+	margin: 0 3% 27px 0;
 	padding-top: 17px;
 	font-weight: normal;
 	font-size: 30px;
@@ -1558,7 +1598,18 @@ footer .copyright a:hover {
 	text-align: right;
 }
 .cartList .total b {
+	position: relative;
 	margin-left: 20px;
+	padding-right: 30px;
 	font-size: 36px;
 	color: #fc8e47;
+}
+.cartList .total b:after {
+	content: '';
+	position: absolute;
+	top: 13px;
+	right: 0;
+	width: 20px;
+	height: 26px;
+	background: url(/img/ico/rub.png) 0 -80px no-repeat;
 }
