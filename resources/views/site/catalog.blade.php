@@ -3,14 +3,42 @@
     <div class="categories wide">
         <div class="container">
             <div class="row">
-                @foreach($categories as $category)
-                    <div class="block col-xs-4">
-                        <a href="{{'products/'.$category->key}}">
-                            {!! HTML::image($category->image) !!}
-                            <span>{{$category->name}}</span>
-                        </a>
-                    </div>
-                @endforeach
+                <div class="block col-xs-4">
+                    <a href="">
+                        <img src="img/category/1.jpg" alt="">
+                        <span>Кухня</span>
+                    </a>
+                </div>
+                <div class="block col-xs-4">
+                    <a href="">
+                        <img src="img/category/2.jpg" alt="">
+                        <span>Компьютерные столы</span>
+                    </a>
+                </div>
+                <div class="block col-xs-4">
+                    <a href="">
+                        <img src="img/category/3.jpg" alt="">
+                        <span>Письменные столы</span>
+                    </a>
+                </div>
+                <div class="block col-xs-4">
+                    <a href="">
+                        <img src="img/category/1.jpg" alt="">
+                        <span>Кухня</span>
+                    </a>
+                </div>
+                <div class="block col-xs-4">
+                    <a href="">
+                        <img src="img/category/2.jpg" alt="">
+                        <span>Компьютерные столы</span>
+                    </a>
+                </div>
+                <div class="block col-xs-4">
+                    <a href="">
+                        <img src="img/category/3.jpg" alt="">
+                        <span>Письменные столы</span>
+                    </a>
+                </div>
                 <div class="clear"></div>
             </div>
         </div>
