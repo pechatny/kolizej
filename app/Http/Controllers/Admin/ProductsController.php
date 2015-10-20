@@ -300,7 +300,7 @@ class ProductsController extends Controller
         foreach($colorsToDelete as $colorDelete){
             $colorDelete->delete();
         }
-        
+
         $item->delete();
 
         return redirect("admin/$this->key");

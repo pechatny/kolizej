@@ -50,36 +50,15 @@
                         <div class="color column">
                             <b class="title">Выбор цвета:</b>
                             <div class="choose">
-                                <div class="item active">
-                                    <a href="/img/color/1.jpg" class="preview" title="Орех итальянский">
-                                        <img src="/img/color/preview/1.jpg" alt="">
-                                    </a>
-                                    <span>Орех итальянский</span>
-                                </div>
-                                <div class="item">
-                                    <a href="/img/color/2.jpg" class="preview" title="Яблоня локарно">
-                                        <img src="/img/color/preview/2.jpg" alt="">
-                                    </a>
-                                    <span>Яблоня локарно</span>
-                                </div>
-                                <div class="item">
-                                    <a href="/img/color/3.jpg" class="preview" title="Ольха">
-                                        <img src="/img/color/preview/3.jpg" alt="">
-                                    </a>
-                                    <span>Ольха</span>
-                                </div>
-                                <div class="item">
-                                    <a href="/img/color/4.jpg" class="preview" title="Дуб беленый">
-                                        <img src="/img/color/preview/4.jpg" alt="">
-                                    </a>
-                                    <span>Дуб беленый</span>
-                                </div>
-                                <div class="item">
-                                    <a href="/img/color/5.jpg" class="preview" title="Венге">
-                                        <img src="/img/color/preview/5.jpg" alt="">
-                                    </a>
-                                    <span>Венге</span>
-                                </div>
+                                @foreach($product->color as $color)
+                                    <div class="item">
+                                        <a href="/{{$color->image}}" class="preview" title="{{$color->name}}">
+                                            {!! HTML::image($color->image, '', array('height' => '35')) !!}
+                                        </a>
+                                        <span>{{$color->name}}</span>
+                                    </div>
+                                @endforeach
+
                             </div>
                         </div>
 
