@@ -973,7 +973,6 @@ footer .copyright a:hover {
 	margin-bottom: 9px;
 }
 .menu .category {
-	overflow: hidden;
 	padding-bottom: 9px;
 }
 .menu .category ul {
@@ -987,6 +986,20 @@ footer .copyright a:hover {
 	display: block;
 	padding: 7px 20px 9px;
 	text-decoration: none;
+}
+.menu .category .active {
+	position: relative;
+}
+.menu .category .active:after {
+	content: '';
+	position: absolute;
+	left: 100%;
+	top: 0;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 17px 0 17px 17px;
+	border-color: transparent transparent transparent #ffdfca;
 }
 .menu .category .active a {
 	background: #ffeee3;
