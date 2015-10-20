@@ -9,7 +9,7 @@
                         <img src="" alt="">
                         <a href="/img/product/big/{{$product->images[0]}}"></a>
                     </div>
-                    <div class="preview">
+                    <div class="preview" data-pos="0">
                         <div class="overlay">
                             <div class="move">
                                 <div class="row">

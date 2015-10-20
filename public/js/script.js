@@ -228,5 +228,11 @@ $(function () {
 				}
 			}
 		});
+		$('.productView .preview img').click(function () {
+			if(!$(this).parent().hasClass('active')) {
+				$('.productView .preview .active').removeClass('active');
+				$(this).parent().addClass('active');
+			}
+		});
 	}
 });
