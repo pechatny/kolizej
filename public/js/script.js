@@ -10,18 +10,11 @@ $(function () {
 		// Фильтр в каталоге
 		function filter () {
 			var category = $('.menu .category .active a').text(),
-				params = {},
-				en,
-				rus = {};
-			rus['Ширина'] = 'width';
-			rus['Высота'] = 'height';
-			rus['Глубина'] = 'depth';
-			rus['Цена'] = 'price';
+				params = {};
 			if(!category)
 				category = 'all';
 			$('.filter .block').each(function () {
-				en = rus[$(this).find('.rus').text().replace(':', '')];
-				params[en] = $(this).find('input.min').val() +' '+ $(this).find('input.max').val();
+				params[$(this).attr('data-filter')] = $(this).find('input.min').val() +' '+ $(this).find('input.max').val();
 			});
 			$.post('/путь к файлу обработчику', {
 				operation: 'filter',

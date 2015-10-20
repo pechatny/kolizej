@@ -14,7 +14,7 @@
                 <div class="filter island">
                     <div class="title">Параметры</div>
 
-                    <div class="block">
+                    <div class="block" data-filter="width">
                         <div class="rus">Ширина:</div>
                         <div class="fields">
                             <label class="line">
@@ -36,7 +36,7 @@
                         <div class="step">1</div>
                     </div>
 
-                    <div class="block">
+                    <div class="block" data-filter="height">
                         <div class="rus">Высота:</div>
                         <div class="fields">
                             <label class="line">
@@ -58,7 +58,7 @@
                         <div class="step">1</div>
                     </div>
 
-                    <div class="block delimiter">
+                    <div class="block delimiter" data-filter="depth">
                         <div class="rus">Глубина:</div>
                         <div class="fields">
                             <label class="line">
@@ -80,7 +80,7 @@
                         <div class="step">1</div>
                     </div>
 
-                    <div class="block last">
+                    <div class="block last" data-filter="price">
                         <div class="rus">Цена:</div>
                         <div class="fields">
                             <label class="line">
