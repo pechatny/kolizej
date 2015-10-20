@@ -25,10 +25,11 @@
     </label>
 
     <label>
-        <div class="signature">Цвет</div>
-        <div class="field">
-            {!! Form::select('color_id', $colors, old( 'color_id' )) !!}
-        </div>
+        <div class="signature">Цвета</div>
+         <button class="add_color_button">Добавить цвет</button>
+         <div class="add_color">
+            <div class="input_color">{!! Form::select('colors[]', $colors, old( 'colors' )) !!} <button class="remove_field">Удалить</button></div>
+         </div>
     </label>
 
     <label>

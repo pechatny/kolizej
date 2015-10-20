@@ -14,7 +14,7 @@ class Product extends Model
     }
 
     public function color(){
-        return $this->belongsTo('App\Models\Color');
+        return $this->belongsToMany('App\Models\Color', 'product_colors');
     }
 
     public function getImagesAttribute($value)

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Category;
 use App\Models\Color;
 use App\Models\Product;
+use App\Models\ProductColor;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -51,9 +52,9 @@ class ProductsController extends Controller
         $colors = Color::all();
         $formColors = [];
         foreach($colors as $color){
-            $formColors[$colors->id] = $color->name;
+            $formColors[$color->id] = $color->name;
         }
-        return view("admin.$this->key.create", ['categories' => $formCategories, 'colors' => $colors]);
+        return view("admin.$this->key.create", ['categories' => $formCategories, 'colors' => $formColors]);
     }
 
     /**
@@ -89,7 +90,7 @@ class ProductsController extends Controller
         $item->keywords = $request->keywords;
         $item->description = $request->description;
         $item->category_id = $request->category_id;
-        $item->color_id = $request->color_id;
+
         $item->text = $request->text;
         $item->article = $request->article;
         $item->price = $request->price;
@@ -127,6 +128,16 @@ class ProductsController extends Controller
 
         $item->save();
 
+        //Цвета мебели
+        if(is_array($request->colors)){
+            foreach($request->colors as $color){
+                $productColor = new ProductColor();
+                $productColor->product_id = $item->id;
+                $productColor->color_id = $color;
+                $productColor->save();
+            }
+        }
+
         return redirect("admin/$this->key");
     }
 
@@ -149,9 +160,8 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $item = Product::find($id);
+        $item = Product::with(['color', 'category'])->find($id);
         $images = $item->images;
-//dd($images);
         $categories = Category::all();
         $formCategories = [];
         foreach($categories as $category){
@@ -212,7 +222,6 @@ class ProductsController extends Controller
         $item->description = $request->description;
         $item->text = $request->text;
         $item->category_id = $request->category_id;
-        $item->color_id = $request->color_id;
         $item->article = $request->article;
         $item->price = $request->price;
         $item->width = $request->width;
@@ -255,6 +264,21 @@ class ProductsController extends Controller
 
         $item->save();
 
+        $colorsToDelete = ProductColor::where('product_id', $item->id)->get();
+        foreach($colorsToDelete as $colorDelete){
+            $colorDelete->delete();
+        }
+
+        //Цвета мебели
+        if(is_array($request->colors)){
+            foreach($request->colors as $color){
+                $productColor = new ProductColor();
+                $productColor->product_id = $item->id;
+                $productColor->color_id = $color;
+                $productColor->save();
+            }
+        }
+
         return redirect("admin/$this->key")->with('message', 'Обновлено');
 
     }
@@ -271,6 +295,12 @@ class ProductsController extends Controller
         foreach($item->images as $image){
             $this->deleteImages($image);
         }
+
+        $colorsToDelete = ProductColor::where('product_id', $item->id)->get();
+        foreach($colorsToDelete as $colorDelete){
+            $colorDelete->delete();
+        }
+        
         $item->delete();
 
         return redirect("admin/$this->key");

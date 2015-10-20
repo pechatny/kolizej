@@ -25,7 +25,7 @@ $(function () {
 			});
 			$.post('/путь к файлу обработчику', {
 				operation: 'filter',
-				params   : params()
+				params   : params
 			}, function(data) {
 				// в переменной "data" содержится ответ
 			});

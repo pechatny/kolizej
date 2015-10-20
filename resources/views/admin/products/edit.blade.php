@@ -23,12 +23,21 @@
         </div>
     </label>
 
+
     <label>
-        <div class="signature">Цвет</div>
-        <div class="field">
-            {!! Form::select('color_id', $colors, $item->color_id) !!}
+        <div class="signature">Цвета</div>
+        <button class="add_color_button">Добавить цвет</button>
+        <div class="add_color">
+            @if(count($item->color) == 0)
+                <div class="input_color">{!! Form::select('colors[]', $colors) !!} <button class="remove_field">Удалить</button></div>
+            @endif
+
+            @foreach($item->color as $formColor)
+                    <div class="input_color">{!! Form::select('colors[]', $colors, $formColor->id) !!} <button class="remove_field">Удалить</button></div>
+            @endforeach
         </div>
     </label>
+
 
     <label>
         <div class="signature">Описание</div>

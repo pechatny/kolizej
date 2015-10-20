@@ -1,4 +1,4 @@
-.add_field_button{
+.add_field_button, .add_color_button{
 	height: 40px;
 	width: 200px;
     background-color: #509dff;
@@ -14,3 +14,4 @@
     border-radius: 20px;
     color: #fdfffd;
 }
+
