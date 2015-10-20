@@ -23,11 +23,11 @@ $(function () {
 				en = rus[$(this).find('.rus').text().replace(':', '')];
 				params[en] = $(this).find('input.min').val() +' '+ $(this).find('input.max').val();
 			});
-			$.post('/путь к файлу обработчику', {
+			$.post('/catalogUpdate', {
 				operation: 'filter',
 				params   : params
 			}, function(data) {
-				// в переменной "data" содержится ответ
+				$('#products').html(data);
 			});
 		}
 		var slider = Array(),

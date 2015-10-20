@@ -23,7 +23,7 @@
         <script type="text/javascript" src="/js/map.js"></script>
     @endif
     <script type="text/javascript" src="/js/magnific-popup.min.js"></script>
-    <script type="text/javascript" src="/js/script.js"></script>
+    {!! HTML::script('js/script.js') !!}
 </head>
 <body class="{{$page}}-page">
 <header class="wide">
@@ -83,7 +83,7 @@
 </section>
 <footer>
     <div class="container">
-        <div class="row">
+        <div id="products"class="row">
             {!! $menuBottomHtml !!}
             <div class="folder col-xs-4">
                 <div class="title">Каталог</div>

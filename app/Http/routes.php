@@ -78,6 +78,7 @@ Route::group(['namespace' => 'Site'], function()
 {
     Route::get("/", "IndexController@index");
     Route::get("catalog", "CatalogController@index");
+    Route::any("catalogUpdate", "CatalogController@ajaxUpdate");
     Route::get("catalog/{id}", "CatalogController@detail");
     Route::get("{page}", "PagesController@index");
 });

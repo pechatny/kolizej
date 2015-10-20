@@ -66,5 +66,14 @@ class CatalogController extends Controller
         ]);
     }
 
+    public function ajaxUpdate(Request $request){
+
+        $products = Product::with('category')->get();
+
+        return view('site.productsList', [
+            'products' => $products,
+        ])->render();
+    }
+
 
 }

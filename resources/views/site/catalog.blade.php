@@ -106,7 +106,7 @@
             </div>
 
             <div class="col-xs-9">
-                <div class="row">
+                <div id="products" class="row">
                     @foreach($products as $product)
                         <div class="col-xs-4">
                         <div class="product">
