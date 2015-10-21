@@ -5,7 +5,7 @@
             <div class="row">
                 @foreach($categories as $category)
                     <div class="block col-xs-4">
-                        <a href="{{'products/'.$category->key}}">
+                        <a href="/catalog/{{$category->key}}">
                             {!! HTML::image($category->image) !!}
                             <span>{{$category->name}}</span>
                         </a>
