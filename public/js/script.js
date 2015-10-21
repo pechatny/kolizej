@@ -235,7 +235,7 @@ $(function () {
 		if($('.productInfo').length) {
 			color = $('.color .item.active').children('span').text();
 		}
-		$.post('/cartUpdate', {
+		$.post('/cart/add', {
 			id   : $(this).attr('data-id'),
 			count : count,
 			color : color
