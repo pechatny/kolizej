@@ -19,7 +19,9 @@
                                     @foreach($product->images as $key => $image)
                                         @if($key > 0)
                                             <div class="block">
-                                                {!! HTML::image("img/product/medium/".$image) !!}
+                                                <a href="/img/product/big/{{$image}}">
+                                                    {!! HTML::image("img/product/medium/".$image) !!}
+                                                </a>
                                             </div>
                                         @endif
                                     @endforeach
@@ -66,7 +68,7 @@
                             <div class="price right">{{$product->price}}</div>
                             <div class="clear"></div>
 
-                            <div class="toCart right">
+                            <div class="toCart right" data-id="{{$product->id}}">
                                 Добавить в корзину
                                 <div class="counter">
                                     <input type="text" value="1">

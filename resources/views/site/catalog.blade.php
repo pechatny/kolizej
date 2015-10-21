@@ -109,7 +109,7 @@
                 <div id="products" class="row">
                     @foreach($products as $product)
                         <div class="col-xs-4">
-                        <div class="product" data-id="{{$product->id}}">
+                        <div class="product">
                             <a href="/catalog/product/{{$product->id}}">
                                 {!! HTML::image("img/product/medium/".$product->images[0]) !!}
                             </a>
@@ -125,7 +125,7 @@
                                     Глубина: <span>{{$product->depth}} мм</span>
                                 </div>
                             </div>
-                            <div class="toCart">
+                            <div class="toCart" data-id="{{$product->id}}">
                                 Добавить в корзину
                                 <div class="counter">
                                     <input type="text" value="1">

@@ -228,4 +228,19 @@ $(function () {
 			}
 		});
 	}
+
+	$('.toCart').click(function () {
+		var count = Number($(this).find('input').val()),
+			color = false;
+		if($('.productInfo').length) {
+			color = $('.color .item.active').children('span').text();
+		}
+		$.post('/cartUpdate', {
+			id   : $(this).attr('data-id'),
+			count : count,
+			color : color
+		}, function(data) {
+			//
+		});
+	});
 });
