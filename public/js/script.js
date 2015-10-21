@@ -17,8 +17,8 @@ $(function () {
 				params[$(this).attr('data-filter')] = $(this).find('input.min').val() +' '+ $(this).find('input.max').val();
 			});
 			$.post('/catalogUpdate', {
-				operation: 'filter',
-				params   : params
+				params   : params,
+				category : category
 			}, function(data) {
 				$('#products').html(data);
 			});
