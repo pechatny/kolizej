@@ -109,7 +109,7 @@
                 <div id="products" class="row">
                     @foreach($products as $product)
                         <div class="col-xs-4">
-                        <div class="product">
+                        <div class="product" data-id="{{$product->id}}">
                             <a href="/catalog/product/{{$product->id}}">
                                 {!! HTML::image("img/product/medium/".$product->images[0]) !!}
                             </a>
