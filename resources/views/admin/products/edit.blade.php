@@ -24,7 +24,7 @@
     </label>
 
 
-    <label>
+    <div>
         <div class="signature">Цвета</div>
         <button class="add_color_button">Добавить цвет</button>
         <div class="add_color">
@@ -36,7 +36,7 @@
                     <div class="input_color">{!! Form::select('colors[]', $colors, $formColor->id) !!} <button class="remove_field">Удалить</button></div>
             @endforeach
         </div>
-    </label>
+    </div>
 
 
     <label>
@@ -106,7 +106,7 @@
             {!! Form::text('params', $item->params) !!}
         </div>
     </label>
-    <label class="add_fields">
+    <div class="add_fields">
         <button class="add_field_button">Ещё картинку</button>
         <div class="field">
 
@@ -120,7 +120,7 @@
 
             <div class="input_fields_wrap">{!! Form::file('images[]') !!}<button class="remove_field">Удалить</button></div>
         </div>
-    </label>
+    </div>
 
 
     <input type="submit" name="submit" value="Сохранить" class="button">
