@@ -1274,12 +1274,15 @@ footer .copyright a:hover {
 .productInfo .color {
 	width: 35%;
 }
-.color .choose {
+.color {
 	color: #636363;
 	font-size: 13px;
 	line-height: 1;
 }
-.color .choose .item {
+.color .title {
+	font-size: 14px;
+}
+.color .item {
 	overflow: hidden;
 	position: relative;
 	margin-bottom: -1px;
@@ -1290,18 +1293,24 @@ footer .copyright a:hover {
 	-moz-border-radius: 2px; 
 	border-radius: 2px; 
 	transition-duration: 0.5s;
-    transition-property: color;
+    transition-property: color, border-color;
     transition-timing-function: ease;
 }
-.color .choose .item:hover {
+.color .item:hover {
 	color: #fc8e47;
-}
-.color .choose .active {
-	border-color: #ff6c0e;
-	color: #181818;
+	border-color: #e4e4e4;
 	z-index: 101;
 }
-.color .choose .preview {
+.color .active,
+.color .active:hover {
+	border-color: #ff6c0e;
+	color: #181818;
+	z-index: 102;
+}
+.color .active:hover {
+	cursor: default;
+}
+.color .preview {
 	position: relative;
 	display: block;
 	float: left;
@@ -1310,7 +1319,7 @@ footer .copyright a:hover {
 	height: 31px;
 	z-index: 110;
 }
-.color .choose .preview:after {
+.color  .preview:after {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -1320,14 +1329,18 @@ footer .copyright a:hover {
 	background: url(/img/ico/view-big/color.png) 50% 50% no-repeat;
 	z-index: 112;
 }
-.color .choose img {
+.color img {
 	display: block;
 	z-index: 111;
 }
-.color .choose span {
-	display: block;
+.color .label {
 	margin-left: 32px;
-	padding:8px 0 0 10px;
+	padding-left:10px;
+}
+.color span {
+	display: table-cell;
+	height: 31px;
+	vertical-align: middle;
 }
 .productInfo .forCart {
 	width: 36%;

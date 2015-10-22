@@ -150,7 +150,7 @@ $(function () {
 			enabled:true
 		}
 	});
-	$('.cartList .image .view-big, .color .choose .preview').magnificPopup({
+	$('.cartList .image .view-big, .color .preview').magnificPopup({
 		type: 'image'
 	});
 	$('.productView .big').magnificPopup({
@@ -177,7 +177,7 @@ $(function () {
 		$(this).val(v ? v : 1);
 	});
 
-	$('.color .choose span').click(function () {
+	$('.color .label').click(function () {
 		var obj = $(this).parent();
 		if(!obj.hasClass('active')) {
 			obj.parent().find('.item.active').removeClass('active');

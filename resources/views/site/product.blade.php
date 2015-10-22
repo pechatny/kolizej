@@ -52,17 +52,16 @@
 
                         <div class="color column">
                             <b class="title">Выбор цвета:</b>
-                            <div class="choose">
-                                @foreach($product->color as $color)
-                                    <div class="item">
-                                        <a href="/{{$color->image}}" class="preview" title="{{$color->name}}">
-                                            {!! HTML::image($color->image, '', array('height' => '31')) !!}
-                                        </a>
+                            @foreach($product->color as $color)
+                                <div class="item">
+                                    <a href="/{{$color->image}}" class="preview" title="{{$color->name}}">
+                                        {!! HTML::image($color->image, '', array('height' => '31')) !!}
+                                    </a>
+                                    <div class="label">
                                         <span>{{$color->name}}</span>
                                     </div>
-                                @endforeach
-
-                            </div>
+                                </div>
+                            @endforeach
                         </div>
 
                         <div class="column forCart">
