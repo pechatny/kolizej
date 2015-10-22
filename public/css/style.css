@@ -392,6 +392,8 @@ section {
 .categories a {
 	display: block;
 	position: relative;
+	overflow: hidden;
+	height: 256px;
 	text-decoration: none;
 	font-size: 22px;
 	line-height: 1;
@@ -1138,6 +1140,8 @@ footer .copyright a:hover {
 .productView .big {
 	position: relative;
 	margin-bottom: 14px;
+	height: 349px;
+	overflow: hidden;
 }
 .productView .big a,
 .cartList .image .view-big {
@@ -1301,6 +1305,9 @@ footer .copyright a:hover {
 	position: relative;
 	display: block;
 	float: left;
+	overflow: hidden;
+	width: 31px;
+	height: 31px;
 	z-index: 110;
 }
 .color .choose .preview:after {
@@ -1320,7 +1327,7 @@ footer .copyright a:hover {
 .color .choose span {
 	display: block;
 	margin-left: 32px;
-	padding:8px 0 11px 10px;
+	padding:8px 0 0 10px;
 }
 .productInfo .forCart {
 	width: 36%;

@@ -5,7 +5,11 @@ $(function () {
 		}
 		$('.debug').html(string);
 	}
+	// -- delete
 
+	function priceFormat (a) {
+		return String(a).replace(/(\d{1,3}(?=(\d{3})+(?:\.\d|\b)))/g,"\$1 ")
+	}
 	if($('.filter').length > 0) {
 		// Фильтр в каталоге
 		function filter () {
@@ -97,6 +101,21 @@ $(function () {
 		});
 	}
 
+	// Корзина
+	function calculate () {
+		var s = 0,
+			price,
+			count,
+			ans;
+		$('.cartList .block').each(function () {
+			price = Number($(this).find('.Price').find('.price').html().replace(/[^0-9]/g,''));
+			count = Number($(this).find('.counter').children('input').val());
+			ans = price * count;
+			$(this).find('.TotalPrice').find('.price').html(priceFormat(ans));
+			s += ans;
+		});
+		$('.cartList .total b').html(priceFormat(s));
+	}
 	if($('.cartList').length > 0) {
 		$('.cartList .vertical').each(function () {
 			$(this).height($(this).parent().children('.Photo').height());
@@ -107,6 +126,22 @@ $(function () {
 			});
 		}, 500);
 	}
+	$('.cartList .delete span').click(function () {
+		var t = 500;
+		$(this).parent().parent().parent().fadeOut(t, function () {
+			$(this).remove();
+			calculate();
+		});
+	});
+	if($('.cartList').length) {
+		calculate();
+	}
+	$('.cartList .manage span').click(function () {
+		calculate();
+	});
+	$('.cartList .counter input').keyup(function () {
+		calculate();
+	});
 
 	$('.sertificates').magnificPopup({
 		delegate: 'a',
@@ -115,11 +150,16 @@ $(function () {
 			enabled:true
 		}
 	});
-	$('.productView .big a, .cartList .image .view-big, .color .choose .preview').magnificPopup({
+	$('.cartList .image .view-big, .color .choose .preview').magnificPopup({
+		type: 'image'
+	});
+	$('.productView .big').magnificPopup({
+		delegate: 'a',
 		type: 'image'
 	});
 
-	$('.counter .manage span').click(function () {
+	// Изменение количества
+	$('.counter span').click(function () {
 		var to = $(this).hasClass('plus') ? 1 : 0,
 			input = $(this).parent().parent().children('input'),
 			val = parseFloat(input.val());
@@ -145,40 +185,15 @@ $(function () {
 		}
 	});
 
-	function priceFormat (a) {
-		return String(a).replace(/(\d{1,3}(?=(\d{3})+(?:\.\d|\b)))/g,"\$1 ")
-	} 
-	function calculate () {
-		var s = 0,
-			price,
-			count,
-			ans;
-		$('.cartList .block').each(function () {
-			price = Number($(this).find('.Price').find('.price').html().replace(/[^0-9]/g,''));
-			count = Number($(this).find('.counter').children('input').val());
-			ans = price * count;
-			$(this).find('.TotalPrice').find('.price').html(priceFormat(ans));
-			s += ans;
+	// Просмотр товара
+	function viewBig (src) {
+		var sp = 300;
+		$('.productView .big').children('img').fadeOut(sp / 2, function () {
+			$(this).attr('src', src);
+			$(this).parent().children('a').attr('href', src);
+			$(this).fadeIn(sp);
 		});
-		$('.cartList .total b').html(priceFormat(s));
 	}
-	$('.cartList .delete span').click(function () {
-		var t = 500;
-		$(this).parent().parent().parent().fadeOut(t, function () {
-			$(this).remove();
-			calculate();
-		});
-	});
-	if($('.cartList').length) {
-		calculate();
-	}
-	$('.cartList .manage span').click(function () {
-		calculate();
-	});
-	$('.cartList .counter input').keyup(function () {
-		calculate();
-	});
-
 	var sliderCount = $('.productView .block').length,
 		sliderLine = 4;
 	if($('.productView .preview').length && sliderCount > sliderLine) {
@@ -218,17 +233,24 @@ $(function () {
 				if(sliderActive != $('.productView .block.active').index()) {
 					$('.productView .block.active').removeClass('active');
 					$('.productView .block:eq('+ sliderActive +')').addClass('active');
+					viewBig($('.productView .block:eq('+ sliderActive +') a').attr('href'));
 				}
 			}
 		});
-		$('.productView .preview img').click(function () {
+		$('.productView .preview a').click(function () {
 			if(!$(this).parent().hasClass('active')) {
 				$('.productView .preview .active').removeClass('active');
 				$(this).parent().addClass('active');
+				viewBig($(this).attr('href'));
 			}
+			return false;
 		});
 	}
+	if($('.color .item').length && !$('.color .item.active').length) {
+		$('.color .item:eq(0)').addClass('active');
+	}
 
+	// Добавление в корзину
 	$('.toCart').click(function () {
 		var count = Number($(this).find('input').val()),
 			color = false;
