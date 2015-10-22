@@ -85,6 +85,7 @@
                                 <span class="value">{{$product->article}}</span>
                             </div>
                         </div>
+                        <div class="clear"></div>
                     </div>
                 </div>
             </div>

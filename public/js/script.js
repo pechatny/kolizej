@@ -196,7 +196,11 @@ $(function () {
 	}
 	var sliderCount = $('.productView .block').length,
 		sliderLine = 4;
-	if($('.productView .preview').length && sliderCount > sliderLine) {
+	if(sliderCount == 1) {
+		$('.productView .preview').hide();
+		$('.productView').addClass('onlyone');
+	}
+	if($('.productView .preview').length) {
 		var sliderAnimate = false,
 			sliderSpeed = 0.4, // sec
 			sliderPos,
@@ -246,6 +250,15 @@ $(function () {
 			return false;
 		});
 	}
+	function productHeight () {
+		if($('.productInfo').height() < $('.productView').height()) {
+			$('.productInfo').outerHeight($('.productView').height());
+		}
+	}
+	productHeight();
+	setTimeout(function() {
+		productHeight();
+	}, 500);
 	if($('.color .item').length && !$('.color .item.active').length) {
 		$('.color .item:eq(0)').addClass('active');
 	}
