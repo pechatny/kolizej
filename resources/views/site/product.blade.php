@@ -6,7 +6,6 @@
                 <div class="productView island">
                     <div class="big">
                         {!! HTML::image("img/product/big/".$product->images[0]) !!}
-                        <img src="" alt="">
                         <a href="/img/product/big/{{$product->images[0]}}"></a>
                     </div>
                     <div class="preview" data-pos="0">
@@ -14,7 +13,9 @@
                             <div class="move">
                                 <div class="row">
                                     <div class="block active">
-                                        {!! HTML::image("img/product/medium/".$product->images[0]) !!}
+                                        <a href="/img/product/big/{{$product->images[0]}}">
+                                            {!! HTML::image("img/product/medium/".$product->images[0]) !!}
+                                        </a>
                                     </div>
                                     @foreach($product->images as $key => $image)
                                         @if($key > 0)
