@@ -96,7 +96,7 @@
             @foreach( $recommended as $product)
                 <div class="col-xs-3">
                     <div class="product">
-                        <a href="/catalog/{{$product->id}}">
+                        <a href="/catalog/product/{{$product->id}}">
                             {!! HTML::image("img/product/medium/".$product->images[0]) !!}
                         </a>
                         <div class="layer">

@@ -85,5 +85,13 @@ Route::group(['namespace' => 'Site'], function()
 });
 
 
+Route::group(['prefix' => 'cart', 'namespace' => 'Site'], function()
+{
+    Route::any("add", "CartController@add");
+});
+
+
+
+
 
 

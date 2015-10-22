@@ -95,8 +95,10 @@ class CatalogController extends Controller
         $height = explode(' ', $request->params['height']);
         $width = explode(' ', $request->params['width']);
         $price = explode(' ', $request->params['price']);
-//        dd($depth);
-        $products = Product::with('category')
+        $category = $request->category;
+        $products = Product::with(['category' => function($query) use($category){
+                $query->where('key', '=', $category);
+            }])
             ->whereBetween('depth', [$depth[0], $depth[1]])
             ->whereBetween('height', [$height[0], $height[1]])
             ->whereBetween('width', [$width[0], $width[1]])
