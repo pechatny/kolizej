@@ -19,6 +19,7 @@ $nav = array('index' => 'Главная',
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
     <link href="/css/reset.css" rel="stylesheet" type="text/css">
     <link href="/css/grid.css" rel="stylesheet" type="text/css">
+    <link href="/css/magnific-popup.css" rel="stylesheet" type="text/css">
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <!--[if lt IE 9]>
@@ -28,6 +29,7 @@ $nav = array('index' => 'Главная',
     <script type="text/javascript" src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
     <script type="text/javascript" src="/js/map.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/magnific-popup.min.js"></script>
     <script type="text/javascript" src="/js/script.js"></script>
 </head>
 <body class="index-page">

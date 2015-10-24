@@ -392,9 +392,18 @@ section {
 .categories a {
 	display: block;
 	position: relative;
+	overflow: hidden;
+	height: 256px;
 	text-decoration: none;
 	font-size: 22px;
 	line-height: 1;
+	border: 2px solid rgba(0,0,0,0.1);
+	transition-duration: 0.5s;
+    transition-property: border-color;
+    transition-timing-function: ease;
+}
+.categories a:hover {
+	border-color: rgba(0,0,0,0.4);
 }
 .categories img {
 	display: block;
@@ -1137,7 +1146,11 @@ footer .copyright a:hover {
 }
 .productView .big {
 	position: relative;
-	margin-bottom: 14px;
+	height: 349px;
+	overflow: hidden;
+}
+.productView.onlyone .big {
+	height: auto;
 }
 .productView .big a,
 .cartList .image .view-big {
@@ -1160,7 +1173,7 @@ footer .copyright a:hover {
 }
 .productView .preview {
 	position: relative;
-	padding-bottom: 15px;
+	padding:14px 0 15px;
 }
 .productView .overlay {
 	overflow: hidden;
@@ -1219,7 +1232,7 @@ footer .copyright a:hover {
 }
 .productView .preview span {
 	position: absolute;
-	top: 0;
+	top: 14px;
 	display: block;
 	width: 30px;
 	height: 80px;
@@ -1244,7 +1257,6 @@ footer .copyright a:hover {
 
 .productInfo {
 	padding: 13px 15px 0;
-	min-height: 461px;
 }
 .productInfo .text {
 	margin-bottom: 22px;
@@ -1255,6 +1267,7 @@ footer .copyright a:hover {
 }
 .productInfo .column {
 	float: left;
+	margin-bottom: 15px;
 	padding: 0 15px;
 }
 .productInfo .title {
@@ -1270,12 +1283,15 @@ footer .copyright a:hover {
 .productInfo .color {
 	width: 35%;
 }
-.color .choose {
+.color {
 	color: #636363;
 	font-size: 13px;
 	line-height: 1;
 }
-.color .choose .item {
+.color .title {
+	font-size: 14px;
+}
+.color .item {
 	overflow: hidden;
 	position: relative;
 	margin-bottom: -1px;
@@ -1286,41 +1302,57 @@ footer .copyright a:hover {
 	-moz-border-radius: 2px; 
 	border-radius: 2px; 
 	transition-duration: 0.5s;
-    transition-property: color;
+    transition-property: color, border-color;
     transition-timing-function: ease;
 }
-.color .choose .item:hover {
+.color .item:hover {
 	color: #fc8e47;
-}
-.color .choose .active {
-	border-color: #ff6c0e;
-	color: #181818;
+	border-color: #e4e4e4;
 	z-index: 101;
 }
-.color .choose .preview {
+.color .active,
+.color .active:hover {
+	border-color: #ff6c0e;
+	color: #181818;
+	z-index: 102;
+}
+.color .active:hover {
+	cursor: default;
+}
+.color .preview {
 	position: relative;
 	display: block;
 	float: left;
+	overflow: hidden;
+	width: 31px;
+	height: 31px;
 	z-index: 110;
 }
-.color .choose .preview:after {
+.color .preview:after {
 	content: '';
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: url(/img/ico/view-big/color.png) 50% 50% no-repeat;
+	background: url(/img/ico/view-big/color.png) 50% 5px no-repeat;
 	z-index: 112;
 }
-.color .choose img {
+.color .preview:hover:after {
+	background-position: 50% -24px;
+}
+.color img {
 	display: block;
 	z-index: 111;
 }
-.color .choose span {
-	display: block;
+.color .label {
 	margin-left: 32px;
-	padding:8px 0 11px 10px;
+	padding-left:10px;
+}
+.color span {
+	display: table-cell;
+	height: 31px;
+	vertical-align: middle;
 }
 .productInfo .forCart {
 	width: 36%;

@@ -6,20 +6,21 @@
                 <div class="productView island">
                     <div class="big">
                         {!! HTML::image("img/product/big/".$product->images[0]) !!}
-                        <img src="" alt="">
-                        <a href="/img/product/big/{{$product->images[0]}}"></a>
+                        <a href="/img/product/original/{{$product->images[0]}}"></a>
                     </div>
                     <div class="preview" data-pos="0">
                         <div class="overlay">
                             <div class="move">
                                 <div class="row">
                                     <div class="block active">
-                                        {!! HTML::image("img/product/medium/".$product->images[0]) !!}
+                                        <a href="/img/product/original/{{$product->images[0]}}">
+                                            {!! HTML::image("img/product/medium/".$product->images[0]) !!}
+                                        </a>
                                     </div>
                                     @foreach($product->images as $key => $image)
                                         @if($key > 0)
                                             <div class="block">
-                                                <a href="/img/product/big/{{$image}}">
+                                                <a href="/img/product/original/{{$image}}">
                                                     {!! HTML::image("img/product/medium/".$image) !!}
                                                 </a>
                                             </div>
@@ -51,17 +52,16 @@
 
                         <div class="color column">
                             <b class="title">Выбор цвета:</b>
-                            <div class="choose">
-                                @foreach($product->color as $color)
-                                    <div class="item">
-                                        <a href="/{{$color->image}}" class="preview" title="{{$color->name}}">
-                                            {!! HTML::image($color->image, '', array('height' => '35')) !!}
-                                        </a>
+                            @foreach($product->color as $color)
+                                <div class="item">
+                                    <a href="/{{$color->image}}" class="preview" title="{{$color->name}}">
+                                        {!! HTML::image($color->image, '', array('height' => '31')) !!}
+                                    </a>
+                                    <div class="label">
                                         <span>{{$color->name}}</span>
                                     </div>
-                                @endforeach
-
-                            </div>
+                                </div>
+                            @endforeach
                         </div>
 
                         <div class="column forCart">
@@ -85,6 +85,7 @@
                                 <span class="value">{{$product->article}}</span>
                             </div>
                         </div>
+                        <div class="clear"></div>
                     </div>
                 </div>
             </div>
