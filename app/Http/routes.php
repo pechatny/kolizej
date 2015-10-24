@@ -74,6 +74,12 @@ Route::group(['namespace' => 'Admin'], function()
     });
 });
 
+Route::group(['prefix' => 'cart', 'namespace' => 'Site'], function()
+{
+    Route::any("/", "CartController@index");
+    Route::any("add", "CartController@add");
+});
+
 Route::group(['namespace' => 'Site'], function()
 {
     Route::get("/", "IndexController@index");
@@ -85,10 +91,7 @@ Route::group(['namespace' => 'Site'], function()
 });
 
 
-Route::group(['prefix' => 'cart', 'namespace' => 'Site'], function()
-{
-    Route::any("add", "CartController@add");
-});
+
 
 
 
