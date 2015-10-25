@@ -131,6 +131,7 @@ textarea {
     transition-timing-function: ease;
 }
 textarea {
+	padding-top: 9px;
 	height:200px;
 	line-height:18px;
 }
