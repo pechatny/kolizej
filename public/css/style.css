@@ -1682,6 +1682,10 @@ footer .copyright a:hover {
 	height: 26px;
 	background: url(/img/ico/rub.png) 0 -80px no-repeat;
 }
+.cartListEmpty {
+	margin-right: 10px;
+	padding-top: 6px;
+}
 
 .calcDelivery {
 	padding-top: 30px;
