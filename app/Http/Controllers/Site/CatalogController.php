@@ -119,10 +119,15 @@ class CatalogController extends Controller
         $width = explode(' ', $request->params['width']);
         $price = explode(' ', $request->params['price']);
         $category = $request->category;
-        $products = Product::with(['category' => function($query) use($category){
+
+        $products = new Product();
+        if($category != 'all'){
+            $products = $products->with(['category' => function($query) use($category){
                 $query->where('id', '=', $category);
-            }])
-            ->whereBetween('depth', [$depth[0], $depth[1]])
+            }]);
+        }
+            
+        $products = $products->whereBetween('depth', [$depth[0], $depth[1]])
             ->whereBetween('height', [$height[0], $height[1]])
             ->whereBetween('width', [$width[0], $width[1]])
             ->whereBetween('price', [$price[0], $price[1]])
