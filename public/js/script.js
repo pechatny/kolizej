@@ -364,4 +364,14 @@ $(function () {
 		});
 		return false;
 	});
+
+	$('textarea').focus(function () { 
+		if(this.value == 'Текст обращения') { 
+			this.value = ''; 
+		} 
+	}).blur(function () { 
+		if(this.value == '') { 
+			this.value = 'Текст обращения'; 
+		} 
+	});
 });
