@@ -15,183 +15,67 @@
                 </div>
             </div>
 
-            <div class="block">
-                <div class="row">
-                    <div class="col Photo">
-                        <div class="image">
-                            <a href="/catalog/1">
-                                <img src="/img/product/1/cart.jpg" alt="">
-                            </a>
-                            <a href="/img/product/1/1.jpg" class="view-big"></a>
+            @foreach($items as $item)
+                <div class="block">
+                    <div class="row">
+                        <div class="col Photo">
+                            <div class="image">
+                                <a href="/img/product/big/{{$item['product']->images[0]}}">
+                                    {!! HTML::image("img/product/medium/".$item['product']->images[0]) !!}
+                                </a>
+                                <a href="/img/product/big/{{$item['product']->images[0]}}" class="view-big"></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col Name vertical">
-                        <div class="children">
-                            <a href="/catalog/1" target="_blank">Письменный стол СТ-35</a>
+                        <div class="col Name vertical">
+                            <div class="children">
+                                <a href="/catalog/product/{{$item['product']->id}}" target="_blank">{{$item['product']->name}}</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col Color">
-                        <div class="color">
-                            <div class="choose">
-                                <div class="item active">
-                                    <a href="/img/color/1.jpg" class="preview" title="Орех итальянский">
-                                        <img src="/img/color/preview/1.jpg" alt="">
-                                    </a>
-                                    <div class="label">
-                                        <span>Орех итальянский</span>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <a href="/img/color/2.jpg" class="preview" title="Яблоня локарно">
-                                        <img src="/img/color/preview/2.jpg" alt="">
-                                    </a>
-                                    <div class="label">
-                                        <span>Яблоня локарно</span>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <a href="/img/color/3.jpg" class="preview" title="Ольха">
-                                        <img src="/img/color/preview/3.jpg" alt="">
-                                    </a>
-                                    <div class="label">
-                                        <span>Ольха</span>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <a href="/img/color/4.jpg" class="preview" title="Дуб беленый">
-                                        <img src="/img/color/preview/4.jpg" alt="">
-                                    </a>
-                                    <div class="label">
-                                        <span>Дуб беленый</span>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <a href="/img/color/5.jpg" class="preview" title="Венге">
-                                        <img src="/img/color/preview/5.jpg" alt="">
-                                    </a>
-                                    <div class="label">
-                                        <span>Венге</span>
-                                    </div>
+                        <div class="col Color">
+                            <div class="color">
+                                <div class="choose">
+                                    @foreach($item['product']->color as $color)
+                                         <div class="item">
+                                             <a href="/{{$color->image}}" class="preview" title="{{$color->name}}">
+                                                 {!! HTML::image($color->image, '', array('height' => '31')) !!}
+                                             </a>
+                                             <div class="label">
+                                                 <span>{{$color->name}}</span>
+                                             </div>
+                                         </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col Price vertical">
-                        <div class="children">
-                            <div class="price">35 000</div>
-                        </div>
-                    </div>
-                    <div class="col Count toCart vertical">
-                        <div class="counter">
-                            <input type="text" value="1">
-                            <div class="manage">
-                                <span class="plus"></span>
-                                <span class="minus"></span>
+                        <div class="col Price vertical">
+                            <div class="children">
+                                <div class="price">{{$item['product']->price}}</div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col TotalPrice vertical">
-                        <div class="children">
-                            <div class="price">35 000</div>
+                        <div class="col Count toCart vertical">
+                            <div class="counter">
+                                <input type="text" value="{{$item['quantity']}}">
+                                <div class="manage">
+                                    <span class="plus"></span>
+                                    <span class="minus"></span>
+                                </div>
+                            </div>
                         </div>
+                        <div class="col TotalPrice vertical">
+                            <div class="children">
+                                <div class="price">{{$item['product']->price * $item['quantity']}}</div>
+                            </div>
+                        </div>
+                        <div class="col delete vertical">
+                            <span></span>
+                        </div>
+                        <div class="clear"></div>
                     </div>
-                    <div class="col delete vertical">
-                        <span></span>
-                    </div>
-                    <div class="clear"></div>
                 </div>
-            </div>
-
-            <div class="block">
-                <div class="row">
-                    <div class="col Photo">
-                        <div class="image">
-                            <a href="/catalog/1">
-                                <img src="/img/product/1/cart.jpg" alt="">
-                            </a>
-                            <a href="/img/product/1/1.jpg" class="view-big"></a>
-                        </div>
-                    </div>
-                    <div class="col Name vertical">
-                        <div class="children">
-                            <a href="/catalog/1" target="_blank">Письменный стол СТ-35</a>
-                        </div>
-                    </div>
-                    <div class="col Color">
-                        <div class="color">
-                            <div class="choose">
-                                <div class="item active">
-                                    <a href="/img/color/1.jpg" class="preview" title="Орех итальянский">
-                                        <img src="/img/color/preview/1.jpg" alt="">
-                                    </a>
-                                    <div class="label">
-                                        <span>Орех итальянский</span>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <a href="/img/color/2.jpg" class="preview" title="Яблоня локарно">
-                                        <img src="/img/color/preview/2.jpg" alt="">
-                                    </a>
-                                    <div class="label">
-                                        <span>Яблоня локарно</span>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <a href="/img/color/3.jpg" class="preview" title="Ольха">
-                                        <img src="/img/color/preview/3.jpg" alt="">
-                                    </a>
-                                    <div class="label">
-                                        <span>Ольха</span>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <a href="/img/color/4.jpg" class="preview" title="Дуб беленый">
-                                        <img src="/img/color/preview/4.jpg" alt="">
-                                    </a>
-                                    <div class="label">
-                                        <span>Дуб беленый</span>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <a href="/img/color/5.jpg" class="preview" title="Венге">
-                                        <img src="/img/color/preview/5.jpg" alt="">
-                                    </a>
-                                    <div class="label">
-                                        <span>Венге</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col Price vertical">
-                        <div class="children">
-                            <div class="price">35 000</div>
-                        </div>
-                    </div>
-                    <div class="col Count toCart vertical">
-                        <div class="counter">
-                            <input type="text" value="1">
-                            <div class="manage">
-                                <span class="plus"></span>
-                                <span class="minus"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col TotalPrice vertical">
-                        <div class="children">
-                            <div class="price">35 000</div>
-                        </div>
-                    </div>
-                    <div class="col delete vertical">
-                        <span></span>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-            </div>
-
+            @endforeach
             <div class="total">
                 стоимость мебели:
-                <b>105 000</b>
+                <b>{{$count}}</b>
             </div>
         </div>
         <div class="bigheight"></div>

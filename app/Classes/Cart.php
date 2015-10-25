@@ -24,19 +24,28 @@ class Cart
     }
 
     public function all(){
+        $this->filterEmpty();
         return $this->items;
     }
 
     public function sum(){
+        $this->filterEmpty();
         $sum = 0;
         if($this->items){
             foreach($this->items as $item){
                 $sum += $item['product']->price * $item['quantity'];
             }
-
         }
 
         return $sum;
+    }
+
+    private function filterEmpty(){
+        foreach ($this->items as $key => $item){
+            if(!$key){
+                unset($this->items[$key]);
+            }
+        }
     }
 }
 
