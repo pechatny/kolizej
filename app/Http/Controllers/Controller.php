@@ -18,4 +18,19 @@ abstract class Controller extends BaseController
 
         return $menuHtml;
     }
+
+    public function smallCart(){
+        if(session()->has('cart')){
+            $cartItems = session()->get('cart');
+            $sum = $cartItems->sum();
+            $count = count($cartItems->all());
+        }
+        else{
+            $sum = 0;
+            $count = 0;
+        }
+
+        return ['sum' => $sum, 'count' => $count];
+    }
+
 }

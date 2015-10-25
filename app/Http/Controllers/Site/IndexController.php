@@ -16,6 +16,23 @@ class IndexController extends Controller
         $title = Menu::where('key', $page)->value('name');
         $categories = Category::all();
         $menuHtml = $this->menuHtml($page);
-        return view('index', ['menuHtml' => $menuHtml, 'title' => $title, 'categories' => $categories]);
+
+        if(session()->has('cart')){
+            $cartItems = session()->get('cart');
+            $sum = $cartItems->sum();
+            $count = count($cartItems->all());
+        }
+        else{
+            $sum = 0;
+            $count = 0;
+        }
+
+        return view('index', [
+            'menuHtml' => $menuHtml,
+            'title' => $title,
+            'categories' => $categories,
+            'count' => $count,
+            'sum' => $sum
+        ]);
     }
 }

@@ -22,6 +22,9 @@ class CreateProductsTable extends Migration
             $table->text('text')->null();
             $table->unsignedSmallInteger('article')->null();
             $table->unsignedSmallInteger('price')->null();
+            $table->unsignedSmallInteger('delivery')->null();
+            $table->unsignedSmallInteger('lift')->null();
+            $table->unsignedSmallInteger('assembly')->null();
             $table->unsignedSmallInteger('width')->null();
             $table->unsignedSmallInteger('height')->null();
             $table->unsignedSmallInteger('warranty')->null();

@@ -32,23 +32,8 @@ class CatalogController extends Controller
 
         $products = Product::with('category')->get();
 
-        $maxParams = DB::table('products')
-            ->select([
-                DB::raw('max(width) as width'),
-                DB::raw('max(height) as height'),
-                DB::raw('max(depth) depth'),
-                DB::raw('max(price) as price'),
-            ])
-            ->first();
+        $smallCart = $this->smallCart();
 
-        $minParams = DB::table('products')
-            ->select([
-                DB::raw('min(width) as width'),
-                DB::raw('min(height) as height'),
-                DB::raw('min(depth) depth'),
-                DB::raw('min(price) as price'),
-            ])
-            ->first();
         return view('site.catalog', [
             'menuHtml' => $menuHtml,
             'menuBottomHtml' => $bottomMenuHtml,
@@ -56,7 +41,9 @@ class CatalogController extends Controller
             'page' => $page,
             'products' => $products,
             'categories' => $categories,
-            'params' => ['min' => $minParams, 'max' => $maxParams]
+            'params' => $this->params(),
+            'sum' => $smallCart['sum'],
+            'count' => $smallCart['count']
         ]);
     }
 
@@ -76,6 +63,7 @@ class CatalogController extends Controller
             }])
             ->get();
 
+        $smallCart = $this->smallCart();
 
         return view('site.catalog', [
             'menuHtml' => $menuHtml,
@@ -83,7 +71,10 @@ class CatalogController extends Controller
             'title' => $title,
             'page' => $page,
             'products' => $products,
-            'categories' => $categories
+            'categories' => $categories,
+            'params' => $this->params(),
+            'count' => $smallCart['count'],
+            'sum' => $smallCart['sum']
         ]);
     }
 
@@ -102,6 +93,8 @@ class CatalogController extends Controller
         $product = Product::with(['category', 'color'])->find($id);
 
         $recommended = Product::with('category')->take(5)->get();
+
+        $smallCart = $this->smallCart();
         return view('site.product', [
             'menuHtml' => $menuHtml,
             'menuBottomHtml' => $bottomMenuHtml,
@@ -109,7 +102,9 @@ class CatalogController extends Controller
             'page' => $page,
             'product' => $product,
             'categories' => $categories,
-            'recommended' => $recommended
+            'recommended' => $recommended,
+            'count' => $smallCart['count'],
+            'sum' => $smallCart['sum']
         ]);
     }
 
@@ -126,7 +121,7 @@ class CatalogController extends Controller
                 $query->where('id', '=', $category);
             }]);
         }
-            
+
         $products = $products->whereBetween('depth', [$depth[0], $depth[1]])
             ->whereBetween('height', [$height[0], $height[1]])
             ->whereBetween('width', [$width[0], $width[1]])
@@ -136,6 +131,27 @@ class CatalogController extends Controller
         return view('include.productsList', [
             'products' => $products,
         ])->render();
+    }
+
+    public function params(){
+        $maxParams = DB::table('products')
+            ->select([
+                DB::raw('max(width) as width'),
+                DB::raw('max(height) as height'),
+                DB::raw('max(depth) depth'),
+                DB::raw('max(price) as price'),
+            ])
+            ->first();
+
+        $minParams = DB::table('products')
+            ->select([
+                DB::raw('min(width) as width'),
+                DB::raw('min(height) as height'),
+                DB::raw('min(depth) depth'),
+                DB::raw('min(price) as price'),
+            ])
+            ->first();
+        return ['min' => $minParams, 'max' => $maxParams];
     }
 
 

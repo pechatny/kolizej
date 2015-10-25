@@ -89,17 +89,7 @@ $nav = array('index' => 'Главная',
                     <div class="clear"></div>
                 </form>
             </div>
-            <div class="cart col-xs-2">
-                <div class="layer">
-                    <a href="" class="title">Корзина</a>
-                    <div class="clear"></div>
-
-                    4 товара
-                    <b>50 000 руб.</b>
-
-                    <a href="" class="button cent wide">Оформить заказ</a>
-                </div>
-            </div>
+            @include('include.bottomCart')
             <div class="clear"></div>
         </div>
 
