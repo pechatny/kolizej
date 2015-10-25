@@ -41,6 +41,19 @@ class Cart
         return $sum;
     }
 
+    public function sumDelivery(){
+        $this->filterEmpty();
+        $sum = 0;
+        if($this->items){
+            foreach($this->items as $item){
+                $sum += $item['product']->delivery + $item['product']->lift + $item['product']->assembly;
+            }
+        }
+
+        return $sum;
+    }
+
+
     private function filterEmpty(){
         foreach ($this->items as $key => $item){
             if(!$key){

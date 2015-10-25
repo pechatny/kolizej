@@ -128,54 +128,74 @@
                             <div class="clear"></div>
                         </div>
                     </div>
-                    <div class="block">
-                        <div class="row">
-                            <div class="col Name">Письменный стол СТ-35</div>
-                            <div class="col">
-                                <span>1 000</span>
+                    @foreach($items as  $item)
+                        <div class="block">
+                            <div class="row">
+                                <div class="col Name">{{$item['product']->name}}</div>
+                                <div class="col">
+                                    <span>{{$item['product']->delivery}}</span>
+                                </div>
+                                <div class="col">
+                                    <span>{{$item['product']->lift}}</span>
+                                </div>
+                                <div class="col">
+                                    <span>{{$item['product']->assembly}}</span>
+                                </div>
+                                <div class="col">
+                                    <span>{{$item['product']->delivery + $item['product']->lift + $item['product']->assembly}}</span>
+                                </div>
+                                <div class="clear"></div>
                             </div>
-                            <div class="col">
-                                <span>2 000</span>
-                            </div>
-                            <div class="col">
-                                <span>3 000</span>
-                            </div>
-                            <div class="col">
-                                <span>6 000</span>
-                            </div>
-                            <div class="clear"></div>
                         </div>
-                    </div>
-                    <div class="block">
-                        <div class="row">
-                            <div class="col Name">Письменный стол СТ-35</div>
-                            <div class="col">
-                                <span>1 500</span>
-                            </div>
-                            <div class="col">
-                                <span>2 000</span>
-                            </div>
-                            <div class="col">
-                                <span>2 500</span>
-                            </div>
-                            <div class="col">
-                                <span>6 000</span>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                    </div>
+                    @endforeach
+                    {{--<div class="block">--}}
+                        {{--<div class="row">--}}
+                            {{--<div class="col Name">Письменный стол СТ-35</div>--}}
+                            {{--<div class="col">--}}
+                                {{--<span>1 000</span>--}}
+                            {{--</div>--}}
+                            {{--<div class="col">--}}
+                                {{--<span>2 000</span>--}}
+                            {{--</div>--}}
+                            {{--<div class="col">--}}
+                                {{--<span>3 000</span>--}}
+                            {{--</div>--}}
+                            {{--<div class="col">--}}
+                                {{--<span>6 000</span>--}}
+                            {{--</div>--}}
+                            {{--<div class="clear"></div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="block">--}}
+                        {{--<div class="row">--}}
+                            {{--<div class="col Name">Письменный стол СТ-35</div>--}}
+                            {{--<div class="col">--}}
+                                {{--<span>1 500</span>--}}
+                            {{--</div>--}}
+                            {{--<div class="col">--}}
+                                {{--<span>2 000</span>--}}
+                            {{--</div>--}}
+                            {{--<div class="col">--}}
+                                {{--<span>2 500</span>--}}
+                            {{--</div>--}}
+                            {{--<div class="col">--}}
+                                {{--<span>6 000</span>--}}
+                            {{--</div>--}}
+                            {{--<div class="clear"></div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
 
                     <div class="total">
                         стоимость доставки и сборки:
                         <b>
-                            <span>12 000</span>
+                            <span>{{$deliverySum}}</span>
                         </b>
                     </div>
                 </div>
 
                 <div class="totalPrice">
                     <span>Стоимость заказа</span>
-                    <b>117 000</b>
+                    <b>{{$totalSum}}</b>
                     <div class="clear"></div>
                 </div>
             </div>

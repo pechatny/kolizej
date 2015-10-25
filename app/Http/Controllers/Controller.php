@@ -24,13 +24,15 @@ abstract class Controller extends BaseController
             $cartItems = session()->get('cart');
             $sum = $cartItems->sum();
             $count = count($cartItems->all());
+            $deliverySum = $cartItems->sumDelivery();
         }
         else{
             $sum = 0;
             $count = 0;
+            $deliverySum = 0;
         }
 
-        return ['sum' => $sum, 'count' => $count];
+        return ['sum' => $sum, 'count' => $count, 'deliverySum' => $deliverySum];
     }
 
     public function cartItem($id){

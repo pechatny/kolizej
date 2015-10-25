@@ -45,7 +45,9 @@ class CartController extends Controller
             'items' => $items,
             'categories' => $categories,
             'count' => $smallCart['count'],
-            'sum' => $smallCart['sum']
+            'sum' => $smallCart['sum'],
+            'deliverySum' => $smallCart['deliverySum'],
+            'totalSum' => $smallCart['deliverySum'] + $smallCart['sum'],
         ]);
 
     }
