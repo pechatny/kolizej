@@ -18,7 +18,7 @@ class PagesController extends Controller
      */
     public function index($page = '')
     {
-        $title = Menu::where('key', $page)->value('name');
+//        $title = Menu::where('key', $page)->value('name');
         $menuHtml = $this->menuHtml($page);
 
         $menuItems = Menu::all();
@@ -29,7 +29,7 @@ class PagesController extends Controller
         return view('page', [
             'menuHtml' => $menuHtml,
             'menuBottomHtml' => $bottomMenuHtml,
-            'title' => $title,
+//            'title' => $title,
             'page' => $page,
             'count' => $smallCart['count'],
             'sum' => $smallCart['sum']

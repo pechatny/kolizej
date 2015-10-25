@@ -6,9 +6,9 @@
                     {!! HTML::image("img/product/medium/".$product->images[0]) !!}
                 </a>
                 <div class="layer">
-                    <a href="" class="category">{{$product->category->name}}</a>
+                    <a href="/catalog/{{$product->category->key}}" class="category">{{$product->category->name}}</a>
                     <div class="title">
-                        <a href="">{{$product->name}}</a>
+                        <a href="/catalog/product/{{$product->id}}"><span>{{$product->name}}</span></a>
                         <div class="price">{{$product->price}}</div>
                     </div>
                     <div class="params">

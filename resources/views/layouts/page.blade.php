@@ -3,9 +3,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{$title}}</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <title>{{$page->title}}</title>
+    <meta name="description" content="{{$page->description}}">
+    <meta name="keywords" content="{{$page->keywords}}">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600, 700&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
     <link href="/css/reset.css" rel="stylesheet" type="text/css">
     <link href="/css/grid.css" rel="stylesheet" type="text/css">

@@ -46,8 +46,12 @@
                             Ширина: <span class="value">{{$product->width}} мм</span><br>
                             Высота: <span class="value">{{$product->height}} мм</span><br>
                             Глубина: <span class="value">{{$product->depth}} мм</span><br>
-                            Гарантия: <span class="value">{{$product->warranty}} мес</span><br>
-                            Вес: <span class="value">{{$product->weight}} кг</span>
+                            @if($product->warranty)
+                                Гарантия: <span class="value">{{$product->warranty}} мес</span><br>
+                            @endif
+                            @if($product->weight)
+                                Вес: <span class="value">{{$product->weight}} кг</span>
+                            @endif
                         </div>
 
                         <div class="color column">

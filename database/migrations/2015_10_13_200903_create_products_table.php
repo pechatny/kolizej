@@ -20,7 +20,8 @@ class CreateProductsTable extends Migration
             $table->string('name')->null();
             $table->text('images')->null();
             $table->text('text')->null();
-            $table->unsignedSmallInteger('article')->null();
+            $table->unsignedSmallInteger('configuration')->null();
+            $table->string('article')->null();
             $table->unsignedSmallInteger('price')->null();
             $table->unsignedSmallInteger('delivery')->null();
             $table->unsignedSmallInteger('lift')->null();

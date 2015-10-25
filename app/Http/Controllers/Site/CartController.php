@@ -12,13 +12,18 @@ use App\Http\Controllers\Controller;
 class CartController extends Controller
 {
     public function index(Request $request){
-        $page = 'cart';
-        $title = Menu::where('key', $page)->value('name');
-        $menuHtml = $this->menuHtml($page);
+        $page = new \stdClass();
+        $page->title = 'Корзина';
+        $page->keywords = 'Корзина';
+        $page->description = 'Корзина';
+        $page->key = 'cart';
+
+//        $title = Menu::where('key', 'cart')->value('name');
+        $menuHtml = $this->menuHtml('cart');
 
         $menuItems = Menu::all();
         $bottomMenuHtml = view('bottom', ['menuItems' => $menuItems])->render();
-        $page = Page::where('key', $page)->first();
+//        $page = Page::where('key', $page)->first();
 
         $cart = $request->session()->get('cart');
 
@@ -33,7 +38,6 @@ class CartController extends Controller
         return view('site.cart', [
             'menuHtml' => $menuHtml,
             'menuBottomHtml' => $bottomMenuHtml,
-            'title' => $title,
             'page' => $page,
             'items' => $items,
             'count' => $smallCart['count'],
