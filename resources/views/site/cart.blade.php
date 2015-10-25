@@ -74,6 +74,14 @@
                         </div>
                     </div>
                 @endforeach
+            @else
+                <div class="layer">
+                    <a href="/cart" class="title">Корзина</a>
+                    <div class="clear"></div>
+                    0 товаров
+                    <b>Выберите товары из каталога</b>
+                    <a href="/catalog" class="button cent wide">В каталог</a>
+                </div>
             @endif
             <div class="total">
                 стоимость мебели:
