@@ -27,6 +27,7 @@ class CreateProductsTable extends Migration
             $table->unsignedSmallInteger('warranty')->null();
             $table->unsignedSmallInteger('weight')->null();
             $table->unsignedSmallInteger('depth')->null();
+            $table->unsignedInteger('views')->null();
             $table->boolean('stock')->null();
             $table->unsignedSmallInteger('params')->null();
             $table->timestamps();

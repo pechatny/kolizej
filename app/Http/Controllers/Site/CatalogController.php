@@ -52,8 +52,9 @@ class CatalogController extends Controller
         $categories = Category::all();
 
         $products = Product::with(['category' => function($query) use($category){
-            $query->where('key', '=', $category);
-        }])->get();
+                $query->where('key', '=', $category);
+            }])
+            ->get();
         return view('site.catalog', [
             'menuHtml' => $menuHtml,
             'menuBottomHtml' => $bottomMenuHtml,
