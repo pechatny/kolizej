@@ -124,6 +124,36 @@ $(function () {
 		});
 		$('.cartList .total b').html(priceFormat(s));
 	}
+	function cartUpdate (data) {
+		var count = data.count,
+			sum = data.sum,
+			href = '/cart#ok',
+			text = 'Оформить заказ',
+			msg = '0 товаров <b>Выберите товары из каталога</b>';
+		if(count == 0) {
+			href = '/catalog',
+			text = 'В каталог';
+			$('.cart .layer').addClass('empty');
+			if($('.cartList').length) {
+				$('.cartList').slideUp(500, function () {
+					$('.cartList').parent().html('<div class="island">\
+		                <p>В вашей корзине 0 товаров</p>\
+		                <p>\
+		                    <span class="left cartListEmpty">Начните делать покупки </span>\
+		                    <a href="/catalog" class="button left">В каталоге</a>\
+		                </p>\
+		                <div class="clear"></div>\
+		            </div>');
+				});
+			}
+		}
+		else {
+			msg = count +' товара <b>'+ priceFormat(sum) +' руб.</b>';
+			$('.cart .layer').removeClass('empty');
+		}
+		$('.cart .msg').html(msg);
+		$('.cart .button').attr('href', href).text(text);
+	}
 	if($('.cartList').length > 0) {
 		$('.cartList .vertical').each(function () {
 			$(this).height($(this).parent().parent().height());
@@ -135,14 +165,13 @@ $(function () {
 		}, 500);
 	}
 	$('.cartList .delete span').click(function () {
-		var t = 500;
-
         $.post('/cart/delete', {
             id   : $(this).parent().parent().parent().attr('data-id')
         }, function(data) {
-            //
+            cartUpdate(data);
         });
 
+		var t = 500;
 		$(this).parent().parent().parent().fadeOut(t, function () {
 			$(this).remove();
 			calculate();
@@ -296,7 +325,7 @@ $(function () {
 			color  : color,
 			config : config
 		}, function(data) {
-			//
+			cartUpdate(data);
 		});
 	});
 
@@ -325,7 +354,7 @@ $(function () {
 			lift = $('.calcDelivery .select:eq(1) .selected').text(),
 			stage = (lift == 'Вручную' ? Number($('#handup').find('input').val()) : -1);
 		$.post('/ex.php', {
-			'form'     : form, // FORMAT: name=1&lastname=2&phone=3&addres=4
+			'form'     : form,
 			'city'     : city,
 			'distance' : distance,
 			'lift'     : lift,
