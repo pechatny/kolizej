@@ -7,7 +7,7 @@
                     <div class="title">Категории мебели</div>
                     <ul>
                         @foreach($categories as $category)
-                            <li><a href="{{$category->key}}">{{$category->name}}</a></li>
+                            <li><a href="{{$category->key}}" data="{{$category->id}}">{{$category->name}}</a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -19,19 +19,19 @@
                         <div class="fields">
                             <label class="line">
                                 <span class="signature">от</span>
-                                <input type="text" value="200" class="min">
+                                <input type="text" value="{{$params['min']['width']}}" class="min">
                             </label>
                             <label class="line">
                                 <span class="signature">до</span>
-                                <input type="text" value="700" class="max">
+                                <input type="text" value="{{$params['max']['width']}}" class="max">
                             </label>
                             <div class="ed">мм</div>
                             <div class="clear"></div>
                         </div>
                         <div class="slider"></div>
                         <div class="range">
-                            <div class="min">100 мм</div>
-                            <div class="max">900 мм</div>
+                            <div class="min">{{$params['min']['width']}} мм</div>
+                            <div class="max">{{$params['max']['width']}} мм</div>
                         </div>
                         <div class="step">1</div>
                     </div>
@@ -41,19 +41,19 @@
                         <div class="fields">
                             <label class="line">
                                 <span class="signature">от</span>
-                                <input type="text" value="200" class="min">
+                                <input type="text" value="{{$params['min']['height']}}" class="min">
                             </label>
                             <label class="line">
                                 <span class="signature">до</span>
-                                <input type="text" value="700" class="max">
+                                <input type="text" value="{{$params['max']['height']}}" class="max">
                             </label>
                             <div class="ed">мм</div>
                             <div class="clear"></div>
                         </div>
                         <div class="slider"></div>
                         <div class="range">
-                            <div class="min">100 мм</div>
-                            <div class="max">900 мм</div>
+                            <div class="min">{{$params['min']['height']}} мм</div>
+                            <div class="max">{{$params['max']['height']}} мм</div>
                         </div>
                         <div class="step">1</div>
                     </div>
@@ -63,19 +63,19 @@
                         <div class="fields">
                             <label class="line">
                                 <span class="signature">от</span>
-                                <input type="text" value="20" class="min">
+                                <input type="text" value="{{$params['min']['depth']}}" class="min">
                             </label>
                             <label class="line">
                                 <span class="signature">до</span>
-                                <input type="text" value="70" class="max">
+                                <input type="text" value="{{$params['max']['depth']}}" class="max">
                             </label>
                             <div class="ed">мм</div>
                             <div class="clear"></div>
                         </div>
                         <div class="slider"></div>
                         <div class="range">
-                            <div class="min">10 мм</div>
-                            <div class="max">130 мм</div>
+                            <div class="min">{{$params['min']['depth']}} мм</div>
+                            <div class="max">{{$params['max']['depth']}} мм</div>
                         </div>
                         <div class="step">1</div>
                     </div>
@@ -85,19 +85,19 @@
                         <div class="fields">
                             <label class="line">
                                 <span class="signature">от</span>
-                                <input type="text" value="200" class="min">
+                                <input type="text" value="{{$params['min']['price']}}" class="min">
                             </label>
                             <label class="line">
                                 <span class="signature">до</span>
-                                <input type="text" value="700" class="max">
+                                <input type="text" value="{{$params['max']['price']}}" class="max">
                             </label>
                             <div class="ed">руб</div>
                             <div class="clear"></div>
                         </div>
                         <div class="slider"></div>
                         <div class="range">
-                            <div class="min">100 руб</div>
-                            <div class="max">900 руб</div>
+                            <div class="min">{{$params['min']['price']}} руб</div>
+                            <div class="max">{{$params['max']['price']}} руб</div>
                         </div>
                         <div class="step">1</div>
                     </div>
@@ -107,39 +107,7 @@
 
             <div class="col-xs-9">
                 <div id="products" class="row">
-                    @foreach($products as $product)
-                        @if($product->category)
-                            <div class="col-xs-4">
-                                <div class="product">
-                                    <a href="/catalog/product/{{$product->id}}">
-                                        {!! HTML::image("img/product/medium/".$product->images[0]) !!}
-                                    </a>
-                                    <div class="layer">
-                                        <a href="" class="category">{{$product->category->name}}</a>
-                                        <div class="title">
-                                            <a href="">{{$product->name}}</a>
-                                            <div class="price">{{$product->price}}</div>
-                                        </div>
-                                        <div class="params">
-                                            Ширина: <span>{{$product->width}} мм</span><br>
-                                            Высота: <span>{{$product->height}} мм</span><br>
-                                            Глубина: <span>{{$product->depth}} мм</span>
-                                        </div>
-                                    </div>
-                                    <div class="toCart" data-id="{{$product->id}}">
-                                        Добавить в корзину
-                                        <div class="counter">
-                                            <input type="text" value="1">
-                                            <div class="manage">
-                                                <span class="plus"></span>
-                                                <span class="minus"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-                    @endforeach
+                    @include('include.productsList')
                 </div>
             </div>
             <div class="clear"></div>
