@@ -287,7 +287,7 @@ $(function () {
 			color = false,
 			config = 'left';
 		if($('.productInfo').length) {
-			color = $('.color .item.active').children('span').text();
+			color = $('.color .item.active').attr('data-id');
 			config = $('.config .item.selected').attr('data-val');
 		}
 		$.post('/cart/add', {
