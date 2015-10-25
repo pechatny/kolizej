@@ -282,7 +282,7 @@ $(function () {
 	}
 
 	// Добавление в корзину
-	$('.toCart .add').click(function () { debug(Math.random());
+	$('.toCart .add').click(function () {
 		var count = Number($(this).find('input').val()),
 			color = false,
 			config = 'left';
