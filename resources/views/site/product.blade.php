@@ -57,7 +57,11 @@
                         <div class="color column">
                             <b class="title">Выбор цвета:</b>
                             @foreach($product->color as $color)
-                                <div class="item">
+                                @if($currentItem and $currentItem['color'] == $color->id)
+                                    <div class="item active" data-id="{{$color->id}}">
+                                @else
+                                    <div class="item" data-id="{{$color->id}}">
+                                @endif
                                     <a href="/{{$color->image}}" class="preview" title="{{$color->name}}">
                                         {!! HTML::image($color->image, '', array('height' => '31')) !!}
                                     </a>
@@ -87,12 +91,12 @@
                             <div class="config">
                                 <b class="title">Вариант исполнения:</b>
                                 <div class="select">
-                                    @if($cartItem and $cartItem['configuration'] == 'left')
+                                    @if($currentItem and $currentItem['configuration'] == 'left')
                                         <div class="item selected first" data-val="left">Левый</div>
                                     @else
                                         <div class="item first" data-val="left">Левый</div>
                                     @endif
-                                    @if($cartItem and $cartItem['configuration'] == 'right')
+                                    @if($currentItem and $currentItem['configuration'] == 'right')
                                         <div class="item selected last" data-val="right">Правый</div>
                                     @else
                                         <div class="item last" data-val="right">Правый</div>
