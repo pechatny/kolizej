@@ -138,7 +138,7 @@ $(function () {
 		var t = 500;
 
         $.post('/cart/delete', {
-            id   : $(this).attr('data-id')
+            id   : $(this).parent().parent().parent().attr('data-id')
         }, function(data) {
             //
         });

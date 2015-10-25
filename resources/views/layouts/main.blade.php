@@ -1,21 +1,11 @@
-<?
-$page = 'index';
-$nav = array('index' => 'Главная',
-        'catalog' => 'Каталог',
-        'delivery' => 'Доставка и оплата',
-        'personal-furniture' => 'Мебель на заказ',
-        'opt' => 'Оптовикам',
-        'contacts' => 'Контакты'
-);
-?>
-        <!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{$title}}</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="Главная">
+    <meta name="keywords" content="Главная">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
     <link href="/css/reset.css" rel="stylesheet" type="text/css">
     <link href="/css/grid.css" rel="stylesheet" type="text/css">
@@ -35,10 +25,6 @@ $nav = array('index' => 'Главная',
 <body class="index-page">
 @include('include.header')
 <section>
-
-{{--@section('title')--}}
-    {{--This is the master sidebar.--}}
-{{--@show--}}
 
 @yield('content')
 
