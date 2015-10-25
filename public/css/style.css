@@ -1374,7 +1374,7 @@ footer .copyright a:hover {
 	background: url(/img/ico/rub.png) 0 -40px no-repeat;
 }
 .productInfo .toCart {
-	margin-bottom: 12px;
+	margin-bottom: 18px;
 	padding-right: 43px;
 	padding-left: 50px;
 	background-position: 11px 13px;
@@ -1385,6 +1385,15 @@ footer .copyright a:hover {
 .productInfo .toCart .counter {
 	top: 8px;
 	right: 5px;
+}
+.productInfo .config {
+	margin-bottom: 23px;
+	text-align: center;
+}
+.productInfo .config .item {
+	padding-right:0;
+	padding-left:0;
+	width: 50%;
 }
 .productInfo .articul {
 	text-align: right;

@@ -84,6 +84,15 @@
                             </div>
                             <div class="clear"></div>
 
+                            <div class="config">
+                                <b class="title">Вариант исполнения:</b>
+                                <div class="select">
+                                    <div class="item selected first" data-val="left">Левый</div>
+                                    <div class="item last" data-val="right">Правый</div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+
                             <div class="articul">
                                 Артикул:
                                 <span class="value">{{$product->article}}</span>
