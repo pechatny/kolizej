@@ -293,4 +293,40 @@ $(function () {
 			//
 		});
 	});
+
+	$('.select .item').click(function () {
+		if(!$(this).hasClass('selected')) {
+			$(this).parent().children('.item').removeClass('selected');
+			$(this).addClass('selected');
+			var target = $(this).parent().attr('data-target'),
+				sp = 300;
+			if(target != undefined) {
+				if($(this).hasClass('display')) {
+					$(target).fadeIn(sp);
+				}
+				else {
+					$(target).fadeOut(sp / 2);
+				}
+			}
+		}
+	});
+
+	// Корзина
+	$('.cartOrder form').submit(function () {
+		var form = $(this).serialize(),
+			city = $('.calcDelivery .select:eq(0) .selected').text(),
+			distance = (city == 'Другой адрес' ? Number($('#mkad').find('input').val()) : -1),
+			lift = $('.calcDelivery .select:eq(1) .selected').text(),
+			stage = (lift == 'Вручную' ? Number($('#handup').find('input').val()) : -1);
+		$.post('/ex.php', {
+			'form'     : form, // FORMAT: name=1&lastname=2&phone=3&addres=4
+			'city'     : city,
+			'distance' : distance,
+			'lift'     : lift,
+			'stage'    : stage
+		}, function(data) {
+			//
+		});
+		return false;
+	});
 });

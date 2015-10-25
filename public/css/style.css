@@ -1719,6 +1719,7 @@ footer .copyright a:hover {
 }
 .select .selected {
 	cursor: default;
+	color: #181818;
 	border-color: #ff6c0e;
 	z-index: 101;
 }

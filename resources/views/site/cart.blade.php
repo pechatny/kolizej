@@ -86,13 +86,13 @@
         <div class="calcDelivery col-xs-12 island">
             <div class="enterData">
                 <span class="label">Куда доставить:</span>
-                <div class="select left" data-target="mkad">
-                    <div class="item first">г. Москва</div>
+                <div class="select left" data-target="#mkad">
+                    <div class="item selected first">г. Москва</div>
                     <div class="item">г. Зеленоград</div>
-                    <div class="item selected true last">Другой адрес</div>
+                    <div class="item display last">Другой адрес</div>
                     <div class="clear"></div>
                 </div>
-                <div class="mkad">
+                <div id="mkad" class="none">
                     <span class="label">Расстояние от МКАД:</span>
                     <div class="left">
                         <input type="text" value="10">
@@ -102,15 +102,15 @@
                 <div class="clear"></div>
 
                 <span class="label">Способ подъема на этаж:</span>
-                <div class="select left" data-target="handup">
-                    <div class="item first">На лифте</div>
-                    <div class="item selected true last">Вручную</div>
+                <div class="select left" data-target="#handup">
+                    <div class="item selected first">На лифте</div>
+                    <div class="item display last">Вручную</div>
                     <div class="clear"></div>
                 </div>
-                <div class="handup">
+                <div id="handup" class="none">
                     <span class="label">Поднять на:</span>
                     <div class="left">
-                        <input type="text" value="10">
+                        <input type="text" value="2">
                     </div>
                     <span class="ed label">этаж</span>
                 </div>
@@ -187,19 +187,19 @@
                 <div class="row">
                     <div class="col-xs-4">
                         <div class="field">
-                            <input type="text" placeholder="Имя">
+                            <input type="text" placeholder="Имя" name="name">
                             <div class="help"></div>
                         </div>
                     </div>
                     <div class="col-xs-4">
                         <div class="field">
-                            <input type="text" placeholder="Фамилия">
+                            <input type="text" placeholder="Фамилия" name="lastname">
                             <div class="help"></div>
                         </div>
                     </div>
                     <div class="col-xs-4">
                         <div class="field">
-                            <input type="text" placeholder="Телефон">
+                            <input type="text" placeholder="Телефон" name="phone">
                             <div class="help"></div>
                         </div>
                     </div>
@@ -208,7 +208,7 @@
                 <div class="row">
                     <div class="col-xs-8">
                         <div class="field">
-                            <input type="text" placeholder="Адрес доставки">
+                            <input type="text" placeholder="Адрес доставки" name="addres">
                             <div class="help"></div>
                         </div>
                     </div>
