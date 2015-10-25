@@ -137,7 +137,7 @@
                             </div>
                         </div>
                         <div class="toCart">
-                            Добавить в корзину
+                            <span class="add">Добавить в корзину</span>
                             <div class="counter">
                                 <input type="text" value="1">
                                 <div class="manage">
