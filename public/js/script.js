@@ -186,6 +186,9 @@ $(function () {
 				input.val(val - 1);
 			}
 		}
+		if($('.cartList').length) {
+			calculate();
+		}
 	});
 	$('.counter input').keyup(function () {
 		var v = Number($(this).val().replace(/[^0-9]/,''));
