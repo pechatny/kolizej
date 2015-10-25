@@ -16,64 +16,64 @@
             </div>
 
             @if($items)
-            @foreach($items as $item)
-                            <div class="block">
-                                <div class="row">
-                                    <div class="col Photo">
-                                        <div class="image">
-                                            <a href="/img/product/big/{{$item['product']->images[0]}}">
-                                                {!! HTML::image("img/product/medium/".$item['product']->images[0]) !!}
-                                            </a>
-                                            <a href="/img/product/big/{{$item['product']->images[0]}}" class="view-big"></a>
-                                        </div>
-                                    </div>
-                                    <div class="col Name vertical">
-                                        <div class="children">
-                                            <a href="/catalog/product/{{$item['product']->id}}" target="_blank">{{$item['product']->name}}</a>
-                                        </div>
-                                    </div>
-                                    <div class="col Color">
-                                        <div class="color">
-                                            <div class="choose">
-                                                @foreach($item['product']->color as $color)
-                                                     <div class="item">
-                                                         <a href="/{{$color->image}}" class="preview" title="{{$color->name}}">
-                                                             {!! HTML::image($color->image, '', array('height' => '31')) !!}
-                                                         </a>
-                                                         <div class="label">
-                                                             <span>{{$color->name}}</span>
-                                                         </div>
-                                                     </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col Price vertical">
-                                        <div class="children">
-                                            <div class="price">{{$item['product']->price}}</div>
-                                        </div>
-                                    </div>
-                                    <div class="col Count toCart vertical">
-                                        <div class="counter">
-                                            <input type="text" value="{{$item['quantity']}}">
-                                            <div class="manage">
-                                                <span class="plus"></span>
-                                                <span class="minus"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col TotalPrice vertical">
-                                        <div class="children">
-                                            <div class="price">{{$item['product']->price * $item['quantity']}}</div>
-                                        </div>
-                                    </div>
-                                    <div class="col delete vertical">
-                                        <span data-id="{{$item['product']->id}}"></span>
-                                    </div>
-                                    <div class="clear"></div>
+                @foreach($items as $item)
+                    <div class="block" data-id="{{$item['product']->id}}" data-lift="{{$item['product']->lift}}" data-delivery="{{$item['product']->delivery}}" data-assembly="{{$item['product']->assembly}}">
+                        <div class="row">
+                            <div class="col Photo">
+                                <div class="image">
+                                    <a href="/img/product/big/{{$item['product']->images[0]}}">
+                                        {!! HTML::image("img/product/medium/".$item['product']->images[0]) !!}
+                                    </a>
+                                    <a href="/img/product/big/{{$item['product']->images[0]}}" class="view-big"></a>
                                 </div>
                             </div>
-                        @endforeach
+                            <div class="col Name vertical">
+                                <div class="children">
+                                    <a href="/catalog/product/{{$item['product']->id}}" target="_blank">{{$item['product']->name}}</a>
+                                </div>
+                            </div>
+                            <div class="col Color">
+                                <div class="color">
+                                    <div class="choose">
+                                        @foreach($item['product']->color as $color)
+                                             <div class="item">
+                                                 <a href="/{{$color->image}}" class="preview" title="{{$color->name}}">
+                                                     {!! HTML::image($color->image, '', array('height' => '31')) !!}
+                                                 </a>
+                                                 <div class="label">
+                                                     <span>{{$color->name}}</span>
+                                                 </div>
+                                             </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col Price vertical">
+                                <div class="children">
+                                    <div class="price">{{$item['product']->price}}</div>
+                                </div>
+                            </div>
+                            <div class="col Count toCart vertical">
+                                <div class="counter">
+                                    <input type="text" value="{{$item['quantity']}}">
+                                    <div class="manage">
+                                        <span class="plus"></span>
+                                        <span class="minus"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col TotalPrice vertical">
+                                <div class="children">
+                                    <div class="price">{{$item['product']->price * $item['quantity']}}</div>
+                                </div>
+                            </div>
+                            <div class="col delete vertical">
+                                <span></span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                @endforeach
             @endif
             <div class="total">
                 стоимость мебели:

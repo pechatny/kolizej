@@ -6,6 +6,6 @@
         {{$count}} товара
         <b>{{$sum}} 000 руб.</b>
 
-        <a href="" class="button cent wide">Оформить заказ</a>
+        <a href="/cart" class="button cent wide">Оформить заказ</a>
     </div>
 </div>
