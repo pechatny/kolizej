@@ -7,7 +7,7 @@
             {{$count}} товара
             <b>{{$sum}} руб.</b>
 
-            <a href="/cart" class="button cent wide">Оформить заказ</a>
+            <a href="/cart#ok" class="button cent wide">Оформить заказ</a>
         </div>
     @else
         <div class="layer empty">
