@@ -281,14 +281,17 @@ $(function () {
 	// Добавление в корзину
 	$('.toCart').click(function () {
 		var count = Number($(this).find('input').val()),
-			color = false;
+			color = false,
+			config = 'left';
 		if($('.productInfo').length) {
 			color = $('.color .item.active').children('span').text();
+			config = $('.config .item.selected').attr('data-val');
 		}
 		$.post('/cart/add', {
-			id   : $(this).attr('data-id'),
-			count : count,
-			color : color
+			id     : $(this).attr('data-id'),
+			count  : count,
+			color  : color,
+			config : config
 		}, function(data) {
 			//
 		});
