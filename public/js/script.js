@@ -13,7 +13,7 @@ $(function () {
 	if($('.filter').length > 0) {
 		// Фильтр в каталоге
 		function filter () {
-			var category = $('.menu .category .active a').text(),
+			var category = $('.menu .category .active a').attr('data'),
 				params = {};
 			if(!category)
 				category = 'all';

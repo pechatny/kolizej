@@ -10,6 +10,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class CatalogController extends Controller
 {
@@ -30,13 +31,32 @@ class CatalogController extends Controller
         $categories = Category::all();
 
         $products = Product::with('category')->get();
+
+        $maxParams = DB::table('products')
+            ->select([
+                DB::raw('max(width) as width'),
+                DB::raw('max(height) as height'),
+                DB::raw('max(depth) depth'),
+                DB::raw('max(price) as price'),
+            ])
+            ->first();
+
+        $minParams = DB::table('products')
+            ->select([
+                DB::raw('min(width) as width'),
+                DB::raw('min(height) as height'),
+                DB::raw('min(depth) depth'),
+                DB::raw('min(price) as price'),
+            ])
+            ->first();
         return view('site.catalog', [
             'menuHtml' => $menuHtml,
             'menuBottomHtml' => $bottomMenuHtml,
             'title' => $title,
             'page' => $page,
             'products' => $products,
-            'categories' => $categories
+            'categories' => $categories,
+            'params' => ['min' => $minParams, 'max' => $maxParams]
         ]);
     }
 
@@ -55,6 +75,8 @@ class CatalogController extends Controller
                 $query->where('key', '=', $category);
             }])
             ->get();
+
+
         return view('site.catalog', [
             'menuHtml' => $menuHtml,
             'menuBottomHtml' => $bottomMenuHtml,
@@ -98,14 +120,15 @@ class CatalogController extends Controller
         $price = explode(' ', $request->params['price']);
         $category = $request->category;
         $products = Product::with(['category' => function($query) use($category){
-                $query->where('key', '=', $category);
+                $query->where('id', '=', $category);
             }])
             ->whereBetween('depth', [$depth[0], $depth[1]])
             ->whereBetween('height', [$height[0], $height[1]])
             ->whereBetween('width', [$width[0], $width[1]])
             ->whereBetween('price', [$price[0], $price[1]])
             ->get();
-        return view('site.productsList', [
+
+        return view('include.productsList', [
             'products' => $products,
         ])->render();
     }
