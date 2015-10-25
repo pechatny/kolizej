@@ -283,7 +283,7 @@ $(function () {
 
 	// Добавление в корзину
 	$('.toCart .add').click(function () {
-		var count = Number($(this).find('input').val()),
+		var count = Number($(this).parent().find('input').val()),
 			color = false,
 			config = 'left';
 		if($('.productInfo').length) {
@@ -291,7 +291,7 @@ $(function () {
 			config = $('.config .item.selected').attr('data-val');
 		}
 		$.post('/cart/add', {
-			id     : $(this).attr('data-id'),
+			id     : $(this).parent().attr('data-id'),
 			count  : count,
 			color  : color,
 			config : config
