@@ -535,7 +535,6 @@ section {
 }
 .toCart {
 	position: relative;
-	padding:7px 0 9px 43px;
 	background: #fc8e47 url(/img/ico/cart/tocart.png) 5px 4px no-repeat;
 	color: #fff;
 	cursor: pointer;
@@ -550,6 +549,10 @@ section {
 }
 .toCart:hover {
 	background-color: #ff8130;
+}
+.toCart .add {
+	display: block;
+	padding:7px 0 9px 43px;
 }
 .toCart .counter {
 	position: absolute;
@@ -1379,12 +1382,14 @@ footer .copyright a:hover {
 }
 .productInfo .toCart {
 	margin-bottom: 18px;
-	padding-right: 43px;
-	padding-left: 50px;
 	background-position: 11px 13px;
 	-webkit-border-radius: 3px; 
 	-moz-border-radius: 3px; 
 	border-radius: 3px; 
+}
+.productInfo .toCart .add {
+	padding-right: 43px;
+	padding-left: 50px;
 }
 .productInfo .toCart .counter {
 	top: 8px;

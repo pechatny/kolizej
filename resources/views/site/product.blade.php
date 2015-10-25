@@ -77,7 +77,7 @@
                             <div class="clear"></div>
 
                             <div class="toCart right" data-id="{{$product->id}}">
-                                Добавить в корзину
+                                <span class="add">Добавить в корзину</span>
                                 <div class="counter">
                                     <input type="text" value="1">
                                     <div class="manage">
