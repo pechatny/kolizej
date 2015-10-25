@@ -15,7 +15,7 @@ $(function () {
 		function filter () {
 			var category = $('.menu .category .active a').attr('data'),
 				params = {};
-			if(!category)
+			if(category == undefined)
 				category = 'all';
 			$('.filter .block').each(function () {
 				params[$(this).attr('data-filter')] = $(this).find('input.min').val() +' '+ $(this).find('input.max').val();
@@ -47,6 +47,7 @@ $(function () {
 				stop: function(event, ui) {
 					$(this).parent().find('input.min').val($(this).slider('values', 0));
 					$(this).parent().find('input.max').val($(this).slider('values', 1));
+					filter();
 				},
 				slide: function(event, ui) {
 					$(this).parent().find('input.min').val($(this).slider('values', 0));
@@ -66,12 +67,14 @@ $(function () {
 				$(this).val(slider[i].slider('values', 1));
 				slider[i].slider('values', 0, slider[i].slider('values', 1));
 			}
+			filter();
 		});
 		$('.filter input.min').change(function () {
 			var a = Number($(this).parent().parent().parent().find('div.min').html().replace(/[^0-9]/g,''));
 			if($(this).val() < a) {
 				$(this).val(a); 
 			}
+			filter();
 		});
 
 		$('.filter input.max').keyup(function () {
@@ -84,19 +87,24 @@ $(function () {
 				$(this).val(slider[i].slider('values', 0));
 				slider[i].slider('values', 1, slider[i].slider('values', 0));
 			}
+			filter();
 		});
 		$('.filter input.max').change(function () {
 			var a = Number($(this).parent().parent().parent().find('div.max').html().replace(/[^0-9]/g,''));
 			if($(this).val() > a) {
 				$(this).val(a); 
 			}
+			filter();
 		});
 		$('.menu .category a').click(function () {
 			if(!$(this).parent().hasClass('active')) {
 				$('.menu .category .active').removeClass('active');
 				$(this).parent().addClass('active');
-				filter();
 			}
+			else {
+				$('.menu .category .active').removeClass('active');
+			}
+			filter();
 			return false;
 		});
 	}
