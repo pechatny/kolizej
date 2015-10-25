@@ -8,7 +8,7 @@
             <a href="" class="button cent wide">Оформить заказ</a>
         </div>
     @else
-        <div class="layer">
+        <div class="layer empty">
             <a href="/cart" class="title">Корзина</a>
             <div class="clear"></div>
             0 товаров
