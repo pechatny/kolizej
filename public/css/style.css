@@ -1488,12 +1488,13 @@ footer .copyright a:hover {
 .cartList {
 	
 }
-.cartList .colNames {
+.cartList .colNames,
+.priceDelivery .colNames {
 	margin-bottom: 15px;
 	padding-top: 1px;
 	padding-bottom: 5px;
 	border-bottom: 1px solid #dbdbdb;
-	color: #939393;
+	color: #b5b5b5;
 }
 .cartList .col {
 	position: relative;
@@ -1534,7 +1535,8 @@ footer .copyright a:hover {
 .cartList .delete {
 	width: 4.9%;
 }
-.cartList .block {
+.cartList .block,
+.priceDelivery .block {
 	margin-bottom: 15px;
 	padding-bottom: 15px;
 	border-bottom: 1px solid #b5b5b5;
@@ -1549,6 +1551,8 @@ footer .copyright a:hover {
 }
 .cartList .image {
 	position: relative;
+	min-width: 35px;
+	min-height: 35px;
 }
 .cartList .image .view-big {
 	left: 50%;
@@ -1642,14 +1646,16 @@ footer .copyright a:hover {
 	line-height: 1;
 	text-align: right;
 }
-.cartList .total b {
+.cartList .total b,
+.totalPrice b {
 	position: relative;
 	margin-left: 20px;
 	padding-right: 30px;
 	font-size: 36px;
 	color: #fc8e47;
 }
-.cartList .total b:after {
+.cartList .total b:after,
+.totalPrice b:after {
 	content: '';
 	position: absolute;
 	top: 13px;
@@ -1657,4 +1663,136 @@ footer .copyright a:hover {
 	width: 20px;
 	height: 26px;
 	background: url(/img/ico/rub.png) 0 -80px no-repeat;
+}
+
+.calcDelivery {
+	padding-top: 30px;
+}
+.calcDelivery .enterData {
+	margin: 0 -30px 25px;
+	padding: 0 30px;
+	border-bottom: 1px solid #f3f3f3;
+	color: #636363;
+	font-weight: normal;
+}
+.calcDelivery span.label {
+	float: left;
+	padding: 7px 15px 0 0;
+}
+.calcDelivery .enterData input[type=text] {
+	margin-right: 15px;
+	padding-left: 7px;
+	padding-right: 7px;
+	width: 50px;
+	height: 33px;
+	line-height: 33px;
+}
+.calcDelivery .select {
+	margin:0 28px 30px 0;
+}
+
+.select {
+	padding-left: 1px;
+	font-weight: 300;
+}
+.select .item {
+	position: relative;
+	float: left;
+	margin-left: -1px;
+	padding: 8px 18px 10px;
+	color: #636363;
+	font-size: 13px;
+	line-height: 1;
+	border: 1px solid #e4e4e4;
+	cursor: pointer;
+	z-index: 100;
+}
+.select .first {
+	-webkit-border-radius: 2px 0 0 2px; 
+	-moz-border-radius: 2px 0 0 2px; 
+	border-radius: 2px 0 0 2px;
+}
+.select .last {
+	-webkit-border-radius: 0 2px 2px 0; 
+	-moz-border-radius: 0 2px 2px 0; 
+	border-radius: 0 2px 2px 0;
+}
+.select .selected {
+	cursor: default;
+	border-color: #ff6c0e;
+	z-index: 101;
+}
+
+.priceDelivery .col {
+	position: relative;
+	float: left;
+	padding: 0 15px;
+	width: 17%;
+	min-height: 1px;
+}
+.priceDelivery .block {
+	font-size: 16px;
+}
+.priceDelivery .Name {
+	padding-top: 3px;
+	width: 32%;
+	font-size: 14px;
+}
+.priceDelivery span {
+	padding-right: 29px;
+	background: url(/img/ico/rub.png) 100% -122px no-repeat;
+}
+.priceDelivery .total {
+	margin-bottom: 25px;
+	padding:3px 5px 0 0;
+	width: 83%;
+	position: relative;
+	text-align: right;
+	font-size: 20px;
+	font-weight: normal;
+}
+.priceDelivery .total b {
+	display: block;
+	position: absolute;
+	left: 100%;
+	top: 3px;
+	margin-left: 24px;
+	width: 17%;
+	text-align: left;
+	font-size: 24px;
+	line-height: 1;
+	font-weight: 600;
+	
+}
+.priceDelivery .total span {
+	padding-right: 31px;
+	background-position:100% -144px;
+}
+.totalPrice {
+	position: relative;
+	margin: 0 -30px 19px;
+	padding-top: 29px;
+	height: 57px;
+	border-top: 1px solid #f3f3f3;
+	border-bottom: 1px dotted #b5b5b5;
+	font-size: 30px;
+	line-height: 1;
+	font-weight: normal;
+}
+.totalPrice span {
+	display: block;
+	float: left;
+	padding-left:27px;
+	background:#fff;
+}
+.totalPrice b {
+	position: absolute;
+	top: 24px;
+	right: 0;
+	padding:0 60px 0 0;
+	background: #fff;
+}
+.totalPrice b:after {
+	top: 6px;
+	right: 30px;
 }

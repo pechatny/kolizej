@@ -37,31 +37,41 @@
                                     <a href="/img/color/1.jpg" class="preview" title="Орех итальянский">
                                         <img src="/img/color/preview/1.jpg" alt="">
                                     </a>
-                                    <span>Орех итальянский</span>
+                                    <div class="label">
+                                        <span>Орех итальянский</span>
+                                    </div>
                                 </div>
                                 <div class="item">
                                     <a href="/img/color/2.jpg" class="preview" title="Яблоня локарно">
                                         <img src="/img/color/preview/2.jpg" alt="">
                                     </a>
-                                    <span>Яблоня локарно</span>
+                                    <div class="label">
+                                        <span>Яблоня локарно</span>
+                                    </div>
                                 </div>
                                 <div class="item">
                                     <a href="/img/color/3.jpg" class="preview" title="Ольха">
                                         <img src="/img/color/preview/3.jpg" alt="">
                                     </a>
-                                    <span>Ольха</span>
+                                    <div class="label">
+                                        <span>Ольха</span>
+                                    </div>
                                 </div>
                                 <div class="item">
                                     <a href="/img/color/4.jpg" class="preview" title="Дуб беленый">
                                         <img src="/img/color/preview/4.jpg" alt="">
                                     </a>
-                                    <span>Дуб беленый</span>
+                                    <div class="label">
+                                        <span>Дуб беленый</span>
+                                    </div>
                                 </div>
                                 <div class="item">
                                     <a href="/img/color/5.jpg" class="preview" title="Венге">
                                         <img src="/img/color/preview/5.jpg" alt="">
                                     </a>
-                                    <span>Венге</span>
+                                    <div class="label">
+                                        <span>Венге</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -114,31 +124,41 @@
                                     <a href="/img/color/1.jpg" class="preview" title="Орех итальянский">
                                         <img src="/img/color/preview/1.jpg" alt="">
                                     </a>
-                                    <span>Орех итальянский</span>
+                                    <div class="label">
+                                        <span>Орех итальянский</span>
+                                    </div>
                                 </div>
                                 <div class="item">
                                     <a href="/img/color/2.jpg" class="preview" title="Яблоня локарно">
                                         <img src="/img/color/preview/2.jpg" alt="">
                                     </a>
-                                    <span>Яблоня локарно</span>
+                                    <div class="label">
+                                        <span>Яблоня локарно</span>
+                                    </div>
                                 </div>
                                 <div class="item">
                                     <a href="/img/color/3.jpg" class="preview" title="Ольха">
                                         <img src="/img/color/preview/3.jpg" alt="">
                                     </a>
-                                    <span>Ольха</span>
+                                    <div class="label">
+                                        <span>Ольха</span>
+                                    </div>
                                 </div>
                                 <div class="item">
                                     <a href="/img/color/4.jpg" class="preview" title="Дуб беленый">
                                         <img src="/img/color/preview/4.jpg" alt="">
                                     </a>
-                                    <span>Дуб беленый</span>
+                                    <div class="label">
+                                        <span>Дуб беленый</span>
+                                    </div>
                                 </div>
                                 <div class="item">
                                     <a href="/img/color/5.jpg" class="preview" title="Венге">
                                         <img src="/img/color/preview/5.jpg" alt="">
                                     </a>
-                                    <span>Венге</span>
+                                    <div class="label">
+                                        <span>Венге</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -170,8 +190,107 @@
             </div>
 
             <div class="total">
-                итого:
+                стоимость мебели:
                 <b>105 000</b>
+            </div>
+        </div>
+        <div class="bigheight"></div>
+
+        <h2>Расчет доставки и сборки</h2>
+        <div class="calcDelivery col-xs-12 island">
+            <div class="enterData">
+                <span class="label">Куда доставить:</span>
+                <div class="select left" data-target="mkad">
+                    <div class="item first">г. Москва</div>
+                    <div class="item">г. Зеленоград</div>
+                    <div class="item selected true last">Другой адрес</div>
+                    <div class="clear"></div>
+                </div>
+                <div class="mkad">
+                    <span class="label">Расстояние от МКАД:</span>
+                    <div class="left">
+                        <input type="text" value="10">
+                    </div>
+                    <span class="ed label">км</span>
+                </div>
+                <div class="clear"></div>
+
+                <span class="label">Способ подъема на этаж:</span>
+                <div class="select left" data-target="handup">
+                    <div class="item first">На лифте</div>
+                    <div class="item selected true last">Вручную</div>
+                    <div class="clear"></div>
+                </div>
+                <div class="handup">
+                    <span class="label">Поднять на:</span>
+                    <div class="left">
+                        <input type="text" value="10">
+                    </div>
+                    <span class="ed label">этаж</span>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="priceDelivery">
+                <div class="colNames">
+                    <div class="row">
+                        <div class="col Name"></div>
+                        <div class="col">Доставка</div>
+                        <div class="col">Подъем</div>
+                        <div class="col">Сборка</div>
+                        <div class="col">Итого</div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="row">
+                        <div class="col Name">Письменный стол СТ-35</div>
+                        <div class="col">
+                            <span>1 000</span>
+                        </div>
+                        <div class="col">
+                            <span>2 000</span>
+                        </div>
+                        <div class="col">
+                            <span>3 000</span>
+                        </div>
+                        <div class="col">
+                            <span>6 000</span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="row">
+                        <div class="col Name">Письменный стол СТ-35</div>
+                        <div class="col">
+                            <span>1 500</span>
+                        </div>
+                        <div class="col">
+                            <span>2 000</span>
+                        </div>
+                        <div class="col">
+                            <span>2 500</span>
+                        </div>
+                        <div class="col">
+                            <span>6 000</span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+
+                <div class="total">
+                    стоимость доставки и сборки:
+                    <b>
+                        <span>12 000</span>
+                    </b>
+                </div>
+            </div>
+
+            <div class="totalPrice">
+                <span>Стоимость заказа</span>
+                <b>117 000</b>
+                <div class="clear"></div>
             </div>
         </div>
 

@@ -118,11 +118,11 @@ $(function () {
 	}
 	if($('.cartList').length > 0) {
 		$('.cartList .vertical').each(function () {
-			$(this).height($(this).parent().children('.Photo').height());
+			$(this).height($(this).parent().parent().height());
 		});
 		setTimeout(function () {
 			$('.cartList .vertical').each(function () {
-				$(this).height($(this).parent().children('.Photo').height());
+				$(this).height($(this).parent().parent().height());
 			});
 		}, 500);
 	}
