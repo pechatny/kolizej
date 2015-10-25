@@ -34,22 +34,14 @@
 </section>
 <footer>
     <div class="container">
-        <div class="row">
+        <div id="products"class="row">
             {!! $menuBottomHtml !!}
             <div class="folder col-xs-4">
                 <div class="title">Каталог</div>
                 <div class="block w50">
-                    <a href="">Кухня</a>
-                    <a href="">Компьютерные столы</a>
-                    <a href="">Письменные столы</a>
-                    <a href="">Комоды / Тумбы</a>
-                    <a href="">Столы-трансформеры</a>
-                </div>
-                <div class="block w50">
-                    <a href="">Стенки</a>
-                    <a href="">Стеллажи офисные</a>
-                    <a href="">Прихожие</a>
-                    <a href="">Шкаф-купе</a>
+                    @foreach($categories as $category)
+                        <a href="{{$category->key}}">{{$category->name}}</a>
+                    @endforeach
                 </div>
             </div>
             <div class="col-xs-4">
