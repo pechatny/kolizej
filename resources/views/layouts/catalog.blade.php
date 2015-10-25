@@ -69,15 +69,7 @@
                 </form>
             </div>
 
-            <div class="cart empty col-xs-2">
-                <div class="layer">
-                    <a href="" class="title">Корзина</a>
-                    <div class="clear"></div>
-                    0 товаров
-                    <b>Выберите товары из каталога</b>
-                    <a href="/catalog/" class="button cent wide">В каталог</a>
-                </div>
-            </div>
+            @include('include.bottomCart')
             <div class="clear"></div>
         </div>
 

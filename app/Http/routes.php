@@ -79,6 +79,7 @@ Route::group(['prefix' => 'cart', 'namespace' => 'Site'], function()
     Route::any("/", "CartController@index");
     Route::any("add", "CartController@add");
     Route::any("delete", "CartController@delete");
+    Route::any("info", "CartController@cartHtml");
 });
 
 Route::group(['namespace' => 'Site'], function()

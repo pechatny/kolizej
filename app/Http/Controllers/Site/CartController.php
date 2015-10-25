@@ -70,4 +70,20 @@ class CartController extends Controller
         }
         return false;
     }
+
+    public function cartHtml(){
+        $smallCart = $this->smallCart();
+
+        $topCart = view('include.cart', [
+            'count' => $smallCart['count'],
+            'sum' => $smallCart['sum']
+        ])->render();
+
+        $bottomCart = view('include.bottomCart', [
+            'count' => $smallCart['count'],
+            'sum' => $smallCart['sum']
+        ])->render();
+
+        return ['top' => $topCart, 'bottom' => $bottomCart];
+    }
 }
