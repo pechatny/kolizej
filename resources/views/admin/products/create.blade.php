@@ -57,6 +57,25 @@
         </div>
     </label>
     <label>
+        <div class="signature">Доставка</div>
+        <div class="field">
+            {!! Form::text('delivery', old( 'delivery' )) !!}
+        </div>
+    </label>
+    <label>
+        <div class="signature">Подъём</div>
+        <div class="field">
+            {!! Form::text('lift', old( 'lift' )) !!}
+        </div>
+    </label>
+    <label>
+        <div class="signature">Сборка</div>
+        <div class="field">
+            {!! Form::text('assembly', old( 'assembly' )) !!}
+        </div>
+    </label>
+
+    <label>
         <div class="signature">Ширина</div>
         <div class="field">
             {!! Form::text('width', old( 'width' )) !!}

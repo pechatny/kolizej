@@ -64,6 +64,24 @@
         </div>
     </label>
     <label>
+        <div class="signature">Доставка</div>
+        <div class="field">
+            {!! Form::text('delivery', $item->delivery ) !!}
+        </div>
+    </label>
+    <label>
+        <div class="signature">Подъём</div>
+        <div class="field">
+            {!! Form::text('lift', $item->lift ) !!}
+        </div>
+    </label>
+    <label>
+        <div class="signature">Сборка</div>
+        <div class="field">
+            {!! Form::text('assembly', $item->assembly ) !!}
+        </div>
+    </label>
+    <label>
         <div class="signature">Ширина</div>
         <div class="field">
             {!! Form::text('width', $item->width) !!}

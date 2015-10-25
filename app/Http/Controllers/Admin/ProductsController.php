@@ -101,6 +101,9 @@ class ProductsController extends Controller
         $item->depth = $request->depth;
         $item->stock = $request->stock ? $request->stock : 0;
         $item->params = $request->params;
+        $item->lift = $request->lift;
+        $item->assembly = $request->assembly;
+        $item->delivery = $request->delivery;
 
         $images = $request->images;
 
@@ -231,6 +234,9 @@ class ProductsController extends Controller
         $item->weight = $request->weight;
         $item->stock = $request->stock ? $request->stock : 0;
         $item->params = $request->params;
+        $item->lift = $request->lift;
+        $item->assembly = $request->assembly;
+        $item->delivery = $request->delivery;
 
         $images = $request->images;
         $loadedImages = $request->loadedImages;
