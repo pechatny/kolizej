@@ -21,8 +21,14 @@ class CartController extends Controller
         $page = Page::where('key', $page)->first();
 
         $cart = $request->session()->get('cart');
-        $items = $cart->all();
-//dd($items);
+
+        if($cart){
+            $items = $cart->all();
+        }
+        else{
+            $items = false;
+        }
+
         $smallCart = $this->smallCart();
         return view('site.cart', [
             'menuHtml' => $menuHtml,
@@ -40,24 +46,28 @@ class CartController extends Controller
         if($request->session()->has('cart')){
             $cart = $request->session()->get('cart');
             $cart->add($request->id, $request->count, $request->color);
-            $request->session()->put('cart', $cart);
+            session()->put('cart', $cart);
         }
         else{
             $cart = new Cart();
             $cart->add($request->id, $request->count, $request->color);
-            $request->session()->put('cart', $cart);
+            session()->put('cart', $cart);
         }
     }
 
     public function delete(Request $request){
-        $cart = $request->session()->get('cart');
-        $cart->delete($request->id);
-        $request->session()->put('cart', $cart);
+        $cart = session()->pull('cart');
+        if($cart){
+            $cart->delete($request->id);
+            session()->put('cart', $cart);
+        }
     }
 
-    public function all(Request $request){
-        $cart = $request->session()->get('cart');
-        $items = $cart->all();
-        return $items;
+    public function all(){
+        $cart = session()->get('cart');
+        if($cart){
+            return $cart->all();
+        }
+        return false;
     }
 }

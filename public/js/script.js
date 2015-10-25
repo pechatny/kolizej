@@ -136,6 +136,13 @@ $(function () {
 	}
 	$('.cartList .delete span').click(function () {
 		var t = 500;
+
+        $.post('/cart/delete', {
+            id   : $(this).attr('data-id')
+        }, function(data) {
+            //
+        });
+
 		$(this).parent().parent().parent().fadeOut(t, function () {
 			$(this).remove();
 			calculate();
