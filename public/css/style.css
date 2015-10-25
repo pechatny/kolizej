@@ -314,7 +314,7 @@ header {
 	font-weight: bold;
 	text-transform: uppercase;
 }
-.cart.empty .title {
+.cart .empty .title {
 	margin-bottom: 7px;
 }
 .cart b {
@@ -325,7 +325,7 @@ header {
 	padding-top: 1px;
 	font-size: 18px;
 }
-.cart.empty b {
+.cart .empty b {
 	margin-bottom: 5px;
 	padding-top: 7px;
 	font-size: 13px;
@@ -891,7 +891,7 @@ footer .cart .layer {
 footer .cart .title {
 	margin-bottom: 24px;
 }
-footer .cart.empty .title {
+footer .cart .empty .title {
 	margin-bottom: 18px;
 }
 footer .cart .title:hover {
@@ -902,7 +902,7 @@ footer .cart b {
 	margin-bottom: 21px;
 	padding-top: 10px;
 }
-footer .cart.empty b {
+footer .cart .empty b {
 	margin-bottom: 10px;
 	padding-top: 17px;
 	font-size: 14px;
