@@ -12,11 +12,12 @@ class Cart
         $this->items = [];
     }
 
-    public function add($id, $quantity, $color ){
+    public function add($id, $quantity, $color = false, $config = false ){
         $product = Product::with(['color', 'category'])->find($id);
         $this->items[$id]['product'] = $product;
         $this->items[$id]['quantity'] = $quantity;
         $this->items[$id]['color'] = $color;
+        $this->items[$id]['configuration'] = $config;
     }
 
     public function delete($id){
@@ -45,6 +46,19 @@ class Cart
             if(!$key){
                 unset($this->items[$key]);
             }
+        }
+    }
+
+    public function response(){
+        return ['sum' => $this->sum(), 'count' => count($this->all())];
+    }
+
+    public function find($id){
+        if(isset($this->items[$id])){
+            return $this->items[$id];
+        }
+        else{
+            return false;
         }
     }
 }

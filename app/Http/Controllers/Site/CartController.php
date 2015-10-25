@@ -49,14 +49,16 @@ class CartController extends Controller
     public function add(Request $request){
         if($request->session()->has('cart')){
             $cart = $request->session()->get('cart');
-            $cart->add($request->id, $request->count, $request->color);
+            $cart->add($request->id, $request->count, $request->color, $request->config);
             session()->put('cart', $cart);
         }
         else{
             $cart = new Cart();
-            $cart->add($request->id, $request->count, $request->color);
+            $cart->add($request->id, $request->count, $request->color, $request->config);
             session()->put('cart', $cart);
         }
+
+        return $cart->response();
     }
 
     public function delete(Request $request){
@@ -65,6 +67,8 @@ class CartController extends Controller
             $cart->delete($request->id);
             session()->put('cart', $cart);
         }
+
+        return $cart->response();
     }
 
     public function all(){

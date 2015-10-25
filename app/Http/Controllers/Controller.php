@@ -33,4 +33,19 @@ abstract class Controller extends BaseController
         return ['sum' => $sum, 'count' => $count];
     }
 
+    public function cartItem($id){
+        if(session()->has('cart')){
+            $cart = session()->get('cart');
+            $item = $cart->find($id);
+            if($item){
+                return ['configuration' => $item['configuration'], 'color' => $item['color']];
+            }
+        }
+        else{
+            $item = false;
+        }
+
+        return $item;
+    }
+
 }

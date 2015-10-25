@@ -91,10 +91,14 @@ class CatalogController extends Controller
         $categories = Category::all();
 
         $product = Product::with(['category', 'color'])->find($id);
+        $product->increment('views');
 
         $recommended = Product::with('category')->take(5)->get();
 
         $smallCart = $this->smallCart();
+
+        $cartItem = $this->cartItem($product->id);
+
         return view('site.product', [
             'menuHtml' => $menuHtml,
             'menuBottomHtml' => $bottomMenuHtml,
@@ -104,7 +108,8 @@ class CatalogController extends Controller
             'categories' => $categories,
             'recommended' => $recommended,
             'count' => $smallCart['count'],
-            'sum' => $smallCart['sum']
+            'sum' => $smallCart['sum'],
+            'currentItem' => $cartItem
         ]);
     }
 

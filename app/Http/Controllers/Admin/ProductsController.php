@@ -99,7 +99,7 @@ class ProductsController extends Controller
         $item->warranty = $request->warranty;
         $item->weight = $request->weight;
         $item->depth = $request->depth;
-        $item->stock = $request->stock ? $request->stock : 0;
+        $item->stock = $request->has('stock') ? 1 : 0;
         $item->params = $request->params;
         $item->lift = $request->lift;
         $item->assembly = $request->assembly;
@@ -232,7 +232,7 @@ class ProductsController extends Controller
         $item->depth = $request->depth;
         $item->warranty = $request->warranty;
         $item->weight = $request->weight;
-        $item->stock = $request->stock ? $request->stock : 0;
+        $item->stock = $request->has('stock') ? 1 : 0;
         $item->params = $request->params;
         $item->lift = $request->lift;
         $item->assembly = $request->assembly;

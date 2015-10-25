@@ -87,8 +87,16 @@
                             <div class="config">
                                 <b class="title">Вариант исполнения:</b>
                                 <div class="select">
-                                    <div class="item selected first" data-val="left">Левый</div>
-                                    <div class="item last" data-val="right">Правый</div>
+                                    @if($cartItem and $cartItem['configuration'] == 'left')
+                                        <div class="item selected first" data-val="left">Левый</div>
+                                    @else
+                                        <div class="item first" data-val="left">Левый</div>
+                                    @endif
+                                    @if($cartItem and $cartItem['configuration'] == 'right')
+                                        <div class="item selected last" data-val="right">Правый</div>
+                                    @else
+                                        <div class="item last" data-val="right">Правый</div>
+                                    @endif
                                     <div class="clear"></div>
                                 </div>
                             </div>
