@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Classes\Cart;
+use App\Models\Category;
 use App\Models\Menu;
 use App\Models\Page;
 use Illuminate\Http\Request;
@@ -34,12 +35,15 @@ class CartController extends Controller
             $items = false;
         }
 
+        $categories = Category::all();
+
         $smallCart = $this->smallCart();
         return view('site.cart', [
             'menuHtml' => $menuHtml,
             'menuBottomHtml' => $bottomMenuHtml,
             'page' => $page,
             'items' => $items,
+            'categories' => $categories,
             'count' => $smallCart['count'],
             'sum' => $smallCart['sum']
         ]);
