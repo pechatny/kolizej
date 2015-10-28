@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Models\Category;
 use App\Models\Menu;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -27,12 +28,15 @@ class IndexController extends Controller
             $count = 0;
         }
 
+        $products = Product::with('category')->orderBy('views', 'desc')->take(8)->get();
+
         return view('index', [
             'menuHtml' => $menuHtml,
             'title' => $title,
             'categories' => $categories,
             'count' => $count,
-            'sum' => $sum
+            'sum' => $sum,
+            'products' => $products
         ]);
     }
 }

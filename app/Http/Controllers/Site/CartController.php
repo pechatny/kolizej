@@ -120,7 +120,7 @@ class CartController extends Controller
         $text = view('email.mail', compact('city', 'distance', 'lift', 'stage', 'arForm', 'cart'))->render();
 
         $email = Config::get('mail.from')['address'];
-        
+
         mail($email, 'Новый заказ', $text);
         return true;
     }
