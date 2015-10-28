@@ -50,4 +50,19 @@ abstract class Controller extends BaseController
         return $item;
     }
 
+    public function cart(){
+        if(session()->has('cart')){
+            $cart = session()->get('cart');
+            if($cart){
+                return $cart->all();
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            false;
+        }
+    }
+
 }

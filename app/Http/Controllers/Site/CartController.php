@@ -9,6 +9,7 @@ use App\Models\Page;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Config;
 
 class CartController extends Controller
 {
@@ -99,5 +100,28 @@ class CartController extends Controller
         ])->render();
 
         return ['top' => $topCart, 'bottom' => $bottomCart];
+    }
+
+    public function order(Request $request){
+        $formData = explode('&', $request->form);
+        $arForm = [];
+        foreach($formData as $item){
+            $arItem = explode('=', $item);
+            $arForm[$arItem[0]] = urldecode($arItem[1]);
+        }
+
+        $city = $request->city;
+        $lift= $request->lift;
+        $stage = $request->stage;
+        $distance = $request->distance;
+
+        $cart = $this->cart();
+
+        $text = view('email.mail', compact('city', 'distance', 'lift', 'stage', 'arForm', 'cart'))->render();
+
+        $email = Config::get('mail.from')['address'];
+        
+        mail($email, 'Новый заказ', $text);
+        return true;
     }
 }
