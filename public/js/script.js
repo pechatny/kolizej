@@ -354,7 +354,7 @@ $(function () {
 			distance = (city == 'Другой адрес' ? Number($('#mkad').find('input').val()) : -1),
 			lift = $('.calcDelivery .select:eq(1) .selected').text(),
 			stage = (lift == 'Вручную' ? Number($('#handup').find('input').val()) : -1);
-		$.post('/ex.php', {
+		$.post('/cart/order', {
 			'form'     : form,
 			'city'     : city,
 			'distance' : distance,
