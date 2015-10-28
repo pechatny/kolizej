@@ -111,6 +111,7 @@ $(function () {
 
 	// Корзина
 	function calculate () {
+		// Стоимость мебели
 		var s = 0,
 			price,
 			count,
