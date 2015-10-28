@@ -28,10 +28,12 @@ class IndexController extends Controller
             $count = 0;
         }
 
+        $menuItems = Menu::all();
         $products = Product::with('category')->orderBy('views', 'desc')->take(8)->get();
-
+        $bottomMenuHtml = view('bottom', ['menuItems' => $menuItems])->render();
         return view('index', [
             'menuHtml' => $menuHtml,
+            'menuBottomHtml' => $bottomMenuHtml,
             'title' => $title,
             'categories' => $categories,
             'count' => $count,

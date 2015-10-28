@@ -31,31 +31,14 @@
 </section>
 <footer>
     <div class="container">
-        <div class="row">
-            <div class="folder col-xs-2">
-                <div class="title">Информация</div>
-                <div class="block">
-                    <a href="">Главная</a>
-                    <a href="">Контакты</a>
-                    <a href="">Доставка и оплата</a>
-                    <a href="">Оптовикам</a>
-                    <a href="">Мебель на заказ</a>
-                </div>
-            </div>
+        <div id="products"class="row">
+            {!! $menuBottomHtml !!}
             <div class="folder col-xs-4">
                 <div class="title">Каталог</div>
                 <div class="block w50">
-                    <a href="">Кухня</a>
-                    <a href="">Компьютерные столы</a>
-                    <a href="">Письменные столы</a>
-                    <a href="">Комоды / Тумбы</a>
-                    <a href="">Столы-трансформеры</a>
-                </div>
-                <div class="block w50">
-                    <a href="">Стенки</a>
-                    <a href="">Стеллажи офисные</a>
-                    <a href="">Прихожие</a>
-                    <a href="">Шкаф-купе</a>
+                    @foreach($categories as $category)
+                        <a href="{{$category->key}}">{{$category->name}}</a>
+                    @endforeach
                 </div>
             </div>
             <div class="col-xs-4">
@@ -75,6 +58,7 @@
                     <div class="clear"></div>
                 </form>
             </div>
+
             @include('include.bottomCart')
             <div class="clear"></div>
         </div>
@@ -86,3 +70,4 @@
 </footer>
 </body>
 </html>
+
