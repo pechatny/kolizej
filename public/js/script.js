@@ -384,7 +384,7 @@ $(function () {
 				data[$(this).attr('name')] = $(this).val();
 			}
 		});
-		$.post('--||--', data, function(data) {
+		$.post('/feedback', data, function(data) {
 			//
 		});
 		return false;
