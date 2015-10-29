@@ -122,6 +122,6 @@ class CartController extends Controller
         $email = Config::get('mail.from')['address'];
 
         mail($email, 'Новый заказ', $text);
-        return true;
+        return ['success' => true];
     }
 }

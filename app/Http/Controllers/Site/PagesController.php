@@ -9,6 +9,7 @@ use App\Models\Page;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Config;
 
 class PagesController extends Controller
 {
@@ -39,6 +40,10 @@ class PagesController extends Controller
     }
 
     public function feedback(Request $request){
-        return($request->all());
+        $text = view('email.feedback', $request->all())->render();
+        $email = Config::get('mail.from')['address'];
+
+        mail($email, 'Обратная связь', $text);
+        return ['success' => true];
     }
 }
