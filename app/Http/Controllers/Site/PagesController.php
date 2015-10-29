@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Site;
 use App\Models\Category;
 use App\Models\Menu;
 use App\Models\Page;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -45,5 +46,42 @@ class PagesController extends Controller
 
         mail($email, 'Обратная связь', $text);
         return ['success' => true];
+    }
+
+    public function search(Request $request){
+
+        $page = new \stdClass();
+        $page->title = 'Поиск';
+        $page->keywords = 'Поиск';
+        $page->description = 'Поиск';
+        $page->key = 'search';
+
+        $menuHtml = $this->menuHtml('cart');
+
+        $menuItems = Menu::all();
+        $bottomMenuHtml = view('bottom', ['menuItems' => $menuItems])->render();
+
+        $categories = Category::all();
+
+        $smallCart = $this->smallCart();
+
+
+        if($request->val){
+            $products = Product::where('name', 'like', "%$request->val%")->orWhere('text', 'like', "%$request->val%")->get();
+        }
+        else{
+            $products = [];
+        }
+        return view('site.search', [
+            'menuHtml' => $menuHtml,
+            'menuBottomHtml' => $bottomMenuHtml,
+            'page' => $page,
+            'categories' => $categories,
+            'products' => $products,
+            'count' => $smallCart['count'],
+            'sum' => $smallCart['sum'],
+            'indexFlag' => true
+        ]);
+
     }
 }

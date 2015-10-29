@@ -92,6 +92,7 @@ Route::group(['namespace' => 'Site'], function()
     Route::get("catalog/{category}", "CatalogController@category");
     Route::get("catalog/product/{id}", "CatalogController@detail");
     Route::post("feedback", "PagesController@feedback");
+    Route::any("search", "PagesController@search");
     Route::get("{page}", "PagesController@index");
 });
 

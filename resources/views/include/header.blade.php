@@ -18,8 +18,8 @@
                     <div class="clear"></div>
                 </div>
                 <div class="clear"></div>
-                <form action="#" class="search">
-                    <input type="text" placeholder="Поиск . . ." class="right">
+                <form action="/search" class="search">
+                    <input name="val" type="text" placeholder="Поиск . . ." class="right">
                     <input type="submit" value="">
                     <div class="clear"></div>
                 </form>
