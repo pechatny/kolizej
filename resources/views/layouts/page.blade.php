@@ -39,17 +39,17 @@
     			<div class="row">
     				<div class="col-xs-4">
     					<div class="field">
-    						<input type="text" placeholder="Ваше имя">
+    						<input type="text" name="name" placeholder="Ваше имя">
     						<div class="help"></div>
     					</div>
     					<div class="field">
-    						<input type="text" placeholder="Телефон">
+    						<input type="text" name="phone" placeholder="Телефон">
     						<div class="help"></div>
     					</div>
     				</div>
     				<div class="col-xs-8">
     					<div class="field">
-    						<textarea>Текст обращения</textarea>
+    						<textarea name="text">Текст обращения</textarea>
     						<div class="help"></div>
     					</div>
     				</div>
@@ -58,7 +58,7 @@
     			<div class="row">
     				<div class="col-xs-4">
     					<div class="field">
-    						<input type="text" placeholder="Электронная почта">
+    						<input type="text" name="mail" placeholder="Электронная почта">
     						<div class="help"></div>
     					</div>
     				</div>
