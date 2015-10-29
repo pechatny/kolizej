@@ -375,4 +375,18 @@ $(function () {
 			this.value = 'Текст обращения'; 
 		} 
 	});
+
+	// Обратная связь
+	$('.feedback form').submit(function () {
+		var data = {};
+		$(this).find('input, textarea').each(function () {
+			if($(this).attr('name')) {
+				data[$(this).attr('name')] = $(this).val();
+			}
+		});
+		$.post('--||--', data, function(data) {
+			//
+		});
+		return false;
+	});
 });
