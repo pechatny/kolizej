@@ -1,6 +1,11 @@
 @foreach($products as $product)
     @if($product->category)
-        <div class="col-xs-4">
+        @if(isset($indexFlag))
+            <div class="col-xs-3">
+        @else
+            <div class="col-xs-4">
+        @endif
+
             <div class="product">
                 <a href="/catalog/product/{{$product->id}}">
                     {!! HTML::image("img/product/medium/".$product->images[0]) !!}

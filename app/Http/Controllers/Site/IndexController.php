@@ -38,7 +38,8 @@ class IndexController extends Controller
             'categories' => $categories,
             'count' => $count,
             'sum' => $sum,
-            'products' => $products
+            'products' => $products,
+            'indexFlag' => true
         ]);
     }
 }
