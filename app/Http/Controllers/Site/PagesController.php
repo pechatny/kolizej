@@ -37,4 +37,8 @@ class PagesController extends Controller
             'sum' => $smallCart['sum']
         ]);
     }
+
+    public function feedback(Request $request){
+        return($request->all());
+    }
 }

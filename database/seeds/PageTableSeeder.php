@@ -59,50 +59,7 @@ class PageTableSeeder extends Seeder
 		<div class="clear"></div>
 	</div>
 </div>
-<div class="bigheight clear"></div>
-
-<div class="container">
-	<h2>Обратная связь</h2>
-	<div class="feedback form col-xs-12 island">
-		<form action="#">
-			<div class="row">
-				<div class="col-xs-4">
-					<div class="field">
-						<input type="text" placeholder="Ваше имя">
-						<div class="help"></div>
-					</div>
-					<div class="field">
-						<input type="text" placeholder="Телефон">
-						<div class="help"></div>
-					</div>
-				</div>
-				<div class="col-xs-8">
-					<div class="field">
-						<textarea>Текст обращения</textarea>
-						<div class="help"></div>
-					</div>
-				</div>
-				<div class="clear"></div>
-			</div>
-			<div class="row">
-				<div class="col-xs-4">
-					<div class="field">
-						<input type="text" placeholder="Электронная почта">
-						<div class="help"></div>
-					</div>
-				</div>
-				<div class="col-xs-8">
-					<div class="field">
-						<input type="submit" value="Отправить обращение">
-						<div class="help"></div>
-					</div>
-				</div>
-				<div class="clear"></div>
-			</div>
-		</form>
-	</div>
-	<div class="clear"></div>
-</div>',
+<div class="bigheight clear"></div>',
         ]);
 
         Page::create([
