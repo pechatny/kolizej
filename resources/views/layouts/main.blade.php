@@ -52,7 +52,7 @@
                     <a href="tel:+79161234455" class="right">+7 (916) 123-44-55</a>
                     <div class="clear"></div>
                 </div>
-                <form action="#" class="search">
+                <form action="/search" class="search">
                     <input type="text" placeholder="Поиск . . ." class="right">
                     <input type="submit" value="">
                     <div class="clear"></div>

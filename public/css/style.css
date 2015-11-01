@@ -293,6 +293,10 @@ header {
 	width: 42px;
 	height: 42px;
 	background-image: url(/img/ico/search30.png);
+	background-position: 50% 7px;
+}
+.search.page input[type=submit]:hover {
+	background-position: 50% -43px;
 }
 .cart {
 	margin-bottom: 15px;
@@ -511,6 +515,9 @@ section {
 	position: relative;
 	font-weight: 400;
 	color: #6fa9ff;
+}
+b.price {
+	font-weight: 600;
 }
 .product .price {
 	top: -1px;
@@ -1751,7 +1758,7 @@ footer .copyright a:hover {
 	position: relative;
 	float: left;
 	padding: 0 15px;
-	width: 17%;
+	width: 20%;
 	min-height: 1px;
 }
 .priceDelivery .block {
@@ -1759,7 +1766,7 @@ footer .copyright a:hover {
 }
 .priceDelivery .Name {
 	padding-top: 3px;
-	width: 32%;
+	width: 40%;
 	font-size: 14px;
 }
 .priceDelivery span {
@@ -1790,6 +1797,7 @@ footer .copyright a:hover {
 }
 .priceDelivery .total span {
 	padding-right: 31px;
+	color: #393939;
 	background-position:100% -144px;
 }
 .totalPrice {
@@ -1819,4 +1827,18 @@ footer .copyright a:hover {
 .totalPrice b:after {
 	top: 6px;
 	right: 30px;
+}
+
+.popup {
+    position: relative;
+    margin: 20px auto;
+    padding: 20px;
+    width: auto;
+    max-width: 600px;
+	background: #fff;
+}
+.popupTitle {
+	margin-bottom: 20px;
+	font-size: 24px;
+	font-weight: 600;
 }

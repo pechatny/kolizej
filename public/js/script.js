@@ -10,6 +10,17 @@ $(function () {
 	function priceFormat (a) {
 		return String(a).replace(/(\d{1,3}(?=(\d{3})+(?:\.\d|\b)))/g,"\$1 ")
 	}
+	function openPopup (text, title) {
+		$.magnificPopup.open({
+			items: {
+				src: '<div class="popup">\
+					'+ (title != undefined ? '<div class="popupTitle">'+ title +'</div>' : '') +'\
+					'+ text +'\
+				</div>',
+				type: 'inline'
+			}
+		});
+	}
 	function genDec (n) {
 		var cases = [ '', 'а', 'ов' ],
 		n = n % 100;
@@ -32,11 +43,6 @@ $(function () {
 			$('.cart .msg').html(html.replace('товар', 'товар'+ genDec(count)));
 		}
 	}
-	for(i = 0; i < 1000; i++) {
-		var count = i,
-			dec = '';
-		data += count + ' товар'.replace('товар', 'товар'+ genDec(count));
-	}
 	cartDeclension();
 
 	$('.price').each(function () {
@@ -45,6 +51,7 @@ $(function () {
 	if(!$('.cart .layer').hasClass('empty')) {
 		$('.cart .msg b').html(priceFormat($('.cart .msg b').html()));
 	}
+
 	// Фильтр в каталоге
 	if($('.filter').length > 0) {
 		function filter () {
@@ -60,6 +67,9 @@ $(function () {
 				category : category
 			}, function(data) {
 				$('#products').html(data);
+				$('.price').each(function () {
+					$(this).html(priceFormat($(this).html()));
+				});
 			});
 		}
 		var slider = Array(),
@@ -202,7 +212,7 @@ $(function () {
 	}
 	$('.cartList .delete span').click(function () {
         $.post('/cart/delete', {
-            id   : $(this).parent().parent().parent().attr('data-id')
+            id: $(this).parent().parent().parent().attr('data-id')
         }, function(data) {
             cartUpdate(data);
         });
@@ -235,7 +245,14 @@ $(function () {
 			'lift'     : lift,
 			'stage'    : stage
 		}, function(data) {
-			//
+			if(data.success == true) {
+				openPopup('Номер заказа: <b>'+ data.number +'</b>', 'Ваш заказ оформлен');
+				$('.cartOrder input[type=text], .cartOrder textarea').val('');
+			}
+			else {
+				openPopup('<p><b>Ошибка оформления заказа</b></p>\
+				<p>Попробуйте повторить попытку позже или позвонить нам в офис <a href="tel:+74959797858" class="right">+7 (495) 979-78-58</a>', 'Ваш заказ не оформлен');
+			}
 		});
 		return false;
 	});
@@ -422,7 +439,14 @@ $(function () {
 			}
 		});
 		$.post('/feedback', data, function(data) {
-			//
+			if(data.success == true) {
+				openPopup('Номер обращения: <b>'+ data.number +'</b>', 'Ваше обращение успешно отправлено');
+				$('.feedback input[type=text], .feedback textarea').val('');
+			}
+			else {
+				openPopup('<p><b>Ошибка отправки</b></p>\
+					<p>Попробуйте повторить попытку позже или позвонить нам в офис <a href="tel:+74959797858" class="right">+7 (495) 979-78-58</a>', 'Ваше обращение не отправлено');
+			}
 		});
 		return false;
 	});

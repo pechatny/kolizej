@@ -9,7 +9,7 @@
 
    	<div class="row">
             @if($products)
-                @include('include.productsList');
+                @include('include.productsList')
             @endif
    		<div class="clear"></div>
    	</div>
