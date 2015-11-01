@@ -72,12 +72,12 @@ h1 {
 }
 .index-page h1 {
 	margin-bottom: 16px;
-	font-weight: bold;
+	font-weight: 600;
 	font-size: 28px;
 	color:#fc8e47;
 }
 .index-page h2 {
-	font-weight:bold;
+	font-weight:600;
 }
 .button {
 	padding:6px 8px 8px;
@@ -312,7 +312,7 @@ header {
 	display: block;
 	float: left;
 	margin-bottom: 10px;
-	font-weight: bold;
+	font-weight: 600;
 	text-transform: uppercase;
 }
 .cart .empty .title {
@@ -992,7 +992,7 @@ footer .copyright a:hover {
 	display: block;
 	font-size: 18px;
 	line-height: 1;
-	font-weight: bold;
+	font-weight: 600;
 }
 .menu .category a {
 	position: relative;

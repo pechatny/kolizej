@@ -21,10 +21,10 @@
                         <div class="row">
                             <div class="col Photo">
                                 <div class="image">
-                                    <a href="/img/product/big/{{$item['product']->images[0]}}">
+                                    <a href="/catalog/product/{{$item['product']->id}}">
                                         {!! HTML::image("img/product/medium/".$item['product']->images[0]) !!}
                                     </a>
-                                    <a href="/img/product/big/{{$item['product']->images[0]}}" class="view-big"></a>
+                                    <a href="/img/product/original/{{$item['product']->images[0]}}" class="view-big"></a>
                                 </div>
                             </div>
                             <div class="col Name vertical">

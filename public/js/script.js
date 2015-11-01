@@ -10,8 +10,43 @@ $(function () {
 	function priceFormat (a) {
 		return String(a).replace(/(\d{1,3}(?=(\d{3})+(?:\.\d|\b)))/g,"\$1 ")
 	}
+	function genDec (n) {
+		var cases = [ '', 'а', 'ов' ],
+		n = n % 100;
+		n1 = n % 10;
+		if (n > 10 && n < 20) 
+			return cases[2];
+		if (n1 > 1 && n1 < 5) 
+			return cases[1];
+		if (n1 == 1) 
+			return cases[0];
+		return cases[2];
+	}
+	function cartDeclension () {
+		if(!$('.cart .layer').hasClass('empty')) {
+			var html = $('.cart .msg').html(),
+				count = Number(html.replace(/^[\s]*([0-9+]) товар[\s]+.*/g, '$1')),
+				cases = [ '', 'а', 'ов' ];
+			c100 = count % 100;
+			c10 = count % 10;
+			$('.cart .msg').html(html.replace('товар', 'товар'+ genDec(count)));
+		}
+	}
+	for(i = 0; i < 1000; i++) {
+		var count = i,
+			dec = '';
+		data += count + ' товар'.replace('товар', 'товар'+ genDec(count));
+	}
+	cartDeclension();
+
+	$('.price').each(function () {
+		$(this).html(priceFormat($(this).html()));
+	});
+	if(!$('.cart .layer').hasClass('empty')) {
+		$('.cart .msg b').html(priceFormat($('.cart .msg b').html()));
+	}
+	// Фильтр в каталоге
 	if($('.filter').length > 0) {
-		// Фильтр в каталоге
 		function filter () {
 			var category = $('.menu .category .active a').attr('data'),
 				params = {};
@@ -109,9 +144,8 @@ $(function () {
 		});
 	}
 
-	// Корзина
+	// Корзина - страница
 	function calculate () {
-		// Стоимость мебели
 		var s = 0,
 			price,
 			count,
@@ -149,11 +183,12 @@ $(function () {
 			}
 		}
 		else {
-			msg = count +' товара <b>'+ priceFormat(sum) +' руб.</b>';
+			msg = count +' товар <b>'+ priceFormat(sum) +' руб.</b>';
 			$('.cart .layer').removeClass('empty');
 		}
 		$('.cart .msg').html(msg);
 		$('.cart .button').attr('href', href).text(text);
+		cartDeclension();
 	}
 	if($('.cartList').length > 0) {
 		$('.cartList .vertical').each(function () {
@@ -187,7 +222,25 @@ $(function () {
 	$('.cartList .counter input').keyup(function () {
 		calculate();
 	});
+	$('.cartOrder form').submit(function () {
+		var form = $(this).serialize(),
+			city = $('.calcDelivery .select:eq(0) .selected').text(),
+			distance = (city == 'Другой адрес' ? Number($('#mkad').find('input').val()) : -1),
+			lift = $('.calcDelivery .select:eq(1) .selected').text(),
+			stage = (lift == 'Вручную' ? Number($('#handup').find('input').val()) : -1);
+		$.post('/cart/order', {
+			'form'     : form,
+			'city'     : city,
+			'distance' : distance,
+			'lift'     : lift,
+			'stage'    : stage
+		}, function(data) {
+			//
+		});
+		return false;
+	});
 
+	// Модальные окна
 	$('.sertificates').magnificPopup({
 		delegate: 'a',
 		type: 'image',
@@ -225,6 +278,7 @@ $(function () {
 		$(this).val(v ? v : 1);
 	});
 
+	// Изменение цвета
 	$('.color .label').click(function () {
 		var obj = $(this).parent();
 		if(!obj.hasClass('active')) {
@@ -233,7 +287,7 @@ $(function () {
 		}
 	});
 
-	// Просмотр товара
+	// Просмотр товара - страница
 	function viewBig (src) {
 		var sp = 300;
 		$('.productView .big').children('img').fadeOut(sp / 2, function () {
@@ -330,6 +384,7 @@ $(function () {
 		});
 	});
 
+	// Свои селекты
 	$('.select .item').click(function () {
 		if(!$(this).hasClass('selected')) {
 			$(this).parent().children('.item').removeClass('selected');
@@ -347,25 +402,7 @@ $(function () {
 		}
 	});
 
-	// Корзина
-	$('.cartOrder form').submit(function () {
-		var form = $(this).serialize(),
-			city = $('.calcDelivery .select:eq(0) .selected').text(),
-			distance = (city == 'Другой адрес' ? Number($('#mkad').find('input').val()) : -1),
-			lift = $('.calcDelivery .select:eq(1) .selected').text(),
-			stage = (lift == 'Вручную' ? Number($('#handup').find('input').val()) : -1);
-		$.post('/cart/order', {
-			'form'     : form,
-			'city'     : city,
-			'distance' : distance,
-			'lift'     : lift,
-			'stage'    : stage
-		}, function(data) {
-			//
-		});
-		return false;
-	});
-
+	// placeholder для текстовой области
 	$('textarea').focus(function () { 
 		if(this.value == 'Текст обращения') { 
 			this.value = ''; 
