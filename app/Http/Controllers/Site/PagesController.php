@@ -66,10 +66,12 @@ class PagesController extends Controller
         $smallCart = $this->smallCart();
 
 
-        if($request->val){
+        if($request->has('val')){
             $products = Product::where('name', 'like', "%$request->val%")->orWhere('text', 'like', "%$request->val%")->get();
+            $val = $request->get('val');
         }
         else{
+            $val = '';
             $products = [];
         }
         return view('site.search', [
@@ -80,7 +82,8 @@ class PagesController extends Controller
             'products' => $products,
             'count' => $smallCart['count'],
             'sum' => $smallCart['sum'],
-            'indexFlag' => true
+            'indexFlag' => true,
+            'search' => $val
         ]);
 
     }

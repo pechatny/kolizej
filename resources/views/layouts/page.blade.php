@@ -28,7 +28,11 @@
 <body class="{{$page->key or ''}}-page">
 @include('include.header')
 <section>
-
+<h1>{{$page->title or ''}}</h1>
+<div class="breadcrumbs">
+    <a href="/">Главная</a>
+    <span></span><a href="{{$page->key}}">{{$page->title}}</a>
+</div>
     @yield('content')
 
 @if($page->key == 'contacts')
@@ -100,7 +104,7 @@
                     <div class="clear"></div>
                 </div>
                 <form action="/search" class="search">
-                    <input type="text" placeholder="Поиск . . ." class="right">
+                    <input type="text" placeholder="Поиск . . ." class="right" value="{{$search or ''}}">
                     <input type="submit" value="">
                     <div class="clear"></div>
                 </form>

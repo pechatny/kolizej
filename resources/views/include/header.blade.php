@@ -19,7 +19,7 @@
                 </div>
                 <div class="clear"></div>
                 <form action="/search" class="search">
-                    <input name="val" type="text" placeholder="Поиск . . ." class="right">
+                    <input name="val" type="text" placeholder="Поиск . . ." class="right" value="{{$search or ''}}">
                     <input type="submit" value="">
                     <div class="clear"></div>
                 </form>
