@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Models\Category;
 use App\Models\Menu;
+use App\Models\Page;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -14,7 +15,7 @@ class IndexController extends Controller
 {
     public function index($page = '')
     {
-        $title = Menu::where('key', $page)->value('name');
+//        $title = Menu::where('key', $page)->value('name');
         $categories = Category::all();
         $menuHtml = $this->menuHtml($page);
 
@@ -31,15 +32,18 @@ class IndexController extends Controller
         $menuItems = Menu::all();
         $products = Product::with('category')->orderBy('views', 'desc')->take(8)->get();
         $bottomMenuHtml = view('bottom', ['menuItems' => $menuItems])->render();
+
+        $page = Page::where('key', 'index')->first();
         return view('index', [
             'menuHtml' => $menuHtml,
             'menuBottomHtml' => $bottomMenuHtml,
-            'title' => $title,
+//            'title' => $title,
             'categories' => $categories,
             'count' => $count,
             'sum' => $sum,
             'products' => $products,
-            'indexFlag' => true
+            'indexFlag' => true,
+            'page' => $page
         ]);
     }
 }

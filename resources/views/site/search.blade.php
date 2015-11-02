@@ -2,7 +2,7 @@
 @section('content')
    <div class="container">
    	<form action="/search" class="search page">
-   		<input name="val"  type="text" placeholder="Поиск" value="">
+   		<input name="val"  type="text" placeholder="Поиск" value="{{$search or ''}}">
    		<input type="submit" value="">
    		<div class="clear"></div>
    	</form>
