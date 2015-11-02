@@ -29,7 +29,7 @@
 @include('include.header')
 <section>
     <div class="container">
-        <h1>Каталог</h1>
+        <h1>{{$page->title}}</h1>
         <div class="breadcrumbs">
             <a href="/">Главная</a>
             @if(isset($currentCategory) and !isset($product))
