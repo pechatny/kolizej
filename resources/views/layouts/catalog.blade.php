@@ -32,10 +32,9 @@
         <h1>Каталог</h1>
         <div class="breadcrumbs">
             <a href="/">Главная</a>
-            <span></span><a href="/catalog">Каталог</a>
-            {{--@if(isset($product))--}}
-                {{--<span></span><a href="/catalog/product/{{$product->id}}">{{$product->name}}</a>--}}
-            {{--@endif--}}
+            @if(isset($product))
+                <span></span><a href="/catalog">Каталог</a>
+            @endif
         </div>
     </div>
 

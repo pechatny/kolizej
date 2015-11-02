@@ -31,7 +31,7 @@
 <h1>{{$page->title or ''}}</h1>
 <div class="breadcrumbs">
     <a href="/">Главная</a>
-    <span></span><a href="{{$page->key}}">{{$page->title}}</a>
+    {{--<span></span><a href="{{$page->key}}">{{$page->title}}</a>--}}
 </div>
     @yield('content')
 
