@@ -45,7 +45,11 @@
                                 <div class="color">
                                     <div class="choose">
                                         @foreach($item['product']->color as $color)
-                                             <div class="item" data-id="{{$color->id}}">
+                                                @if($color->id == $item['color'])
+                                                    <div class="item active" data-id="{{$color->id}}">
+                                                @else
+                                                    <div class="item" data-id="{{$color->id}}">
+                                                @endif
                                                  <a href="/{{$color->image}}" class="preview" title="{{$color->name}}">
                                                      {!! HTML::image($color->image, '', array('height' => '31')) !!}
                                                  </a>
