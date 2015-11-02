@@ -24,7 +24,7 @@
                             <a href="/admin/" class="toAdmin">Консоль</a>
                             <a href="/" class="toSite" target="_blank">На сайт</a>
                             <a href="http://cloudia.innoday.net/phpmyadmin2/" class="toMySQL" target="_blank">MySQL</a>
-                            <a href="./" class="exit">Выход</a>
+                            <a href="/logout" class="exit">Выход</a>
                         </div>
                         <div class="clear"></div>
                     </div>
