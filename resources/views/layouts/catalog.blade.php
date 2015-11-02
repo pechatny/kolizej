@@ -25,7 +25,7 @@
     <script type="text/javascript" src="/js/magnific-popup.min.js"></script>
     {!! HTML::script('js/script.js') !!}
 </head>
-<body class="{{$page}}-page">
+<body class="{{$page->key}}-page">
 @include('include.header')
 <section>
     <div class="container">
@@ -34,6 +34,7 @@
             <a href="/">Главная</a>
             @if(isset($product))
                 <span></span><a href="/catalog">Каталог</a>
+                <span></span><a href="/catalog/{{$product->category->key}}">{{$product->category->name}}</a>
             @endif
         </div>
     </div>

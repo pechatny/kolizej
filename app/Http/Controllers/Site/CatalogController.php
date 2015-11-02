@@ -98,7 +98,7 @@ class CatalogController extends Controller
         $smallCart = $this->smallCart();
 
         $cartItem = $this->cartItem($product->id);
-        
+
         $page = $product;
         $page->title = $product->name;
         return view('site.product', [
