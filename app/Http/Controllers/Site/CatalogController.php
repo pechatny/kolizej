@@ -87,7 +87,7 @@ class CatalogController extends Controller
 
         $menuItems = Menu::all();
         $bottomMenuHtml = view('bottom', ['menuItems' => $menuItems])->render();
-        $page = Page::where('key', $page)->first();
+        $pageInfo = Page::where('key', $page)->first();
         $categories = Category::all();
 
         $product = Product::with(['category', 'color'])->find($id);
@@ -98,7 +98,9 @@ class CatalogController extends Controller
         $smallCart = $this->smallCart();
 
         $cartItem = $this->cartItem($product->id);
-
+        
+        $page = $product;
+        $page->title = $product->name;
         return view('site.product', [
             'menuHtml' => $menuHtml,
             'menuBottomHtml' => $bottomMenuHtml,
