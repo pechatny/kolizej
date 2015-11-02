@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Classes\Cart;
 use App\Models\Category;
 use App\Models\Menu;
+use App\Models\Order;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -121,7 +122,11 @@ class CartController extends Controller
 
         $email = Config::get('mail.from')['address'];
 
-        mail($email, 'Новый заказ', $text);
-        return ['success' => true];
+        $order = new Order();
+        $order->save();
+        $number = $order->id;
+
+        mail($email, "Заказ №$number", $text);
+        return ['success' => true, 'number' => $number];
     }
 }
