@@ -72,12 +72,12 @@ h1 {
 }
 .index-page h1 {
 	margin-bottom: 16px;
-	font-weight: bold;
+	font-weight: 600;
 	font-size: 28px;
 	color:#fc8e47;
 }
 .index-page h2 {
-	font-weight:bold;
+	font-weight:600;
 }
 .button {
 	padding:6px 8px 8px;
@@ -293,6 +293,10 @@ header {
 	width: 42px;
 	height: 42px;
 	background-image: url(/img/ico/search30.png);
+	background-position: 50% 7px;
+}
+.search.page input[type=submit]:hover {
+	background-position: 50% -43px;
 }
 .cart {
 	margin-bottom: 15px;
@@ -312,7 +316,7 @@ header {
 	display: block;
 	float: left;
 	margin-bottom: 10px;
-	font-weight: bold;
+	font-weight: 600;
 	text-transform: uppercase;
 }
 .cart .empty .title {
@@ -480,9 +484,13 @@ section {
 .product:hover {
 	border-color: #ff8130;
 }
+.product .image {
+	display: block;
+	height: 230px;
+}
 .product img {
 	display: block;
-	width: 100%;
+	margin: 0 auto;
 	-webkit-border-radius: 3px 3px 0 0; 
 	-moz-border-radius: 3px 3px 0 0; 
 	border-radius: 3px 3px 0 0;
@@ -511,6 +519,9 @@ section {
 	position: relative;
 	font-weight: 400;
 	color: #6fa9ff;
+}
+b.price {
+	font-weight: 600;
 }
 .product .price {
 	top: -1px;
@@ -992,7 +1003,7 @@ footer .copyright a:hover {
 	display: block;
 	font-size: 18px;
 	line-height: 1;
-	font-weight: bold;
+	font-weight: 600;
 }
 .menu .category a {
 	position: relative;
@@ -1146,11 +1157,11 @@ footer .copyright a:hover {
 }
 .productView img {
 	display: block;
-	width: 100%;
+	margin: 0 auto;
+	max-width: 100%;
 }
 .productView .big {
 	position: relative;
-	height: 349px;
 	overflow: hidden;
 }
 .productView.onlyone .big {
@@ -1203,8 +1214,10 @@ footer .copyright a:hover {
 }
 .productView .block {
 	float: left;
+	overflow: hidden;
 	padding: 0 7px;
 	width: 124px;
+	height: 82px;
 	opacity: .7;
 	transition-duration: 0.5s;
     transition-property: opacity;
@@ -1561,17 +1574,17 @@ footer .copyright a:hover {
 	border-bottom: 1px solid #b5b5b5;
 }
 .cartList .Photo img {
-	display: block;
-	width: 100%;
-	max-width: 216px;
-	-webkit-border-radius: 4px; 
-	-moz-border-radius: 4px; 
-	border-radius: 4px; 
+	margin: 0 auto;
+	display: block; 
 }
 .cartList .image {
 	position: relative;
+	overflow: hidden;
 	min-width: 35px;
 	min-height: 35px;
+	-webkit-border-radius: 4px; 
+	-moz-border-radius: 4px; 
+	border-radius: 4px;
 }
 .cartList .image .view-big {
 	left: 50%;
@@ -1584,6 +1597,29 @@ footer .copyright a:hover {
 .vertical .children {
 	display: table-cell;
 	vertical-align: middle;
+}
+.cartList .title {
+	position: relative;
+}
+.cartList .config {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	margin-top: 9px;
+	color: #939393;
+	font-weight: 300;
+	font-size: 12px;
+	line-height: 1;
+}
+.cartList .config span {
+	display: none;
+	color: #636363;
+	text-decoration: underline;
+	cursor: pointer;
+	text-transform: uppercase;
+}
+.cartList .config .active {
+	display: inline;
 }
 .cartList .price {
 	display: inline;
@@ -1729,6 +1765,9 @@ footer .copyright a:hover {
 	border: 1px solid #e4e4e4;
 	cursor: pointer;
 	z-index: 100;
+	transition-duration: 0.3s;
+    transition-property: color, border-color;
+    transition-timing-function: ease;
 }
 .select .first {
 	-webkit-border-radius: 2px 0 0 2px; 
@@ -1751,7 +1790,7 @@ footer .copyright a:hover {
 	position: relative;
 	float: left;
 	padding: 0 15px;
-	width: 17%;
+	width: 20%;
 	min-height: 1px;
 }
 .priceDelivery .block {
@@ -1759,12 +1798,20 @@ footer .copyright a:hover {
 }
 .priceDelivery .Name {
 	padding-top: 3px;
-	width: 32%;
+	width: 40%;
 	font-size: 14px;
 }
 .priceDelivery span {
 	padding-right: 29px;
 	background: url(/img/ico/rub.png) 100% -122px no-repeat;
+}
+.priceDelivery span.free {
+	background: none;
+}
+.priceDelivery .delivery {
+	color: #b5b5b5;
+	border-bottom-color: #dbdbdb;
+	font-weight: bold;
 }
 .priceDelivery .total {
 	margin-bottom: 25px;
@@ -1790,6 +1837,7 @@ footer .copyright a:hover {
 }
 .priceDelivery .total span {
 	padding-right: 31px;
+	color: #393939;
 	background-position:100% -144px;
 }
 .totalPrice {
@@ -1819,4 +1867,18 @@ footer .copyright a:hover {
 .totalPrice b:after {
 	top: 6px;
 	right: 30px;
+}
+
+.popup {
+    position: relative;
+    margin: 20px auto;
+    padding: 20px;
+    width: auto;
+    max-width: 600px;
+	background: #fff;
+}
+.popupTitle {
+	margin-bottom: 20px;
+	font-size: 24px;
+	font-weight: 600;
 }

@@ -7,7 +7,7 @@
                     <div class="title">Категории мебели</div>
                     <ul>
                         @foreach($categories as $category)
-                            <li><a href="{{$category->key}}" data="{{$category->id}}">{{$category->name}}</a></li>
+                            <li><a href="/catalog/{{$category->key}}" data="{{$category->id}}">{{$category->name}}</a></li>
                         @endforeach
                     </ul>
                 </div>

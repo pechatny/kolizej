@@ -5,7 +5,7 @@
                 <a href="/" class="img left">
                     <img src="/img/logo.png" alt="" class="left">
                 </a>
-                <a href="" class="text left">
+                <a href="/" class="text left">
                     <b>К<span>о</span>лизей</b>
                     <span>мебельное</span>
                     производство

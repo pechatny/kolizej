@@ -46,7 +46,7 @@ class Cart
         $sum = 0;
         if($this->items){
             foreach($this->items as $item){
-                $sum += $item['product']->delivery + $item['product']->lift + $item['product']->assembly;
+                $sum += $item['product']->lift + $item['product']->assembly;
             }
         }
 

@@ -58,21 +58,27 @@
         </div>
     </label>
     <label>
+        <div class="signature">Конфигурация</div>
+        <div class="field">
+            {!! Form::text('configuration', $item->configuration) !!}
+        </div>
+    </label>
+    <label>
         <div class="signature">Цена</div>
         <div class="field">
             {!! Form::text('price', $item->price) !!}
         </div>
     </label>
     <label>
-        <div class="signature">Доставка</div>
+        <div class="signature">Подъём на лифте</div>
         <div class="field">
-            {!! Form::text('delivery', $item->delivery ) !!}
+            {!! Form::text('lift', $item->lift ) !!}
         </div>
     </label>
     <label>
-        <div class="signature">Подъём</div>
+        <div class="signature">Подъём вручную</div>
         <div class="field">
-            {!! Form::text('lift', $item->lift ) !!}
+            {!! Form::text('lift_hand', $item->lift_hand ) !!}
         </div>
     </label>
     <label>
@@ -130,7 +136,7 @@
 
             @foreach($images as $image)
                 <div class="input_fields_wrap">
-                    {!! HTML::image('img/product/medium/'.$image, '', array('height' => '100')) !!}
+                    {!! HTML::image('img/product/product_card-w268/'.$image, '', array('height' => '100')) !!}
                     {!! Form::hidden('loadedImages[]', $image) !!}
                     <button class="remove_field">Удалить</button>
                 </div>

@@ -5,7 +5,7 @@
             <div class="col-xs-6">
                 <div class="productView island">
                     <div class="big">
-                        {!! HTML::image("img/product/big/".$product->images[0]) !!}
+                        {!! HTML::image("img/product/detail-w570/".$product->images[0]) !!}
                         <a href="/img/product/original/{{$product->images[0]}}"></a>
                     </div>
                     <div class="preview" data-pos="0">
@@ -14,14 +14,14 @@
                                 <div class="row">
                                     <div class="block active">
                                         <a href="/img/product/original/{{$product->images[0]}}">
-                                            {!! HTML::image("img/product/medium/".$product->images[0]) !!}
+                                            {!! HTML::image("img/product/gallery_preview-w108/".$product->images[0]) !!}
                                         </a>
                                     </div>
                                     @foreach($product->images as $key => $image)
                                         @if($key > 0)
                                             <div class="block">
                                                 <a href="/img/product/original/{{$image}}">
-                                                    {!! HTML::image("img/product/medium/".$image) !!}
+                                                    {!! HTML::image("img/product/gallery_preview-w108/".$image) !!}
                                                 </a>
                                             </div>
                                         @endif
@@ -57,11 +57,7 @@
                         <div class="color column">
                             <b class="title">Выбор цвета:</b>
                             @foreach($product->color as $color)
-                                @if($currentItem and $currentItem['color'] == $color->id)
-                                    <div class="item active" data-id="{{$color->id}}">
-                                @else
-                                    <div class="item" data-id="{{$color->id}}">
-                                @endif
+                                <div class="item{{ ($currentItem and $currentItem['color'] == $color->id) ? ' active' : '' }}" data-id="{{$color->id}}">
                                     <a href="/{{$color->image}}" class="preview" title="{{$color->name}}">
                                         {!! HTML::image($color->image, '', array('height' => '31')) !!}
                                     </a>
@@ -87,23 +83,17 @@
                                 </div>
                             </div>
                             <div class="clear"></div>
-
-                            <div class="config">
-                                <b class="title">Вариант исполнения:</b>
-                                <div class="select">
-                                    @if($currentItem and $currentItem['configuration'] == 'left')
-                                        <div class="item selected first" data-val="left">Левый</div>
-                                    @else
-                                        <div class="item first" data-val="left">Левый</div>
-                                    @endif
-                                    @if($currentItem and $currentItem['configuration'] == 'right')
-                                        <div class="item selected last" data-val="right">Правый</div>
-                                    @else
-                                        <div class="item last" data-val="right">Правый</div>
-                                    @endif
-                                    <div class="clear"></div>
+                            
+                            @if($product->configuration)
+                                <div class="config">
+                                    <b class="title">Вариант исполнения:</b>
+                                    <div class="select">
+                                        <div class="item first{{ (($currentItem and $currentItem['configuration'] == 'left') or !$currentItem['configuration']) ? ' selected' : '' }}" data-val="left">Левый</div>
+                                        <div class="item last{{ ($currentItem and $currentItem['configuration'] == 'right') ? ' selected' : '' }}" data-val="right">Правый</div>
+                                        <div class="clear"></div>
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
 
                             <div class="articul">
                                 Артикул:
@@ -121,13 +111,13 @@
             @foreach( $recommended as $product)
                 <div class="col-xs-3">
                     <div class="product">
-                        <a href="/catalog/product/{{$product->id}}">
-                            {!! HTML::image("img/product/medium/".$product->images[0]) !!}
+                        <a href="/catalog/product/{{$product->id}}" class="image">
+                            {!! HTML::image("img/product/product_card-w268/".$product->images[0]) !!}
                         </a>
                         <div class="layer">
-                            <a href="" class="category">{{$product->category->name}}</a>
+                            <a href="/catalog/{{$product->category->key}}" class="category">{{$product->category->name}}</a>
                             <div class="title">
-                                <a href="">{{$product->name}}</a>
+                                <a href="/catalog/product/{{$product->id}}">{{$product->name}}</a>
                                 <div class="price">{{$product->price}}</div>
                             </div>
                             <div class="params">

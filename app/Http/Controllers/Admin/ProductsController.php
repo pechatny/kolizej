@@ -92,6 +92,7 @@ class ProductsController extends Controller
         $item->category_id = $request->category_id;
 
         $item->text = $request->text;
+        $item->configuration = $request->configuration;
         $item->article = $request->article;
         $item->price = $request->price;
         $item->width = $request->width;
@@ -102,8 +103,8 @@ class ProductsController extends Controller
         $item->stock = $request->has('stock') ? 1 : 0;
         $item->params = $request->params;
         $item->lift = $request->lift;
+        $item->lift_hand = $request->lift_hand;
         $item->assembly = $request->assembly;
-        $item->delivery = $request->delivery;
 
         $images = $request->images;
 
@@ -224,6 +225,7 @@ class ProductsController extends Controller
         $item->keywords = $request->keywords;
         $item->description = $request->description;
         $item->text = $request->text;
+        $item->configuration = $request->configuration;
         $item->category_id = $request->category_id;
         $item->article = $request->article;
         $item->price = $request->price;
@@ -235,8 +237,8 @@ class ProductsController extends Controller
         $item->stock = $request->has('stock') ? 1 : 0;
         $item->params = $request->params;
         $item->lift = $request->lift;
+        $item->lift_hand = $request->lift_hand;
         $item->assembly = $request->assembly;
-        $item->delivery = $request->delivery;
 
         $images = $request->images;
         $loadedImages = $request->loadedImages;
@@ -314,26 +316,43 @@ class ProductsController extends Controller
 
     public function deleteImages($imageName){
         File::delete('img/product/original/'.$imageName);
-        File::delete('img/product/medium/'.$imageName);
-        File::delete('img/product/small/'.$imageName);
-        File::delete('img/product/big/'.$imageName);
+        File::delete('img/product/detail-w570/'.$imageName);
+        File::delete('img/product/product_card-w268/'.$imageName);
+        File::delete('img/product/cart-w216/'.$imageName);
+        File::delete('img/product/gallery_preview-w108/'.$imageName);
     }
 
     public function saveImages($image){
-        $filename  = time() + rand(1,1000) . '.' . $image->getClientOriginalExtension();//Имя файла
-        $path = 'img/product/original/' . $filename;//Путь файла
+        $filename  = time() + rand(1,1000) . '.' . $image->getClientOriginalExtension();
+        $path = 'img/product/original/' . $filename;
         Image::make($image->getRealPath())->save($path);
 
-        $path = 'img/product/big/' . $filename;//Путь файла
-        Image::make($image->getRealPath())->resize(570, null, function ($constraint) {
-            $constraint->aspectRatio();
+        $path = 'img/product/detail-w570/' . $filename;
+        Image::make($image->getRealPath())->widen(570, function ($constraint) {
+            $constraint->upsize();
         })->save($path);
 
-        $path = 'img/product/medium/' . $filename;//Путь файла
-        Image::make($image->getRealPath())->resize(216, 156)->save($path);
+        $path = 'img/product/product_card-w268/' . $filename;
+        if(Image::make($image->getRealPath())->width() > Image::make($image->getRealPath())->height()) {
+            Image::make($image->getRealPath())->widen(268, function ($constraint) {
+                $constraint->upsize();
+            })->save($path);
+        }
+        else {
+            Image::make($image->getRealPath())->heighten(230, function ($constraint) {
+                $constraint->upsize();
+            })->save($path);
+        }
 
-        $path = 'img/product/small/' . $filename;//Путь файла
-        Image::make($image->getRealPath())->resize(108, 78)->save($path);
+        $path = 'img/product/cart-w216/' . $filename;
+        Image::make($image->getRealPath())->heighten(156, function ($constraint) {
+            $constraint->upsize();
+        })->save($path);
+
+        $path = 'img/product/gallery_preview-w108/' . $filename;
+        Image::make($image->getRealPath())->widen(108, function ($constraint) {
+            $constraint->upsize();
+        })->save($path);
 
         return $filename;
     }

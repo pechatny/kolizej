@@ -5,7 +5,7 @@
             <div class="clear"></div>
 
             <div class="msg">
-                {{$count}} товара
+                {{$count}} товар
                 <b>{{$sum}} руб.</b>
             </div>
 

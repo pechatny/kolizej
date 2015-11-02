@@ -6,7 +6,7 @@
     <title>{{$page->title}}</title>
     <meta name="description" content="{{$page->description}}">
     <meta name="keywords" content="{{$page->keywords}}">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600, 700&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
     <link href="/css/reset.css" rel="stylesheet" type="text/css">
     <link href="/css/grid.css" rel="stylesheet" type="text/css">
     <link href="/css/magnific-popup.css" rel="stylesheet" type="text/css">
@@ -99,7 +99,7 @@
                     <a href="tel:+79161234455" class="right">+7 (916) 123-44-55</a>
                     <div class="clear"></div>
                 </div>
-                <form action="#" class="search">
+                <form action="/search" class="search">
                     <input type="text" placeholder="Поиск . . ." class="right">
                     <input type="submit" value="">
                     <div class="clear"></div>

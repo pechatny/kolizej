@@ -6,7 +6,7 @@
     <title>{{$title}}</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600, 700&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
     <link href="/css/reset.css" rel="stylesheet" type="text/css">
     <link href="/css/grid.css" rel="stylesheet" type="text/css">
     <link href="/css/magnific-popup.css" rel="stylesheet" type="text/css">
@@ -31,8 +31,8 @@
     <div class="container">
         <h1>Каталог</h1>
         <div class="breadcrumbs">
-            <a href="/">главная</a>';
-            <span></span><a href="/catalog">Каталог'</a>'
+            <a href="/">главная</a>
+            <span></span><a href="/catalog">Каталог</a>
         </div>
     </div>
 
