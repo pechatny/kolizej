@@ -302,42 +302,39 @@ $(function () {
 		});
 	});
 	$('.cartList .config span').click(function () {
-		$('.cartList .config span').toggleClass('active');
-		/*
+		$(this).parent().children('span').toggleClass('active');
 		var block = $(this).parent().parent().parent().parent().parent().parent(),
 			count = block.find('.counter').children('input').val(),
-			color = false,
-			config = 'left';
-		debug(count);
-		/*$.post('/cart/add', {
+			color = block.find('.color').find('.item.active').attr('data-id'),
+			config = block.find('.config').children('.active').attr('data-val');
+		$.post('/cart/add', {
 			id     : block.attr('data-id'),
 			count  : count,
 			color  : color,
 			config : config
 		}, function(data) {
 			cartUpdate(data);
-		});*/
+		});
 	});
 	if($('.cartList').length) {
 		calculate();
 	}
-	$('.cartList .manage span').click(function () {
-		var id = $(this).parent().parent().parent().parent().parent().attr('data-id'),
-			count = $(this).parent().parent().children('input').val();
-		$('.priceDelivery .block[data-id='+ id +']').attr('data-quantity', count);
-		/*
-		//доделать!!
-		var count = Number($(this).parent().find('input').val()),
-			color = false,
+	$('.cartList .counter span').click(function () {
+		var block = $(this).parent().parent().parent().parent().parent(),
+			id = block.attr('data-id'),
+			count = $(this).parent().parent().children('input').val(),
+			color = block.find('.color').find('.item.active').attr('data-id'),
 			config = 'left';
-		if($('.productInfo').length) {
-			color = $('.color .item.active').attr('data-id');
-			config = $('.config .item.selected').attr('data-val');
+		if(block.find('.config').length) {
+			config = block.find('.config').children('.active').attr('data-val');
 		}
-		*/
+		$('.priceDelivery .block[data-id='+ id +']').attr('data-quantity', count);
+		debug(config);
 		$.post('/cart/add', {
 			id     : id,
-			count  : count
+			count  : count,
+			color  : color,
+			config : config
 		}, function(data) {
 			cartUpdate(data);
 		});
