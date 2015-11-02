@@ -955,6 +955,7 @@ footer .copyright a:hover {
 	font-size: 0;
 	line-height: 1;
 	text-align: center;
+	text-transform: lowercase;
 }
 .breadcrumbs a {
 	display: inline-block;
