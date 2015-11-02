@@ -32,9 +32,14 @@
         <h1>Каталог</h1>
         <div class="breadcrumbs">
             <a href="/">Главная</a>
+            @if(isset($currentCategory) and !isset($product))
+                <span></span><a href="/catalog">Каталог</a>
+            @endif
             @if(isset($product))
                 <span></span><a href="/catalog">Каталог</a>
-                <span></span><a href="/catalog/{{$product->category->key}}">{{$product->category->name}}</a>
+                @if(!isset($currentCategory))
+                    <span></span><a href="/catalog/{{$product->category->key}}">{{$product->category->name}}</a>
+                @endif
             @endif
         </div>
     </div>

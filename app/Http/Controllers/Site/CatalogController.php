@@ -65,6 +65,7 @@ class CatalogController extends Controller
 
         $smallCart = $this->smallCart();
 
+        $currentCategory = Category::where('key', $category)->first();
         return view('site.catalog', [
             'menuHtml' => $menuHtml,
             'menuBottomHtml' => $bottomMenuHtml,
@@ -74,7 +75,8 @@ class CatalogController extends Controller
             'categories' => $categories,
             'params' => $this->params(),
             'count' => $smallCart['count'],
-            'sum' => $smallCart['sum']
+            'sum' => $smallCart['sum'],
+            'currentCategory' => $currentCategory
         ]);
     }
 
