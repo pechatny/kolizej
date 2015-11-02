@@ -31,7 +31,7 @@
     <div class="container">
         <h1>Каталог</h1>
         <div class="breadcrumbs">
-            <a href="/">главная</a>
+            <a href="/">Главная</a>
             <span></span><a href="/catalog">Каталог</a>
         </div>
     </div>
