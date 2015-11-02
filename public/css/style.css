@@ -1598,6 +1598,29 @@ footer .copyright a:hover {
 	display: table-cell;
 	vertical-align: middle;
 }
+.cartList .title {
+	position: relative;
+}
+.cartList .config {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	margin-top: 9px;
+	color: #939393;
+	font-weight: 300;
+	font-size: 12px;
+	line-height: 1;
+}
+.cartList .config span {
+	display: none;
+	color: #636363;
+	text-decoration: underline;
+	cursor: pointer;
+	text-transform: uppercase;
+}
+.cartList .config .active {
+	display: inline;
+}
 .cartList .price {
 	display: inline;
 	padding-right: 16px;

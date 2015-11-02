@@ -29,14 +29,23 @@
                             </div>
                             <div class="col Name vertical">
                                 <div class="children">
-                                    <a href="/catalog/product/{{$item['product']->id}}" target="_blank">{{$item['product']->name}}</a>
+                                    <div class="title">
+                                        <a href="/catalog/product/{{$item['product']->id}}" target="_blank">{{$item['product']->name}}</a>
+                                        @if($item['product']->configuration)
+                                            <div class="config">
+                                                Конфигурация:
+                                                <span data-val="left"{!! $item['configuration'] == 'left' ? ' class="active"' : '' !!}>левая</span>
+                                                <span data-val="right"{!! $item['configuration'] == 'right' ? ' class="active"' : '' !!}>правая</span>
+                                            </div>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                             <div class="col Color">
                                 <div class="color">
                                     <div class="choose">
                                         @foreach($item['product']->color as $color)
-                                             <div class="item">
+                                             <div class="item" data-id="{{$color->id}}">
                                                  <a href="/{{$color->image}}" class="preview" title="{{$color->name}}">
                                                      {!! HTML::image($color->image, '', array('height' => '31')) !!}
                                                  </a>

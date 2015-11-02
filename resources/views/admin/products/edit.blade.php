@@ -58,6 +58,12 @@
         </div>
     </label>
     <label>
+        <div class="signature">Конфигурация</div>
+        <div class="field">
+            {!! Form::text('configuration', $item->configuration) !!}
+        </div>
+    </label>
+    <label>
         <div class="signature">Цена</div>
         <div class="field">
             {!! Form::text('price', $item->price) !!}

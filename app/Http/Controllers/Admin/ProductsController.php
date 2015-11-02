@@ -92,6 +92,7 @@ class ProductsController extends Controller
         $item->category_id = $request->category_id;
 
         $item->text = $request->text;
+        $item->configuration = $request->configuration;
         $item->article = $request->article;
         $item->price = $request->price;
         $item->width = $request->width;
@@ -224,6 +225,7 @@ class ProductsController extends Controller
         $item->keywords = $request->keywords;
         $item->description = $request->description;
         $item->text = $request->text;
+        $item->configuration = $request->configuration;
         $item->category_id = $request->category_id;
         $item->article = $request->article;
         $item->price = $request->price;
@@ -347,7 +349,7 @@ class ProductsController extends Controller
             $constraint->upsize();
         })->save($path);
 
-        $path = 'img/product/gallery_preview-w108/' . $filename;//Путь файла
+        $path = 'img/product/gallery_preview-w108/' . $filename;
         Image::make($image->getRealPath())->widen(108, function ($constraint) {
             $constraint->upsize();
         })->save($path);
