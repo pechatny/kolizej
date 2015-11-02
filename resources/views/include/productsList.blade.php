@@ -1,5 +1,5 @@
 @foreach($products as $product)
-    @if($product->category)
+    @if($product && $product->category)
         @if(isset($indexFlag))
             <div class="col-xs-3">
         @else
