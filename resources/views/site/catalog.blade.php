@@ -7,7 +7,12 @@
                     <div class="title">Категории мебели</div>
                     <ul>
                         @foreach($categories as $category)
-                            <li><a href="/catalog/{{$category->key}}" data="{{$category->id}}">{{$category->name}}</a></li>
+                            @if(isset($currentCategory) && ($category->id == $currentCategory->id))
+                                <li class="active"><a href="/catalog/{{$category->key}}" data="{{$category->id}}">{{$category->name}}</a></li>
+                            @else
+                                <li><a href="/catalog/{{$category->key}}" data="{{$category->id}}">{{$category->name}}</a></li>
+                            @endif
+
                         @endforeach
                     </ul>
                 </div>
