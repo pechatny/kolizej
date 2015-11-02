@@ -7,8 +7,8 @@
         @endif
 
             <div class="product">
-                <a href="/catalog/product/{{$product->id}}">
-                    {!! HTML::image("img/product/medium/".$product->images[0]) !!}
+                <a href="/catalog/product/{{$product->id}}" class="image">
+                    {!! HTML::image("img/product/product_card-w268/".$product->images[0]) !!}
                 </a>
                 <div class="layer">
                     <a href="/catalog/{{$product->category->key}}" class="category">{{$product->category->name}}</a>

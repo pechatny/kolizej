@@ -57,15 +57,15 @@
         </div>
     </label>
     <label>
-        <div class="signature">Доставка</div>
+        <div class="signature">Подъём на лифте</div>
         <div class="field">
-            {!! Form::text('delivery', old( 'delivery' )) !!}
+            {!! Form::text('lift', old( 'lift' )) !!}
         </div>
     </label>
     <label>
-        <div class="signature">Подъём</div>
+        <div class="signature">Подъём вручную</div>
         <div class="field">
-            {!! Form::text('lift', old( 'lift' )) !!}
+            {!! Form::text('lift_hand', old( 'lift_hand' )) !!}
         </div>
     </label>
     <label>

@@ -5,7 +5,7 @@
             <div class="col-xs-6">
                 <div class="productView island">
                     <div class="big">
-                        {!! HTML::image("img/product/big/".$product->images[0]) !!}
+                        {!! HTML::image("img/product/detail-w570/".$product->images[0]) !!}
                         <a href="/img/product/original/{{$product->images[0]}}"></a>
                     </div>
                     <div class="preview" data-pos="0">
@@ -14,14 +14,14 @@
                                 <div class="row">
                                     <div class="block active">
                                         <a href="/img/product/original/{{$product->images[0]}}">
-                                            {!! HTML::image("img/product/medium/".$product->images[0]) !!}
+                                            {!! HTML::image("img/product/gallery_preview-w108/".$product->images[0]) !!}
                                         </a>
                                     </div>
                                     @foreach($product->images as $key => $image)
                                         @if($key > 0)
                                             <div class="block">
                                                 <a href="/img/product/original/{{$image}}">
-                                                    {!! HTML::image("img/product/medium/".$image) !!}
+                                                    {!! HTML::image("img/product/gallery_preview-w108/".$image) !!}
                                                 </a>
                                             </div>
                                         @endif
@@ -121,11 +121,11 @@
             @foreach( $recommended as $product)
                 <div class="col-xs-3">
                     <div class="product">
-                        <a href="/catalog/product/{{$product->id}}">
-                            {!! HTML::image("img/product/medium/".$product->images[0]) !!}
+                        <a href="/catalog/product/{{$product->id}}" class="image">
+                            {!! HTML::image("img/product/product_card-w268/".$product->images[0]) !!}
                         </a>
                         <div class="layer">
-                            <a href="" class="category">{{$product->category->name}}</a>
+                            <a href="/catalog/{{$product->category->key}}" class="category">{{$product->category->name}}</a>
                             <div class="title">
                                 <a href="">{{$product->name}}</a>
                                 <div class="price">{{$product->price}}</div>
