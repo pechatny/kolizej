@@ -157,6 +157,11 @@ textarea:focus {
 :-ms-input-placeholder {
 	color:#939393;
 }
+input[type=text].invalid,
+input[type=password].invalid,
+textarea.invalid {
+	border-color: #f00;
+}
 input[type=submit],
 button {
 	display: block;

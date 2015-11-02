@@ -351,28 +351,43 @@ $(function () {
 	});
 
 	$('.cartOrder form').submit(function () {
-		var form = $(this).serialize(),
-			city = $('.calcDelivery .select:eq(0) .selected').text(),
-			distance = (city == 'Другой адрес' ? Number($('#mkad').find('input').val()) : -1),
-			lift = $('.calcDelivery .select:eq(1) .selected').text(),
-			stage = (lift == 'Вручную' ? Number($('#handup').find('input').val()) : -1);
-		$.post('/cart/order', {
-			'form'     : form,
-			'city'     : city,
-			'distance' : distance,
-			'lift'     : lift,
-			'stage'    : stage
-		}, function(data) {
-			if(data.success == true) {
-				openPopup('Номер заказа: <b>'+ data.number +'</b>', 'Ваш заказ оформлен');
-				$('.cartOrder input[type=text], .cartOrder textarea').val('');
-			}
-			else {
-				openPopup('<p><b>Ошибка оформления заказа</b></p>\
-				<p>Попробуйте повторить попытку позже или позвонить нам в офис <a href="tel:+74959797858" class="right">+7 (495) 979-78-58</a>', 'Ваш заказ не оформлен');
+		var valid = 0;
+		$(this).find('input').each(function () {
+			if($(this).attr('name')) {
+				if($(this).val() == '') {
+					$(this).addClass('invalid');
+					valid++;
+				}
 			}
 		});
+		if(valid == 0) {
+			var form = $(this).serialize(),
+				city = $('.calcDelivery .select:eq(0) .selected').text(),
+				distance = (city == 'Другой адрес' ? Number($('#mkad').find('input').val()) : -1),
+				lift = $('.calcDelivery .select:eq(1) .selected').text(),
+				stage = (lift == 'Вручную' ? Number($('#handup').find('input').val()) : -1);
+			$.post('/cart/order', {
+				'form'     : form,
+				'city'     : city,
+				'distance' : distance,
+				'lift'     : lift,
+				'stage'    : stage
+			}, function(data) {
+				if(data.success == true) {
+					openPopup('Номер заказа: <b>'+ data.number +'</b>', 'Ваш заказ оформлен');
+					$('.cartOrder input[type=text], .cartOrder textarea').val('');
+				}
+				else {
+					openPopup('<p><b>Ошибка оформления заказа</b></p>\
+					<p>Попробуйте повторить попытку позже или позвонить нам в офис <a href="tel:+74959797858" class="right">+7 (495) 979-78-58</a>', 'Ваш заказ не оформлен');
+				}
+			});
+		}
 		return false;
+	});
+	$('.cartOrder').delegate('.invalid', 'keyup', function () {
+		if($(this).val() != '')
+			$(this).removeClass('invalid');
 	});
 
 	// Модальные окна
@@ -512,22 +527,37 @@ $(function () {
 
 	// Обратная связь
 	$('.feedback form').submit(function () {
-		var data = {};
+		var data = {},
+			valid = 0;
 		$(this).find('input, textarea').each(function () {
 			if($(this).attr('name')) {
-				data[$(this).attr('name')] = $(this).val();
+				if($(this).val() == "Текст обращения")
+					$(this).val('');
+				if($(this).val() != '') {
+					data[$(this).attr('name')] = $(this).val();
+				}
+				else {
+					$(this).addClass('invalid');
+					valid++;
+				}
 			}
 		});
-		$.post('/feedback', data, function(data) {
-			if(data.success == true) {
-				openPopup('Номер обращения: <b>'+ data.number +'</b>', 'Ваше обращение успешно отправлено');
-				$('.feedback input[type=text], .feedback textarea').val('');
-			}
-			else {
-				openPopup('<p><b>Ошибка отправки</b></p>\
-					<p>Попробуйте повторить попытку позже или позвонить нам в офис <a href="tel:+74959797858" class="right">+7 (495) 979-78-58</a>', 'Ваше обращение не отправлено');
-			}
-		});
+		if(valid == 0) {
+			$.post('/feedback', data, function(data) {
+				if(data.success == true) {
+					openPopup('Номер обращения: <b>'+ data.number +'</b>', 'Ваше обращение успешно отправлено');
+					$('.feedback input[type=text], .feedback textarea').val('');
+				}
+				else {
+					openPopup('<p><b>Ошибка отправки</b></p>\
+						<p>Попробуйте повторить попытку позже или позвонить нам в офис <a href="tel:+74959797858" class="right">+7 (495) 979-78-58</a>', 'Ваше обращение не отправлено');
+				}
+			});
+		}
 		return false;
+	});
+	$('.feedback').delegate('.invalid', 'keyup', function () {
+		if($(this).val() != '')
+			$(this).removeClass('invalid');
 	});
 });
