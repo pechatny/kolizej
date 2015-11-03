@@ -30,7 +30,7 @@
                             <div class="col Name vertical">
                                 <div class="children">
                                     <div class="title">
-                                        <a href="/catalog/product/{{$item['product']->id}}" target="_blank">{{$item['product']->name}}</a>
+                                        <a href="/catalog/product/{{$item['product']->id}}">{{$item['product']->name}}</a>
                                         @if($item['product']->configuration)
                                             <div class="config">
                                                 Конфигурация:
@@ -43,22 +43,20 @@
                             </div>
                             <div class="col Color">
                                 <div class="color">
-                                    <div class="choose">
-                                        @foreach($item['product']->color as $color)
-                                                @if($color->id == $item['color'])
-                                                    <div class="item active" data-id="{{$color->id}}">
-                                                @else
-                                                    <div class="item" data-id="{{$color->id}}">
-                                                @endif
-                                                 <a href="/{{$color->image}}" class="preview" title="{{$color->name}}">
-                                                     {!! HTML::image($color->image, '', array('height' => '31')) !!}
-                                                 </a>
-                                                 <div class="label">
-                                                     <span>{{$color->name}}</span>
-                                                 </div>
+                                    @foreach($item['product']->color as $color)
+                                            @if($color->id == $item['color'])
+                                                <div class="item active" data-id="{{$color->id}}">
+                                            @else
+                                                <div class="item" data-id="{{$color->id}}">
+                                            @endif
+                                             <a href="/{{$color->image}}" class="preview" title="{{$color->name}}">
+                                                 {!! HTML::image($color->image, '', array('height' => '31')) !!}
+                                             </a>
+                                             <div class="label">
+                                                 <span>{{$color->name}}</span>
                                              </div>
-                                        @endforeach
-                                    </div>
+                                         </div>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="col Price vertical">

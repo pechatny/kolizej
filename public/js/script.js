@@ -194,6 +194,15 @@ $(function () {
 		$(this).val(v ? v : 1);
 	});
 
+	// Изменение цвета
+	$('.color .label').click(function () {
+		var obj = $(this).parent();
+		if(!obj.hasClass('active')) {
+			obj.parent().find('.item.active').removeClass('active');
+			obj.addClass('active');
+		}
+	});
+
 	// Корзина - страница
 	function calculate () {
 		// стоимость мебели
@@ -316,6 +325,22 @@ $(function () {
 			cartUpdate(data);
 		});
 	});
+	$('.cartList .color .label').click(function () {
+		if(!$(this).hasClass('active')) {
+			var block = $(this).parent().parent().parent().parent().parent(),
+				count = block.find('.counter').children('input').val(),
+				color = block.find('.color').find('.item.active').attr('data-id'),
+				config = block.find('.config').children('.active').attr('data-val');
+			$.post('/cart/add', {
+				id     : block.attr('data-id'),
+				count  : count,
+				color  : color,
+				config : config
+			}, function(data) {
+				cartUpdate(data);
+			});
+		}
+	});
 	if($('.cartList').length) {
 		calculate();
 	}
@@ -329,7 +354,6 @@ $(function () {
 			config = block.find('.config').children('.active').attr('data-val');
 		}
 		$('.priceDelivery .block[data-id='+ id +']').attr('data-quantity', count);
-		debug(config);
 		$.post('/cart/add', {
 			id     : id,
 			count  : count,
@@ -406,15 +430,6 @@ $(function () {
 		type: 'image'
 	});
 
-	// Изменение цвета
-	$('.color .label').click(function () {
-		var obj = $(this).parent();
-		if(!obj.hasClass('active')) {
-			obj.parent().find('.item.active').removeClass('active');
-			obj.addClass('active');
-		}
-	});
-
 	// Просмотр товара - страница
 	function viewBig (src) {
 		var sp = 300;
@@ -489,9 +504,11 @@ $(function () {
 	setTimeout(function() {
 		productHeight();
 	}, 500);
-	if($('.color .item').length && !$('.color .item.active').length) {
-		$('.color .item:eq(0)').addClass('active');
-	}
+	$('.color').each(function () {
+		if($(this).children('.item').length && !$(this).children('.item.active').length) {
+			$(this).children('.item:eq(0)').addClass('active');
+		}
+	});
 
 	// Добавление в корзину
 	$('.toCart .add').click(function () {

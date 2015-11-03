@@ -490,6 +490,7 @@ section {
 	border-color: #ff8130;
 }
 .product .image {
+	overflow: hidden;
 	display: block;
 	height: 230px;
 }
