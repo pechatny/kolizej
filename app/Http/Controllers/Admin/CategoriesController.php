@@ -70,9 +70,11 @@ class CategoriesController extends Controller
         $item->keywords = $request->keywords;
 
         $image = $request->image;
-        $filename  = time() . '.' . $image->getClientOriginalExtension();//Имя файла
-        $path = 'img/category/' . $filename;//Путь файла
-        Image::make($image->getRealPath())->save($path);
+        $filename  = time() . '.' . $image->getClientOriginalExtension();
+        $path = 'img/category/' . $filename;
+        Image::make($image->getRealPath())->widen(370, function ($constraint) {
+                $constraint->upsize();
+            })->save($path);
         $item->image = $path;
 
         $item->save();
@@ -144,7 +146,9 @@ class CategoriesController extends Controller
             $image = $request->image;
             $filename  = time() . '.' . $image->getClientOriginalExtension();//Имя файла
             $path = 'img/category/' . $filename;//Путь файла
-            Image::make($image->getRealPath())->save($path);
+            Image::make($image->getRealPath())->widen(370, function ($constraint) {
+                $constraint->upsize();
+            })->save($path);
             $item->image = $path;
         }
 
