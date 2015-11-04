@@ -95,7 +95,7 @@ class CatalogController extends Controller
         $product = Product::with(['category', 'color'])->find($id);
         $product->increment('views');
 
-        $recommended = Product::with('category')->take(5)->get();
+        $recommended = Product::with('category')->take(4)->get();
 
         $smallCart = $this->smallCart();
 

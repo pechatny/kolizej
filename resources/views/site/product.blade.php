@@ -108,7 +108,7 @@
 
 
             <h2>Смотрите так же</h2>
-            @foreach( $recommended as $product)
+            @foreach($recommended as $product)
                 <div class="col-xs-3">
                     <div class="product">
                         <a href="/catalog/product/{{$product->id}}" class="image">
