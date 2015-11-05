@@ -13,7 +13,7 @@
             </div>
             <div class="col-xs-4">
                 <div class="phone">
-                    <span class="right">9:00 - 22:00</span>
+                    <span class="right">c 9:00 до 17:00</span>
                     <a href="tel:+74959797858" class="right">+7 (495) 979-78-58</a>
                     <div class="clear"></div>
                 </div>

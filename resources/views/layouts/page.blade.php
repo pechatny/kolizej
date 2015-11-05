@@ -94,13 +94,13 @@
             </div>
             <div class="col-xs-4">
                 <div class="phone">
-                    <span class="right">9:00 - 22:00</span>
+                    <span class="right">c 9:00 до 17:00</span>
                     <div class="clear"></div>
                     <a href="tel:+74959797858" class="right">+7 (495) 979-78-58</a>
                     <div class="clear"></div>
                 </div>
                 <div class="mobile">
-                    <a href="tel:+79161234455" class="right">+7 (916) 123-44-55</a>
+                    <a href="tel:+79165578363" class="right">+7 (916) 557-83-63</a>
                     <div class="clear"></div>
                 </div>
                 <form action="/search" class="search">

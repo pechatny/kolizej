@@ -1,12 +1,4 @@
 $(function () {
-	function debug (string) {
-		if(!$('.debug').length) {
-			$('body').append('<div class="debug" style="position:fixed; z-index:10000; top:15px; left:0; padding:7px 10px; border-radius:0 5px 5px 0; border:1px solid #c00; display:block; background:#eee; color:#333; font-family:Courier new"></div>');
-		}
-		$('.debug').html(string);
-	}
-	// -- delete
-
 	function priceFormat (a) {
 		return String(a).replace(/(\d{1,3}(?=(\d{3})+(?:\.\d|\b)))/g,"\$1 ")
 	}
