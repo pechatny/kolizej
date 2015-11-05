@@ -101,6 +101,7 @@ class CatalogController extends Controller
 
         $cartItem = $this->cartItem($product->id);
 
+
         $page = $product;
         $page->title = $product->name;
         return view('site.product', [
@@ -113,7 +114,8 @@ class CatalogController extends Controller
             'recommended' => $recommended,
             'count' => $smallCart['count'],
             'sum' => $smallCart['sum'],
-            'currentItem' => $cartItem
+            'currentItem' => $cartItem,
+            'currentProductCategory' => $product->category,
         ]);
     }
 

@@ -37,8 +37,8 @@
             @endif
             @if(isset($product))
                 <span></span><a href="/catalog">Каталог</a>
-                @if(!isset($currentCategory))
-                    <span></span><a href="/catalog/{{$product->category->key}}">{{$product->category->name}}</a>
+                @if(isset($currentProductCategory))
+                    <span></span><a href="/catalog/{{$currentProductCategory->key}}">{{$currentProductCategory->name}}</a>
                 @endif
             @endif
         </div>
