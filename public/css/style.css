@@ -1304,6 +1304,9 @@ footer .copyright a:hover {
 	width: 29%;
 	line-height: 20px;
 }
+.productInfo .params .additional {
+	padding-top: 13px;
+}
 .productInfo .color {
 	width: 35%;
 }

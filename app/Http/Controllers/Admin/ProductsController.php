@@ -107,25 +107,41 @@ class ProductsController extends Controller
         $item->assembly = $request->assembly;
 
         $images = $request->images;
-
+        
         $arPath = [];
         foreach($images as $image){
             if(empty($image)) continue;
-            $filename  = time() . '.' . $image->getClientOriginalExtension();//Имя файла
-            $path = 'img/product/original/' . $filename;//Путь файла
+            $filename  = time() + rand(1,1000) . '.' . $image->getClientOriginalExtension();
+            $path = 'img/product/original/' . $filename;
             Image::make($image->getRealPath())->save($path);
             $arPath[] = $filename;
 
-            $path = 'img/product/big/' . $filename;//Путь файла
-            Image::make($image->getRealPath())->resize(570, null, function ($constraint) {
-                $constraint->aspectRatio();
+            $path = 'img/product/detail-w570/' . $filename;
+            Image::make($image->getRealPath())->widen(570, function ($constraint) {
+                $constraint->upsize();
             })->save($path);
 
-            $path = 'img/product/medium/' . $filename;//Путь файла
-            Image::make($image->getRealPath())->resize(216, 156)->save($path);
+            $path = 'img/product/product_card-w268/' . $filename;
+            if(Image::make($image->getRealPath())->width() > Image::make($image->getRealPath())->height()) {
+                Image::make($image->getRealPath())->widen(268, function ($constraint) {
+                    $constraint->upsize();
+                })->save($path);
+            }
+            else {
+                Image::make($image->getRealPath())->heighten(230, function ($constraint) {
+                    $constraint->upsize();
+                })->save($path);
+            }
 
-            $path = 'img/product/small/' . $filename;//Путь файла
-            Image::make($image->getRealPath())->resize(108, 78)->save($path);
+            $path = 'img/product/cart-w216/' . $filename;
+            Image::make($image->getRealPath())->heighten(156, function ($constraint) {
+                $constraint->upsize();
+            })->save($path);
+
+            $path = 'img/product/gallery_preview-w108/' . $filename;
+            Image::make($image->getRealPath())->widen(108, function ($constraint) {
+                $constraint->upsize();
+            })->save($path);
 
         }
         $item->images = serialize($arPath);

@@ -43,14 +43,17 @@
                     <div class="row">
                         <div class="params column">
                             <b class="title">Параметры:</b>
-                            Ширина: <span class="value">{{$product->width}} мм</span><br>
-                            Высота: <span class="value">{{$product->height}} мм</span><br>
-                            Глубина: <span class="value">{{$product->depth}} мм</span><br>
+                            Ширина: <span class="value">{{ $product->width }} мм</span><br>
+                            Высота: <span class="value">{{ $product->height }} мм</span><br>
+                            Глубина: <span class="value">{{ $product->depth }} мм</span><br>
                             @if($product->warranty)
-                                Гарантия: <span class="value">{{$product->warranty}} мес</span><br>
+                                Гарантия: <span class="value">{{ $product->warranty }} мес</span><br>
                             @endif
                             @if($product->weight)
-                                Вес: <span class="value">{{$product->weight}} кг</span>
+                                Вес: <span class="value">{{ $product->weight }} кг</span>
+                            @endif
+                            @if($product->params) 
+                                <div class="additional">{!! $product->params !!}</div>
                             @endif
                         </div>
 
