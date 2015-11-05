@@ -13,16 +13,20 @@
                             <div class="move">
                                 <div class="row">
                                     <div class="block active">
-                                        <a href="/img/product/original/{{$product->images[0]}}">
-                                            {!! HTML::image("img/product/gallery_preview-w108/".$product->images[0]) !!}
-                                        </a>
+                                        <div class="layer">
+                                            <a href="/img/product/original/{{$product->images[0]}}">
+                                                {!! HTML::image("img/product/gallery_preview-w108/".$product->images[0]) !!}
+                                            </a>
+                                        </div>
                                     </div>
                                     @foreach($product->images as $key => $image)
                                         @if($key > 0)
                                             <div class="block">
-                                                <a href="/img/product/original/{{$image}}">
-                                                    {!! HTML::image("img/product/gallery_preview-w108/".$image) !!}
-                                                </a>
+                                                <div class="layer">
+                                                    <a href="/img/product/original/{{$image}}">
+                                                        {!! HTML::image("img/product/gallery_preview-w108/".$image) !!}
+                                                    </a>
+                                                </div>
                                             </div>
                                         @endif
                                     @endforeach

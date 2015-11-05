@@ -479,9 +479,9 @@ $(function () {
 			}
 		});
 		$('.productView .preview a').click(function () {
-			if(!$(this).parent().hasClass('active')) {
+			if(!$(this).parent().parent().hasClass('active')) {
 				$('.productView .preview .active').removeClass('active');
-				$(this).parent().addClass('active');
+				$(this).parent().parent().addClass('active');
 				viewBig($(this).attr('href'));
 			}
 			return false;
