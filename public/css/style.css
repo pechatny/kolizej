@@ -513,6 +513,7 @@ section {
 	color: #f49c64;
 }
 .product .title {
+	position: relative;
 	clear: both;
 	margin-bottom: 15px;
 	padding-top: 9px;
@@ -530,11 +531,13 @@ b.price {
 	font-weight: 600;
 }
 .product .price {
-	top: -1px;
+	position: absolute;
+	right: 0;
+	top: 7px;
 	display: block;
-	float: right;
-	padding-right: 16px;
+	padding:0 16px 0 15px;
 	font-size: 20px;
+	background: linear-gradient(90deg, rgba(255, 255, 255, 0), #fff 12px, #fff);
 }
 .product .price:after {
 	content: '';
