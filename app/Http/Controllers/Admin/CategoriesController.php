@@ -58,6 +58,7 @@ class CategoriesController extends Controller
         $item->name = $request->name;
         $item->description = $request->description;
         $item->keywords = $request->keywords;
+        $item->sort= $request->sort;
 
         $image = $request->image;
         $filename  = time() . '.' . $image->getClientOriginalExtension();
@@ -130,6 +131,7 @@ class CategoriesController extends Controller
         $item->name = $request->name;
         $item->description = $request->description;
         $item->keywords = $request->keywords;
+        $item->sort = $request->sort;
 
         if($request->image){
             File::delete($item->image);

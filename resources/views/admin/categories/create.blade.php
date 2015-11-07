@@ -27,6 +27,12 @@
             </div>
         </label>
         <label>
+            <div class="signature">Сортировка</div>
+            <div class="field">
+                {!! Form::text('sort', old('sort')) !!}
+            </div>
+        </label>
+        <label>
             <div class="signature">Изображение</div>
             <div class="field">
                 {!! Form::file('image', old('image')) !!}
