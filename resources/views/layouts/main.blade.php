@@ -36,9 +36,9 @@
             <div class="folder col-xs-4">
                 <div class="title">Каталог</div>
                 <div class="block w50">
-                    <?
+                     <?
                     for($i = 0, $to = count($categories), $half = ceil($to / 2) - 1; $i < $to; $i++) {
-                        echo '<a href="', $categories[$i]->key ,'">', $categories[$i]->name ,'</a>';
+                        echo '<a href="/catalog/', $categories[$i]->key ,'">', $categories[$i]->name ,'</a>';
                         if($i == $half)
                             echo '</div><div class="block w50">';
                     }
