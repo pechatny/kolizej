@@ -37,10 +37,12 @@
                 <div class="title">Каталог</div>
                 <div class="block w50">
                     <?
+                    //это конешно пздц, а не код
                     for($i = 0, $to = count($categories), $half = ceil($to / 2) - 1; $i < $to; $i++) {
                         echo '<a href="', $categories[$i]->key ,'">', $categories[$i]->name ,'</a>';
-                        if($i == $half)
+                        if($i == $half){
                             echo '</div><div class="block w50">';
+                        }
                     }
                     ?>
                 </div>
@@ -57,7 +59,7 @@
                     <div class="clear"></div>
                 </div>
                 <form action="/search" class="search">
-                    <input type="text" placeholder="Поиск . . ." class="right" value="{{$search or ''}}">
+                    <input name="val" type="text" placeholder="Поиск . . ." class="right" value="{{$search or ''}}">
                     <input type="submit" value="">
                     <div class="clear"></div>
                 </form>
