@@ -28,7 +28,7 @@ class CatalogController extends Controller
         $menuItems = Menu::all();
         $bottomMenuHtml = view('bottom', ['menuItems' => $menuItems])->render();
         $page = Page::where('key', $page)->first();
-        $categories = Category::all();
+        $categories = Category::orderBy('sort', 'asc')->get();
 
         $products = Product::with('category')->get();
 
@@ -56,7 +56,7 @@ class CatalogController extends Controller
         $menuItems = Menu::all();
         $bottomMenuHtml = view('bottom', ['menuItems' => $menuItems])->render();
         $page = Page::where('key', $page)->first();
-        $categories = Category::all();
+        $categories = Category::orderBy('sort', 'asc')->get();
 
         $products = Product::with(['category' => function($query) use($category){
                 $query->where('key', '=', $category);
@@ -90,7 +90,7 @@ class CatalogController extends Controller
         $menuItems = Menu::all();
         $bottomMenuHtml = view('bottom', ['menuItems' => $menuItems])->render();
         $pageInfo = Page::where('key', $page)->first();
-        $categories = Category::all();
+        $categories = Category::orderBy('sort', 'asc')->get();
 
         $product = Product::with(['category', 'color'])->find($id);
         $product->increment('views');

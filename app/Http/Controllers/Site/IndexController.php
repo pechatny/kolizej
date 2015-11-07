@@ -16,7 +16,7 @@ class IndexController extends Controller
     public function index($page = '')
     {
 //        $title = Menu::where('key', $page)->value('name');
-        $categories = Category::all();
+        $categories = Category::orderBy('sort', 'asc')->get();
         $menuHtml = $this->menuHtml($page);
 
         if(session()->has('cart')){

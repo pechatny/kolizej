@@ -20,7 +20,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $items = Category::all();
+        $items = Category::orderBy('sort', 'asc')->get();;
         $data = [
             'route' => 'categories',
             'title' => Category::$tableName,
@@ -29,16 +29,6 @@ class CategoriesController extends Controller
         ];
 
         return view("admin.categories.list", $data);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('admin.categories.create');
     }
 
     /**

@@ -37,7 +37,7 @@ class CartController extends Controller
             $items = false;
         }
 
-        $categories = Category::all();
+        $categories = Category::orderBy('sort', 'asc')->get();
 
         $smallCart = $this->smallCart();
         return view('site.cart', [

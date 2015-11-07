@@ -43,7 +43,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::orderBy('sort', 'asc')->get();
         $formCategories = [];
         foreach($categories as $category){
             $formCategories[$category->id] = $category->name;
@@ -182,7 +182,7 @@ class ProductsController extends Controller
     {
         $item = Product::with(['color', 'category'])->find($id);
         $images = $item->images;
-        $categories = Category::all();
+        $categories = Category::orderBy('sort', 'asc')->get();
         $formCategories = [];
         foreach($categories as $category){
             $formCategories[$category->id] = $category->name;

@@ -27,7 +27,7 @@ class PagesController extends Controller
         $bottomMenuHtml = view('bottom', ['menuItems' => $menuItems])->render();
         $page = Page::where('key', $page)->first();
 
-        $categories = Category::all();
+        $categories = Category::orderBy('sort', 'asc')->get();
 
         $smallCart = $this->smallCart();
         return view('page', [
@@ -61,7 +61,7 @@ class PagesController extends Controller
         $menuItems = Menu::all();
         $bottomMenuHtml = view('bottom', ['menuItems' => $menuItems])->render();
 
-        $categories = Category::all();
+        $categories = Category::orderBy('sort', 'asc')->get();
 
         $smallCart = $this->smallCart();
 
