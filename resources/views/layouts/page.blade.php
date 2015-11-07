@@ -87,9 +87,13 @@
             <div class="folder col-xs-4">
                 <div class="title">Каталог</div>
                 <div class="block w50">
-                    @foreach($categories as $category)
-                        <a href="{{$category->key}}">{{$category->name}}</a>
-                    @endforeach
+                    <?
+                    for($i = 0, $to = count($categories), $half = ceil($to / 2) - 1; $i < $to; $i++) {
+                        echo '<a href="/catalog/', $categories[$i]->key ,'">', $categories[$i]->name ,'</a>';
+                        if($i == $half)
+                            echo '</div><div class="block w50">';
+                    }
+                    ?>
                 </div>
             </div>
             <div class="col-xs-4">

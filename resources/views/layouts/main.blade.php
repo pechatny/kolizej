@@ -36,24 +36,28 @@
             <div class="folder col-xs-4">
                 <div class="title">Каталог</div>
                 <div class="block w50">
-                    @foreach($categories as $category)
-                        <a href="{{$category->key}}">{{$category->name}}</a>
-                    @endforeach
+                    <?
+                    for($i = 0, $to = count($categories), $half = ceil($to / 2) - 1; $i < $to; $i++) {
+                        echo '<a href="', $categories[$i]->key ,'">', $categories[$i]->name ,'</a>';
+                        if($i == $half)
+                            echo '</div><div class="block w50">';
+                    }
+                    ?>
                 </div>
             </div>
             <div class="col-xs-4">
                 <div class="phone">
-                    <span class="right">9:00 - 22:00</span>
+                    <span class="right">c 9:00 до 17:00</span>
                     <div class="clear"></div>
                     <a href="tel:+74959797858" class="right">+7 (495) 979-78-58</a>
                     <div class="clear"></div>
                 </div>
                 <div class="mobile">
-                    <a href="tel:+79161234455" class="right">+7 (916) 123-44-55</a>
+                    <a href="tel:+79165578363" class="right">+7 (916) 557-83-63</a>
                     <div class="clear"></div>
                 </div>
                 <form action="/search" class="search">
-                    <input type="text" placeholder="Поиск . . ." class="right">
+                    <input type="text" placeholder="Поиск . . ." class="right" value="{{$search or ''}}">
                     <input type="submit" value="">
                     <div class="clear"></div>
                 </form>
