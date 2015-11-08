@@ -126,7 +126,7 @@ class CartController extends Controller
         $order->save();
         $number = $order->id;
 
-        mail($email, "Заказ №$number", $text);
-        return ['success' => true, 'number' => $number];
+        $result = mail($email, "Заказ №$number", $text);
+        return ['success' => $result ? true : false, 'number' => $number];
     }
 }
