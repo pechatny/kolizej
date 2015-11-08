@@ -49,9 +49,9 @@ class PagesController extends Controller
         $order->save();
         $number = $order->id;
 
-        mail($email, "Обратная связь. №$number", $text);
+        $result = mail($email, "Обратная связь. №$number", $text);
 
-        return ['success' => true, 'number' => $number];
+        return ['success' => $result ? true : false, 'number' => $number];
     }
 
     public function search(Request $request){
