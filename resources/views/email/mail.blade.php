@@ -50,13 +50,24 @@
     <table width="100%" align="center" cellpadding="2" cellspacing="0" border="1" style="border-collapse:collapse; border:#dddddd 1px solid;">
         <tr>
             <td style="border-collapse:collapse; border:#dddddd 1px solid;">Наименование</td>
+            <td style="border-collapse:collapse; border:#dddddd 1px solid;">Конфигурация</td>
+            <td style="border-collapse:collapse; border:#dddddd 1px solid;">Цвет</td>
             <td style="border-collapse:collapse; border:#dddddd 1px solid;">Цена</td>
             <td style="border-collapse:collapse; border:#dddddd 1px solid;">Количество</td>
         </tr>
         <tr>
             @foreach($cart as $cartItem)
-                <td style="border-collapse:collapse; border:#dddddd 1px solid;" colspan="3"><? print_r($cartItem); ?></td>
+                <td style="border-collapse:collapse; border:#dddddd 1px solid;">{{ $cartItem['product']->name }}</td>
+                <td style="border-collapse:collapse; border:#dddddd 1px solid;">
+                    @if($item['product']->configuration)
+                        @$cartItem['configuration'] == 'left' ? 'Левая' : 'Правая'
+                </td>
+                <td style="border-collapse:collapse; border:#dddddd 1px solid;">{{ $cartItem['product']->price }}</td>
+                <td style="border-collapse:collapse; border:#dddddd 1px solid;">{{ $cartItem['quantity'] }}</td>
             @endforeach
+        </tr>
+        <tr>
+            <td colspan="5"><? print_r($cartItem); ?></td>
         </tr>
     </table>
 </body>
