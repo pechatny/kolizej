@@ -78,9 +78,6 @@
                 <td style="border-collapse:collapse; border:#dddddd 1px solid;">{{ $cartItem['quantity'] }}</td>
             @endforeach
         </tr>
-        <tr>
-            <td colspan="5"><? print_r($cartItem); ?></td>
-        </tr>
     </table>
 </body>
 </html>
