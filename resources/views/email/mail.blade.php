@@ -61,6 +61,10 @@
                 <td style="border-collapse:collapse; border:#dddddd 1px solid;">
                     @if($item['product']->configuration)
                         @$cartItem['configuration'] == 'left' ? 'Левая' : 'Правая'
+                    @endif
+                </td>
+                <td style="border-collapse:collapse; border:#dddddd 1px solid;">
+                    
                 </td>
                 <td style="border-collapse:collapse; border:#dddddd 1px solid;">{{ $cartItem['product']->price }}</td>
                 <td style="border-collapse:collapse; border:#dddddd 1px solid;">{{ $cartItem['quantity'] }}</td>
