@@ -112,7 +112,7 @@ class CartController extends Controller
         }
 
         $city = $request->city;
-        $lift= $request->lift;
+        $lift = $request->lift;
         $stage = $request->stage;
         $distance = $request->distance;
 
