@@ -49,7 +49,7 @@ class PagesController extends Controller
         $order->save();
         $number = $order->id;
 
-        $result = mail($email, "Обратная связь. №$number", $text);
+        $result = mail($email, "Обратная связь. №$number", $text, ""Content-type: text/html; charset=utf-8\r\n");
 
         return ['success' => $result ? true : false, 'number' => $number];
     }
