@@ -1,43 +1,66 @@
-<p>Доставка:</p>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+    <h1 style="font-size:150%; margin-bottom:20px;">Оформлен заказ на сайте</h1>
 
-<table>
-    <tr>
-        <td>Город:</td>
-        <td>{{$city  or 'нет'}}</td>
-    </tr>
-    <tr>
-        <td>Подъём:</td>
-        <td>{{$lift or 'нет'}}</td>
-    </tr>
-    <tr>
-        <td>Этаж:</td>
-        <td>{{$stage or 'нет'}}</td>
-    </tr>
-    <tr>
-        <td>Расстояние:</td>
-        <td>{{$distance or 0}}</td>
-    </tr>
-</table>
+    <h2 style="font-size:125%; margin-bottom:10px;">Доставка</h2>
+    <table width="100%" align="center" cellpadding="2" cellspacing="0" border="1" style="border-collapse:collapse; border:#eeeeee 1px solid;">
+        <tr>
+            <td style="width:150px; border-collapse:collapse; border:#eeeeee 1px solid;">Город:</td>
+            <td style="border-collapse:collapse; border:#eeeeee 1px solid;">{{ $city  or 'Не указан' }}</td>
+        </tr>
+        <tr>
+            <td style="width:150px; border-collapse:collapse; border:#eeeeee 1px solid;">Подъём:</td>
+            <td style="border-collapse:collapse; border:#eeeeee 1px solid;">{{ $lift  or 'Не указан' }}</td>
+        </tr>
+        <tr>
+            <td style="width:150px; border-collapse:collapse; border:#eeeeee 1px solid;">Этаж:</td>
+            <td style="border-collapse:collapse; border:#eeeeee 1px solid;">{{ $stage  or 'Не указан' }}</td>
+        </tr>
+        <tr>
+            <td style="width:150px; border-collapse:collapse; border:#eeeeee 1px solid;">Расстояние от МКАД:</td>
+            <td style="border-collapse:collapse; border:#eeeeee 1px solid;">{{ $distance  or 'Не указан' }}</td>
+        </tr>
+    </table>
 
-<p>Данные клиента:</p>
-<table>
-    <tr>
-        <td>Фамилия:</td>
-        <td>{{$arForm['name']}}</td>
-    </tr>
-    <tr>
-        <td>Имя:</td>
-        <td>{{$arForm['lastname']}}</td>
-    </tr>
-    <tr>
-        <td>Телефон:</td>
-        <td>{{$arForm['phone']}}</td>
-    </tr>
-    <tr>
-        <td>Адрес доставки:</td>
-        <td>{{$arForm['addres']}}</td>
-    </tr>
-</table>
+    <h2 style="font-size:125%; margin-bottom:10px;">Данные клиента</h2>
+    <table width="100%" align="center" cellpadding="2" cellspacing="0" border="1" style="border-collapse:collapse; border:#eeeeee 1px solid;">
+        <tr>
+            <td style="width:150px; border-collapse:collapse; border:#eeeeee 1px solid;">Имя:</td>
+            <td style="border-collapse:collapse; border:#eeeeee 1px solid;">{{ $arForm['name'] }}</td>
+        </tr>
+        <tr>
+            <td style="width:150px; border-collapse:collapse; border:#eeeeee 1px solid;">Фамилия:</td>
+            <td style="border-collapse:collapse; border:#eeeeee 1px solid;">{{ $arForm['lastname'] }}</td>
+        </tr>
+        <tr>
+            <td style="width:150px; border-collapse:collapse; border:#eeeeee 1px solid;">Телефон:</td>
+            <td style="border-collapse:collapse; border:#eeeeee 1px solid;">{{ $arForm['phone'] }}</td>
+        </tr>
+        <tr>
+            <td style="width:150px; border-collapse:collapse; border:#eeeeee 1px solid;">Адрес доставки:</td>
+            <td style="border-collapse:collapse; border:#eeeeee 1px solid;">{{ $arForm['addres'] }}</td>
+        </tr>
+    </table>
+
+    <h2 style="font-size:125%; margin-bottom:10px;">Мебель</h2>
+    <table width="100%" align="center" cellpadding="2" cellspacing="0" border="1" style="border-collapse:collapse; border:#dddddd 1px solid;">
+        <tr>
+            <td style="border-collapse:collapse; border:#dddddd 1px solid;">Наименование</td>
+            <td style="border-collapse:collapse; border:#dddddd 1px solid;">Цена</td>
+            <td style="border-collapse:collapse; border:#dddddd 1px solid;">Количество</td>
+        </tr>
+        <tr>
+            @foreach($cart as $cartItem)
+                <td style="border-collapse:collapse; border:#dddddd 1px solid;" colspan="3"><? print_r($cartItem); ?></td>
+            @endforeach
+        </tr>
+    </table>
+</body>
+</html>
 <h2>Товары</h2>
 <table>
 
