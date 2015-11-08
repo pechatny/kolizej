@@ -55,29 +55,29 @@
             <td style="border-collapse:collapse; border:#dddddd 1px solid;">Цена</td>
             <td style="border-collapse:collapse; border:#dddddd 1px solid;">Количество</td>
         </tr>
-        <tr>
-            @foreach($cart as $cartItem)
-                <td style="border-collapse:collapse; border:#dddddd 1px solid;">{{ $cartItem['product']->name }}</td>
-                <td style="border-collapse:collapse; border:#dddddd 1px solid;">
-                    @if($cartItem['product']->configuration)
-                        {{ $cartItem['configuration'] == 'left' ? 'Левая' : 'Правая' }}
-                    @endif
-                </td>
-                <td style="border-collapse:collapse; border:#dddddd 1px solid;">
-                    @if($cartItem['color'])
-                        @foreach($cartItem['product']->color as $color)
-                            @if($cartItem['color'] == $color->id)
-                                {{$color->name}}
-                            @endif
-                        @endforeach
-                    @else
-                        {{$cartItem['product']->color->first()->name}}
-                    @endif
-                </td>
-                <td style="border-collapse:collapse; border:#dddddd 1px solid;">{{ $cartItem['product']->price }}</td>
-                <td style="border-collapse:collapse; border:#dddddd 1px solid;">{{ $cartItem['quantity'] }}</td>
-            @endforeach
-        </tr>
+        @foreach($cart as $cartItem)
+            <tr>
+                    <td style="border-collapse:collapse; border:#dddddd 1px solid;">{{ $cartItem['product']->name }}</td>
+                    <td style="border-collapse:collapse; border:#dddddd 1px solid;">
+                        @if($cartItem['product']->configuration)
+                            {{ $cartItem['configuration'] == 'left' ? 'Левая' : 'Правая' }}
+                        @endif
+                    </td>
+                    <td style="border-collapse:collapse; border:#dddddd 1px solid;">
+                        @if($cartItem['color'])
+                            @foreach($cartItem['product']->color as $color)
+                                @if($cartItem['color'] == $color->id)
+                                    {{$color->name}}
+                                @endif
+                            @endforeach
+                        @else
+                            {{$cartItem['product']->color->first()->name}}
+                        @endif
+                    </td>
+                    <td style="border-collapse:collapse; border:#dddddd 1px solid;">{{ $cartItem['product']->price }}</td>
+                    <td style="border-collapse:collapse; border:#dddddd 1px solid;">{{ $cartItem['quantity'] }}</td>
+            </tr>
+        @endforeach
     </table>
 </body>
 </html>
