@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Models\Category;
 use App\Models\Menu;
+use App\Models\Order;
 use App\Models\Page;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -44,8 +45,13 @@ class PagesController extends Controller
         $text = view('email.feedback', $request->all())->render();
         $email = Config::get('mail.from')['address'];
 
-        mail($email, 'Обратная связь', $text);
-        return ['success' => true];
+        $order = new Order();
+        $order->save();
+        $number = $order->id;
+
+        mail($email, "Обратная связь. №$number", $text);
+
+        return ['success' => true, 'number' => $number];
     }
 
     public function search(Request $request){
