@@ -4,8 +4,8 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 </head>
 <body>
-    <h1></h1>
-    <table>
+    <h1>Обращение из формы обратной связи</h1>
+    <table width="100%" align="center" cellpadding="2" cellspacing="0" border="1" style="border-collapse:collapse; border:#eeeeee 1px solid;">
         <tr>
             <td>Имя</td>
             <td>{{$name}}</td>
