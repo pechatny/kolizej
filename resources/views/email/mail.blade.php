@@ -59,7 +59,7 @@
             @foreach($cart as $cartItem)
                 <td style="border-collapse:collapse; border:#dddddd 1px solid;">{{ $cartItem['product']->name }}</td>
                 <td style="border-collapse:collapse; border:#dddddd 1px solid;">
-                    @if($item['product']->configuration)
+                    @if($cartItem['product']->configuration)
                         @$cartItem['configuration'] == 'left' ? 'Левая' : 'Правая'
                     @endif
                 </td>
