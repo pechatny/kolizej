@@ -503,7 +503,7 @@ $(function () {
 	});
 
 	// Добавление в корзину
-	$('.toCart .add').click(function () {
+	$('body').delegate('.toCart .add', 'click', function () {
 		var count = Number($(this).parent().find('input').val()),
 			color = false,
 			config = 'left';
