@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 use File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Log;
 
 class ProductsController extends Controller
 {
@@ -338,15 +339,23 @@ class ProductsController extends Controller
         File::delete('img/product/gallery_preview-w108/'.$imageName);
     }
 
-    public function saveImages($image){
+    public function saveImages($image) {
         $filename  = time() + rand(1,1000) . '.' . $image->getClientOriginalExtension();
         $path = 'img/product/original/' . $filename;
         Image::make($image->getRealPath())->save($path);
 
         $path = 'img/product/detail-w570/' . $filename;
-        Image::make($image->getRealPath())->widen(570, function ($constraint) {
-            $constraint->upsize();
-        })->save($path);
+        $h = Image::make($image->getRealPath())->widen(570)->height();
+        if($h < 500) {
+            Image::make($image->getRealPath())->widen(570, function ($constraint) {
+                $constraint->upsize();
+            })->save($path);
+        }
+        else {
+            Image::make($image->getRealPath())->heighten(500, function ($constraint) {
+                $constraint->upsize();
+            })->save($path);
+        }
 
         $path = 'img/product/product_card-w268/' . $filename;
         if(Image::make($image->getRealPath())->width() > Image::make($image->getRealPath())->height()) {
