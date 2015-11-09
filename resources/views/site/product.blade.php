@@ -62,17 +62,19 @@
                         </div>
 
                         <div class="color column">
-                            <b class="title">Выбор цвета:</b>
-                            @foreach($product->color as $color)
-                                <div class="item{{ ($currentItem and $currentItem['color'] == $color->id) ? ' active' : '' }}" data-id="{{$color->id}}">
-                                    <a href="/{{$color->image}}" class="preview" title="{{$color->name}}">
-                                        {!! HTML::image($color->image, '', array('height' => '31')) !!}
-                                    </a>
-                                    <div class="label">
-                                        <span>{{$color->name}}</span>
+                            @if(count($product->color))
+                                <b class="title">Выбор цвета:</b>
+                                @foreach($product->color as $color)
+                                    <div class="item{{ ($currentItem and $currentItem['color'] == $color->id) ? ' active' : '' }}" data-id="{{$color->id}}">
+                                        <a href="/{{$color->image}}" class="preview" title="{{$color->name}}">
+                                            {!! HTML::image($color->image, '', array('height' => '31')) !!}
+                                        </a>
+                                        <div class="label">
+                                            <span>{{$color->name}}</span>
+                                        </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            @endif
                         </div>
 
                         <div class="column forCart">
