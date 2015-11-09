@@ -118,9 +118,17 @@ class ProductsController extends Controller
             $arPath[] = $filename;
 
             $path = 'img/product/detail-w570/' . $filename;
-            Image::make($image->getRealPath())->widen(570, function ($constraint) {
-                $constraint->upsize();
-            })->save($path);
+            $h = Image::make($image->getRealPath())->widen(570)->height();
+            if($h < 500) {
+                Image::make($image->getRealPath())->widen(570, function ($constraint) {
+                    $constraint->upsize();
+                })->save($path);
+            }
+            else {
+                Image::make($image->getRealPath())->heighten(500, function ($constraint) {
+                    $constraint->upsize();
+                })->save($path);
+            }
 
             $path = 'img/product/product_card-w268/' . $filename;
             if(Image::make($image->getRealPath())->width() > Image::make($image->getRealPath())->height()) {
