@@ -406,7 +406,7 @@ $(function () {
 			if(!plusAssembly)
 				lift += ' <b>Без сборки</b>';
 			alert(city +"\r\n"+ distance +"\r\n"+ lift +"\r\n"+ stage);
-			/*$.post('/cart/order', {
+			$.post('/cart/order', {
 				'form'     : form,
 				'city'     : city,
 				'distance' : distance,
@@ -421,7 +421,7 @@ $(function () {
 					openPopup('<p><b>Ошибка оформления заказа</b></p>\
 					<p>Попробуйте повторить попытку позже или позвонить нам в офис <a href="tel:+74959797858" class="right">+7 (495) 979-78-58</a>', 'Ваш заказ не оформлен');
 				}
-			});*/
+			});
 		}
 		return false;
 	});
