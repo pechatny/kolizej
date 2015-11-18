@@ -1326,7 +1326,7 @@ footer .copyright a:hover {
 	line-height: 1;
 }
 .productInfo .params .price:after {
-	content: '';
+	content:'';
 	position: absolute;
 	top: 8px;
 	right: 0;
