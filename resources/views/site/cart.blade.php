@@ -112,18 +112,27 @@
                     </div>
                     <div class="clear"></div>
 
-                    <span class="label">Способ подъема на этаж:</span>
-                    <div class="select left" data-target="#handup">
-                        <div class="item selected first">На лифте</div>
-                        <div class="item display last">Вручную</div>
+                    <span class="label">Включить в заказ:</span>
+                    <div class="select checker left">
+                        <div class="item selected first" data-target="#up" id="plusLift">Подъем</div>
+                        <div class="item selected last" id="plusAssembly">Сборка</div>
                         <div class="clear"></div>
                     </div>
-                    <div id="handup" class="none">
-                        <span class="label">Поднять на:</span>
-                        <div class="left">
-                            <input type="text" value="2">
+                    
+                    <div id="up">
+                        <span class="label">Способ подъема на этаж:</span>
+                        <div class="select left" data-target="#handup">
+                            <div class="item selected first">На лифте</div>
+                            <div class="item display last">Вручную</div>
+                            <div class="clear"></div>
                         </div>
-                        <span class="ed label">этаж</span>
+                        <div id="handup" class="none">
+                            <span class="label">Поднять на:</span>
+                            <div class="left">
+                                <input type="text" value="2">
+                            </div>
+                            <span class="ed label">этаж</span>
+                        </div>
                     </div>
                     <div class="clear"></div>
                 </div>

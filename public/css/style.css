@@ -1822,6 +1822,9 @@ footer .copyright a:hover {
 	border-color: #ff6c0e;
 	z-index: 101;
 }
+.select.checker .selected {
+	cursor: pointer;
+}
 
 .priceDelivery .col {
 	position: relative;

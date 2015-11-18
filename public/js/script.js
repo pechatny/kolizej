@@ -46,13 +46,28 @@ $(function () {
 
 	// Свои селекты
 	$('.select .item').click(function () {
-		if(!$(this).hasClass('selected')) {
-			$(this).parent().children('.item').removeClass('selected');
-			$(this).addClass('selected');
-			var target = $(this).parent().attr('data-target'),
+		if(!$(this).parent().hasClass('checker')) {
+			if(!$(this).hasClass('selected')) {
+				$(this).parent().children('.item').removeClass('selected');
+				$(this).addClass('selected');
+				var target = $(this).parent().attr('data-target'),
+					sp = 300;
+				if(target != undefined) {
+					if($(this).hasClass('display')) {
+						$(target).stop().fadeIn(sp);
+					}
+					else {
+						$(target).stop().fadeOut(sp / 2);
+					}
+				}
+			}
+		}
+		else {
+			$(this).toggleClass('selected');
+			var target = $(this).attr('data-target'),
 				sp = 300;
 			if(target != undefined) {
-				if($(this).hasClass('display')) {
+				if($(this).hasClass('selected')) {
 					$(target).fadeIn(sp);
 				}
 				else {
@@ -221,9 +236,13 @@ $(function () {
 		$('.priceDelivery .block[data-id]').each(function () {
 			quantity = $(this).attr('data-quantity');
 			assembly = $(this).attr('data-assembly') * quantity;
+			if(!$('#plusAssembly').hasClass('selected'))
+				assembly = 0;
 
 			lift = $(this).attr('data-'+ (!handup ? 'lift' : 'lift_hand'));
 			lift = (!handup ? lift : lift * handup) * quantity;
+			if(!$('#plusLift').hasClass('selected'))
+				lift = 0;
 
 			d += lift + assembly;
 
@@ -380,9 +399,14 @@ $(function () {
 			var form = $(this).serialize(),
 				city = $('.calcDelivery .select:eq(0) .selected').text(),
 				distance = (city == 'Другой адрес' ? Number($('#mkad').find('input').val()) : -1),
-				lift = $('.calcDelivery .select:eq(1) .selected').text(),
+				plusLift = $('#plusLift').hasClass('selected'),
+				plusAssembly = $('#plusAssembly').hasClass('selected'),
+				lift = plusLift ? $('.calcDelivery .select:eq(2) .selected').text() : 'Без подъема',
 				stage = (lift == 'Вручную' ? Number($('#handup').find('input').val()) : -1);
-			$.post('/cart/order', {
+			if(!plusAssembly)
+				lift += ' Без сборки';
+			alert(city +"\r\n"+ distance +"\r\n"+ lift +"\r\n"+ stage);
+			/*$.post('/cart/order', {
 				'form'     : form,
 				'city'     : city,
 				'distance' : distance,
@@ -397,7 +421,7 @@ $(function () {
 					openPopup('<p><b>Ошибка оформления заказа</b></p>\
 					<p>Попробуйте повторить попытку позже или позвонить нам в офис <a href="tel:+74959797858" class="right">+7 (495) 979-78-58</a>', 'Ваш заказ не оформлен');
 				}
-			});
+			});*/
 		}
 		return false;
 	});
