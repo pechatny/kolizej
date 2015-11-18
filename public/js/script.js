@@ -401,10 +401,10 @@ $(function () {
 				distance = (city == 'Другой адрес' ? Number($('#mkad').find('input').val()) : -1),
 				plusLift = $('#plusLift').hasClass('selected'),
 				plusAssembly = $('#plusAssembly').hasClass('selected'),
-				lift = plusLift ? $('.calcDelivery .select:eq(2) .selected').text() : 'Без подъема',
+				lift = plusLift ? $('.calcDelivery .select:eq(2) .selected').text() : '<b>Без подъема</b>',
 				stage = (lift == 'Вручную' ? Number($('#handup').find('input').val()) : -1);
 			if(!plusAssembly)
-				lift += ' Без сборки';
+				lift += ' <b>Без сборки</b>';
 			alert(city +"\r\n"+ distance +"\r\n"+ lift +"\r\n"+ stage);
 			/*$.post('/cart/order', {
 				'form'     : form,
