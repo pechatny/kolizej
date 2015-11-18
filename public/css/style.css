@@ -44,11 +44,11 @@ a:hover {
 	color: #f66000;
 	text-decoration:none;
 }
-/*a:focus,
+a:focus,
 a:active {
-	color:#1050dc;
+	color:#af4400;
 	text-decoration:none;
-}*/
+}
 a:focus,
 input[type=text]:focus,
 input[type=password]:focus,
@@ -1320,6 +1320,20 @@ footer .copyright a:hover {
 .productInfo .params .additional {
 	padding-top: 13px;
 }
+.productInfo .params .price {
+	padding-right: 22px;
+	font-size: 20px;
+	line-height: 1;
+}
+.productInfo .params .price:after {
+	content: '';
+	position: absolute;
+	top: 8px;
+	right: 0;
+	width: 17px;
+	height: 24px;
+	background: url(/img/ico/rub.png) 0 0px no-repeat;
+}
 .productInfo .color {
 	width: 35%;
 }
@@ -1401,14 +1415,14 @@ footer .copyright a:hover {
 .productInfo .forCart {
 	width: 36%;
 }
-.productInfo .price {
+.productInfo .forCart .price {
 	top: -4px;
 	margin-bottom: 7px;
 	padding-right: 26px;
 	font-size: 34px;
 	line-height: 1;
 }
-.productInfo .price:after {
+.productInfo .forCart .price:after {
 	content: '';
 	position: absolute;
 	top: 6px;
