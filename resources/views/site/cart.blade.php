@@ -106,7 +106,7 @@
                     <div id="mkad" class="none">
                         <span class="label">Расстояние от МКАД:</span>
                         <div class="left">
-                            <input type="text" value="10" data-price="100">
+                            <input type="text" value="10" data-price="35">
                         </div>
                         <span class="ed label">км</span>
                     </div>
