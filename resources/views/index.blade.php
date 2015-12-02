@@ -165,7 +165,7 @@
                             </div>
                             <div class="item mail">
                                 Электронная почта<br>
-                                <a href="mailto:mail@kolizej.ru">mail@kolizej.ru</a>
+                                <a href="mailto:kolizej-z@mail.ru">kolizej-z@mail.ru</a>
                             </div>
                         </div>
                     </div>
