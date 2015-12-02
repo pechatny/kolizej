@@ -80,7 +80,7 @@ $(function () {
 	// Фильтр в каталоге
 	if($('.filter').length > 0) {
 		function filter () {
-			var category = $('.menu .category .active a').attr('data'),
+			var category = $('.menu .category .active a').attr('data-id'),
 				params = {};
 			if(category == undefined)
 				category = 'all';
