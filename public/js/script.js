@@ -450,7 +450,7 @@ $(function () {
 	function viewBig (src) {
 		var sp = 300;
 		$('.productView .big').children('img').fadeOut(sp / 2, function () {
-			$(this).attr('src', src);
+			$(this).attr('src', src.replace('original', 'detail-w570'));
 			$(this).parent().children('a').attr('href', src);
 			$(this).fadeIn(sp);
 		});
