@@ -82,7 +82,7 @@
 </section>
 <footer>
     <div class="container">
-        <div id="products"class="row">
+        <div class="row">
             {!! $menuBottomHtml !!}
             <div class="folder col-xs-4">
                 <div class="title">Каталог</div>

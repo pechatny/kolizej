@@ -6,7 +6,7 @@
                 @foreach($categories as $category)
                     <div class="block col-xs-4">
                         <a href="/catalog/{{$category->key}}">
-                            {!! HTML::image($category->image) !!}
+                            <img src="{{$category->image}}" alt="">
                             <span>{{$category->name}}</span>
                         </a>
                     </div>
